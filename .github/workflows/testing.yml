@@ -1,0 +1,82 @@
+name: Testing CI
+
+on:
+  push:
+    branches: [main, develop]
+
+jobs:
+  frontend:
+    defaults:
+      run:
+        working-directory: frontend
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Cache Node.js modules
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.OS }}-node-${{ hashFiles('*/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.OS }}-node-
+          ${{ runner.OS }}-
+    - run: pnpm i -g @angular/cli
+    - run: pnpm i
+    - run: pnpm run test
+
+  backend:
+    defaults:
+      run:
+        working-directory: backend
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    services:
+      database:
+        image: postgres
+        env:
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis-cache:
+        image: redis
+    env:
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      SETUP_PASSWORD: ${{ secrets.SETUP_PASSWORD }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Cache Node.js modules
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.OS }}-node-${{ hashFiles('*/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.OS }}-node-
+          ${{ runner.OS }}-
+    - run: npm i -g pnpm
+    - run: pnpm i -g @nestjs/cli
+    - run: pnpm i
+    - run: pnpm run prisma:generate
+    - run: pnpm run prisma:migrate
+    - run: pnpm test

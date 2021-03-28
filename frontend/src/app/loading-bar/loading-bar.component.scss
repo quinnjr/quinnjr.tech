@@ -1,0 +1,23 @@
+@import "~bulmaswatch/lux/variables";
+
+$progress-bar-background-color: $grey-lighter;
+$brand-red: "#C51E3A";
+
+.progress.is-custom {
+  &::-webkit-progress-bar {
+    background-color: $brand-red;
+  }
+  &::-webkit-progress-value {
+    background-color: $brand-red;
+  }
+  &::-moz-progress-bar {
+    background-color: $brand-red;
+  }
+  &::-ms-fill {
+    background-color: $brand-red;
+    border: none;
+  }
+  &:indeterminate {
+    background-image: linear-gradient(to right, $brand-red 30%, $progress-bar-background-color 30%);
+  }
+}

@@ -1,0 +1,28 @@
+[package]
+name = "pulldown-cmark-pipe"
+version = "0.1.0"
+authors = ["Joseph Quinn <423821+quinnjr@users.noreply.github.com>"]
+edition = "2018"
+description = ""
+publish = false
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = ['-Os']
+
+[package.metadata.wasm-pack.profile.release.wasm-bindgen]
+debug-js-glue = false
+demangle-name-section = true
+dwarf-debug-info = false
+
+[lib]
+path = "src/lib.rs"
+edition = "2018"
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2.73"
+js-sys = "0.3.50"
+web-sys = "0.3.50"
+wee_alloc = "0.4.5"
+pulldown-cmark = "0.8.0"
+

@@ -1,0 +1,9 @@
+server {
+  listen [::]:4200 default_server;
+  listen 4200 default_server;
+
+  server _;
+
+  root /app/dist/frontend;
+  index index.html =404;
+}
