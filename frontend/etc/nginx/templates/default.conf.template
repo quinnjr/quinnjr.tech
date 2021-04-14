@@ -4,6 +4,6 @@ server {
 
   server _;
 
-  root /app/dist/frontend;
+  root /app/dist;
   index index.html =404;
 }

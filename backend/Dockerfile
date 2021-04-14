@@ -1,5 +1,7 @@
 FROM node:lts-alpine as builder
 
+ENV NODE_ENV development
+
 WORKDIR /app
 
 COPY . .
