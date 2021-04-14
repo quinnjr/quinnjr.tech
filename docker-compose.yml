@@ -16,7 +16,6 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     environment:
-      NODE_ENV: production
       SECRET_KEY: ${SECRET_KEY}
       JWT_SECRET: ${JWT_SECRET}
       REDIS_HOST: ${REDIS_HOST}
