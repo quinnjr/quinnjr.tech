@@ -10,9 +10,9 @@ import { ExperiencesService } from '../experiences/experiences.service';
 import { ProjectsService } from '../projects/projects.service';
 import { EducationService } from '../education/education.service';
 import { CertificationsService } from '../certifications/certifications.service';
-import { Certification } from 'src/certifications/dto/certification';
-import { Education } from 'src/education/dto/education';
-import { Project } from 'src/projects/dto/project';
+import { Certification } from '../certifications/dto/certification';
+import { Education } from '../education/dto/education';
+import { Project } from '../projects/dto/project';
 
 @Resolver(of => User)
 export class UsersResolver {

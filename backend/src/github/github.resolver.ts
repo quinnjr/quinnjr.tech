@@ -1,5 +1,5 @@
 import { Resolver, Query } from '@nestjs/graphql';
-import { Public } from 'src/auth/public.decorator';
+import { Public } from '../auth/public.decorator';
 import { GithubResponse } from './dto/github-response';
 import { GithubService } from './github.service';
 

@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { UsersService } from '../users/users.service';
 import { DatabaseModule } from '../database/database.module';
 import { CertificationsResolver } from './certifications.resolver';
 import { CertificationsService } from './certifications.service';
@@ -13,7 +14,8 @@ describe('CertificationsResolver', () => {
       ],
       providers: [
         CertificationsResolver,
-        CertificationsService
+        CertificationsService,
+        UsersService
       ],
     }).compile();
 

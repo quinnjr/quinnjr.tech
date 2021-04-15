@@ -1,9 +1,9 @@
 import { ObjectType, Field, ID, Int } from '@nestjs/graphql';
 import { User as UserModel , Role} from '@prisma/client';
-import { Certification } from 'src/certifications/dto/certification';
-import { Education } from 'src/education/dto/education';
-import { Experience } from 'src/experiences/dto/experience';
-import { Project } from 'src/projects/dto/project';
+import { Certification } from '../../certifications/dto/certification';
+import { Education } from '../../education/dto/education';
+import { Experience } from '../../experiences/dto/experience';
+import { Project } from '../../projects/dto/project';
 
 import { Article } from '../../articles/dto/article';
 

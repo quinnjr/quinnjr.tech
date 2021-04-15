@@ -13,8 +13,8 @@ RUN npm i -g pnpm && \
 USER node
 
 RUN pnpm set store-dir ~/.pnpm-store && \
-  pnpm i --no-optional
+  pnpm install --no-optional
 
 EXPOSE 3000
 
-ENTRYPOINT ["pnpm", "i", "--no-optional", "&&", "pnpm", "run", "start:dev"]
+ENTRYPOINT ["pnpm", "install", "-r", "--offline", " --no-optional", "&&", "pnpm", "run", "start:dev"]
