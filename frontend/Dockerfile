@@ -12,15 +12,11 @@ USER node
 
 RUN pnpm set store-dir ~/.pnpm-store && \
   pnpm i --no-optional && \
-  pnpx ng build
+  pnpx ng build --prod --aot
 
 FROM nginx:mainline-alpine
 
 WORKDIR /app
 
-RUN chown -R node:node /app
-
-USER node
-
-COPY --from=builder /app/dist/frontend ./dist
-COPY --from=builder /app/etc/nginx/templates/default.conf.template etc/nginx/templates/default.conf.template
+COPY --from=builder /app/dist/frontend /app/dist/
+COPY --from=builder /app/etc/nginx/templates/default.conf.template /etc/nginx/templates/

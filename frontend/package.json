@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "test:cov": "ng test --coverage",
-    "build:wasm": "wasm-pack build --release -d ./src/app/markdown -m no-install && rimraf ./src/app/markdown/.gitignore ./src/app/markdown/package.json ./src/app/markdown/README.md"
+    "build:wasm": ""
   },
   "license": "MIT",
   "repository": {

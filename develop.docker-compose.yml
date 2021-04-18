@@ -1,0 +1,29 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile-devel
+    environment:
+      NODE_ENV: development
+      API_ENTRYPOINT: 'http://127.0.0.1:3000/graphql'
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./frontend:/app
+      - pnpm_store:/homes/node/.pnpm-store
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile-devel
+    environment:
+      NODE_ENV: development
+    ports:
+      - "3000:3000"
+      - "5678:5555"
+    volumes:
+      - ./backend:/app
+      - pnpm_store:/homes/node/.pnpm-store
+
+volumes:
+  pnpm_store: {}

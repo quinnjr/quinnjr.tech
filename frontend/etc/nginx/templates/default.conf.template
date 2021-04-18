@@ -1,8 +1,8 @@
 server {
-  listen [::]:4200 default_server;
-  listen 4200 default_server;
+  listen [::]:3000 default_server;
+  listen 3000 default_server;
 
-  server _;
+  server_name _;
 
   root /app/dist;
   index index.html =404;

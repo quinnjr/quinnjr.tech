@@ -40,7 +40,7 @@ async function bootstrap(): Promise<INestApplication> {
 
 if(typeof expect === 'undefined') {
   bootstrap()
-    .then(app => app.listen(3000))
+    .then(app => app.listen(4200))
     .catch(console.error);
 }
 
