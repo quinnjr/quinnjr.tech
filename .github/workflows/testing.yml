@@ -15,21 +15,27 @@ jobs:
         node-version: [14.x]
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Cache Node.js modules
+
+    - name: Cache pnpm modules
       uses: actions/cache@v2
+      env:
+        cache-name: cache-pnpm-modules
       with:
-        path: ~/.npm
-        key: ${{ runner.OS }}-node-${{ hashFiles('*/package-lock.json') }}
+        path: ~/.pnpm-store
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/package.json') }}
         restore-keys: |
-          ${{ runner.OS }}-node-
-          ${{ runner.OS }}-
-    - run: pnpm i -g @angular/cli
-    - run: pnpm i
-    - run: pnpm run test
+          ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
+
+
+    - uses: pnpm/action-setup@v1.2.1
+      with:
+        version: 6.0.2
+        run_install: |
+          - args: [--global, "@angular/cli"]
+          - recursive: true
+
+    - run: pnpm test
+
 
   backend:
     defaults:
@@ -62,21 +68,25 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Cache Node.js modules
+
+    - name: Cache pnpm modules
       uses: actions/cache@v2
+      env:
+        cache-name: cache-pnpm-modules
       with:
-        path: ~/.npm
-        key: ${{ runner.OS }}-node-${{ hashFiles('*/package-lock.json') }}
+        path: ~/.pnpm-store
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/package.json') }}
         restore-keys: |
-          ${{ runner.OS }}-node-
-          ${{ runner.OS }}-
-    - run: npm i -g pnpm
-    - run: pnpm i -g @nestjs/cli
-    - run: pnpm i
-    - run: pnpm run prisma:generate
-    - run: pnpm run prisma:migrate
+          ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
+
+
+    - uses: pnpm/action-setup@v1.2.1
+      with:
+        version: 6.0.2
+        run_install: |
+          - args: [--global, "@nestjs/cli"]
+          - recursive: true
+
+    - run: pnpm run prisma generate
+    - run: pnpm run prisma migrate
     - run: pnpm test

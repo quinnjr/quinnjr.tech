@@ -1,5 +1,6 @@
 *.override.yml
 .pnpm-store/
+.env*
 
 # IDEs and editors
 /.idea

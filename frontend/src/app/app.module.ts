@@ -11,6 +11,7 @@ import { APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache } from '@apollo/client/core';
 import { StorageModule } from '@ngx-pwa/local-storage';
+import { MarkdownModule } from 'ngx-markdown';
 
 // App Modules
 import { AdminModule } from './admin/admin.module';
@@ -18,7 +19,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { FlashMessageModule } from './flash-message/flash-message.module';
 import { NavigationModule } from './navigation/navigation.module';
 import { ProjectsModule } from './projects/projects.module';
-import { MarkdownModule } from './markdown/markdown.module';
 
 // Top-level components
 import { AppComponent } from './app.component';
@@ -42,6 +42,7 @@ import { LoadingBarModule } from './loading-bar/loading-bar.module';
       IDBDBName: 'quinnjr.tech',
       LSPrefix: 'quinnjr_tech_'
     }),
+    MarkdownModule.forRoot(),
     // Site imports
     AdminModule,
     AppRoutingModule,
