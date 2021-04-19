@@ -1,0 +1,6 @@
+<div *ngFor="let message of (messages | async); index as idx">
+  <div class="notification" [ngClass]="message.level" role="alert">
+    <button class="delete" (click)="close(idx)"></button>
+    {{ message.value }}
+  </div>
+</div>

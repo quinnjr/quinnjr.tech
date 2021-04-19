@@ -1,0 +1,13 @@
+{
+  "moduleNameMapper": {
+    "@core/(.*)": "<rootDir>/src/app/core/$1"
+  },
+  "preset": "jest-preset-angular",
+  "testMatch": [
+    "**/+(*.)+(spec).+(ts)"
+  ],
+  "setupFiles": [ "dotenv/config" ],
+  "setupFilesAfterEnv": [ "<rootDir>/jest.setup.ts" ],
+  "collectCoverage": true,
+  "coverageDirectory": "./dist/coverage"
+}

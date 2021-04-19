@@ -1,0 +1,92 @@
+name: Testing CI
+
+on:
+  push:
+    branches: [main, develop]
+
+jobs:
+  frontend:
+    defaults:
+      run:
+        working-directory: frontend
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Cache pnpm modules
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-pnpm-modules
+      with:
+        path: ~/.pnpm-store
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/package.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
+
+
+    - uses: pnpm/action-setup@v2.0.0
+      with:
+        version: 6.0.2
+        run_install: |
+          - args: [--global, "@angular/cli"]
+          - recursive: true
+
+    - run: pnpm test
+
+
+  backend:
+    defaults:
+      run:
+        working-directory: backend
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    services:
+      database:
+        image: postgres
+        env:
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis-cache:
+        image: redis
+    env:
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      SETUP_PASSWORD: ${{ secrets.SETUP_PASSWORD }}
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Cache pnpm modules
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-pnpm-modules
+      with:
+        path: ~/.pnpm-store
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/package.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
+
+
+    - uses: pnpm/action-setup@v2.0.0
+      with:
+        version: 6.0.2
+        run_install: |
+          - args: [--global,"@nestjs/cli"]
+          - recursive: true
+
+    - run: pnpm run prisma generate
+    - run: pnpm run prisma migrate
+    - run: pnpm test

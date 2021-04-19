@@ -1,0 +1,3 @@
+<div *ngIf="value | async">
+  <progress class="progress is-custom" [value]="value | async" max="100%">{{ value | async }}</progress>
+</div>
