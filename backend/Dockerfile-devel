@@ -15,6 +15,6 @@ USER node
 RUN pnpm set store-dir ~/.pnpm-store && \
   pnpm install --no-optional
 
-EXPOSE 3000
+EXPOSE 4200
 
-ENTRYPOINT ["pnpm", "install", "-r", "--offline", " --no-optional", "&&", "pnpm", "run", "start:dev"]
+ENTRYPOINT ["pnpm", "run", "start:dev"]

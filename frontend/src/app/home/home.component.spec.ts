@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule, } from '@angular/router/testing';
 import { ApolloTestingModule, ApolloTestingController } from 'apollo-angular/testing';
 import { FlashMessageModule } from '../flash-message/flash-message.module';
-import { MarkdownModule } from '../markdown/markdown.module';
 import { NavigationModule } from '../navigation/navigation.module';
 
 import { HomeComponent } from './home.component';

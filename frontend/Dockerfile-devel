@@ -14,4 +14,6 @@ RUN pnpm set store-dir ~/.pnpm-store && \
   pnpm i --no-optional && \
   pnpx ng build
 
+EXPOSE 3000
+
 ENTRYPOINT ["pnpm", "start"]
