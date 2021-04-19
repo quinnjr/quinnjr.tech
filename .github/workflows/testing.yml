@@ -31,7 +31,11 @@ jobs:
       with:
         version: 6.0.2
         run_install: |
+<<<<<<< HEAD
           - args: [--global, "@angular/cli"]
+=======
+          - args: [--global, @angular/cli]
+>>>>>>> c15d2021e07b40640f2b618a0ca9b48bf9397498
           - recursive: true
 
     - run: pnpm test
@@ -84,7 +88,11 @@ jobs:
       with:
         version: 6.0.2
         run_install: |
+<<<<<<< HEAD
           - args: [--global, "@nestjs/cli"]
+=======
+          - args: [--global, @nestjs/cli]
+>>>>>>> c15d2021e07b40640f2b618a0ca9b48bf9397498
           - recursive: true
 
     - run: pnpm run prisma generate
