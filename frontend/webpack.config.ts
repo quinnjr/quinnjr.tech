@@ -35,8 +35,8 @@ export default {
   },
   plugins: [
     new webpack.EnvironmentPlugin({
-      'NODE_ENV': 'development',
-      'API_ENTRYPOINT': 'https://api.quinnjr.tech'
+      'NODE_ENV': process.env.NODE_ENV,
+      'API_ENTRYPOINT': process.env.API_ENTRYPOINT
     }),
     new SriPlugin({
       hashFuncNames: ['sha256'],

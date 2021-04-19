@@ -1,5 +1,6 @@
 declare var expect: any;
 
+import * as fs from 'fs';
 import { NestFactory } from '@nestjs/core';
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
@@ -7,8 +8,17 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
 
 async function bootstrap(): Promise<INestApplication> {
+  let httpsOptions;
+  if(process.env.NODE_ENV === 'development') {
+    httpsOptions = {
+      key: fs.readFileSync('../certs/localhost+2-key.pem'),
+      cert: fs.readFileSync('../certs/localhost+2.pem')
+    }
+  }
+
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
-    logger: ['log', 'error', 'warn']
+    logger: ['log', 'error', 'warn'],
+    httpsOptions
   });
 
   app.set('trust proxy', 1);
@@ -40,7 +50,7 @@ async function bootstrap(): Promise<INestApplication> {
 
 if(typeof expect === 'undefined') {
   bootstrap()
-    .then(app => app.listen(4200))
+    .then(app => app.listen(3000))
     .catch(console.error);
 }
 
