@@ -19,7 +19,7 @@ model User {
   middleName String?
   lastName String @unique
   profilePicture String?
-  profile String?
+  profile String
   skills String[]
   role Role @default(User)
   articles Article[]
@@ -36,6 +36,7 @@ model User {
 model Article {
   id String @id @default(uuid()) @db.Uuid
   title String @unique
+  titleSlug String @unique
   author User @relation(fields: [authorId], references: [id])
   authorId String @db.Uuid
   content String

@@ -13,7 +13,7 @@ const routes: Set<Route> = Set([
     pathMatch: 'full'
   },
   {
-    path: '_login',
+    path: 'login',
     component: LoginComponent
   },
   {

@@ -15,7 +15,6 @@ import { ExperiencesModule } from './experiences/experiences.module';
 import { EducationModule } from './education/education.module';
 import { CertificationsModule } from './certifications/certifications.module';
 import { ProjectsModule } from './projects/projects.module';
-import { MarkdownService } from './markdown/markdown.service';
 import { GithubModule } from './github/github.module';
 
 @Module({
@@ -61,7 +60,6 @@ import { GithubModule } from './github/github.module';
     //   provide: APP_INTERCEPTOR,
     //   useClass: CacheInterceptor
     // },
-    MarkdownService
   ]
 })
 export class AppModule {}
