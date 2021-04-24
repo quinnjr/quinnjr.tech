@@ -1,11 +1,10 @@
 import { User } from "./user";
 
-export interface Project {
+export interface Conference {
   id: string;
   name: string;
-  url: string;
-  content: string;
-  description: string;
+  startDate: Date;
+  endDate: Date;
   userId: string;
   user?: User;
 }

@@ -18,7 +18,8 @@ async function bootstrap(): Promise<INestApplication> {
 
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: ['log', 'error', 'warn'],
-    httpsOptions
+    httpsOptions,
+    cors: process.env.NODE_ENV === 'development'
   });
 
   app.set('trust proxy', 1);

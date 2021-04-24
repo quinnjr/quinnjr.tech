@@ -1,11 +1,9 @@
 import { User } from "./user";
 
-export interface Project {
+export interface Certification {
   id: string;
   name: string;
-  url: string;
-  content: string;
-  description: string;
+  certifier: string;
   userId: string;
   user?: User;
 }

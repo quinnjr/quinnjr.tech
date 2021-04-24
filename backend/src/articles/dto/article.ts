@@ -12,6 +12,9 @@ export class Article implements ArticleModel {
   public title: string;
 
   @Field()
+  public titleSlug: string;
+
+  @Field()
   public content: string;
 
   @Field()
@@ -37,6 +40,9 @@ export class CreateArticle implements Prisma.ArticleCreateWithoutAuthorInput {
 
   @Field()
   public title: string;
+
+  @Field()
+  public titleSlug: string;
 
   @Field()
   public content: string;

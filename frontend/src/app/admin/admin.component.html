@@ -1,0 +1,36 @@
+<div class="columns">
+  <div class="column is-3">
+    <aside class="menu">
+      <p class="menu-label">Administration</p>
+      <ul class="menu-list">
+        <li>
+          <a [routerLink]="[eAdminSubroutes.SiteAdministration]"
+            routerLinkActive="is-active"
+          >Site Administration</a>
+        </li>
+        <li>
+          <a [routerLink]="[eAdminSubroutes.AccountAdministration]"
+            routerLinkActive="is-active"
+          >Account Administration</a>
+        </li>
+      </ul>
+      <p class="menu-label">Articles</p>
+      <ul class="menu-list">
+        <li><a>Manage Articles</a></li>
+        <li><a>Create Article</a></li>
+      </ul>
+      <p class="menu-label">Resume</p>
+      <ul class="menu-list">
+        <li><a>Update Resume</a></li>
+      </ul>
+      <p class="menu-label">Projects</p>
+      <ul class="menu-list">
+        <li><a>Manage Projects</a></li>
+        <li><a>Create Project</a></li>
+      </ul>
+    </aside>
+  </div>
+  <div class="column">
+    <router-outlet name="adminContent"></router-outlet>
+  </div>
+</div>

@@ -27,10 +27,18 @@ export class UsersResolver {
 
   @Public()
   @Query(returns => User, { name: 'user' })
-  public async getUser(@Args('id') id: string): Promise<User> {
+  public async getUser(
+    @Args('id', { nullable: true }) id?: string,
+    @Args('firstName', { nullable: true }) firstName?: string,
+    @Args('lastName', { nullable: true }) lastName?: string,
+    @Args('email', { nullable: true }) email?: string
+  ): Promise<User> {
     return this.$usersService.findOne({
       where: {
-        id
+        id,
+        firstName,
+        lastName,
+        email
       }
     });
   }

@@ -1,16 +1,16 @@
 <div class="columns">
   <div class="column is-half is-offset-one-quarter">
-    <form class="form">
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="submit()">
       <div class="field">
         <label class="label" for="email">Email</label>
         <div class="control">
-          <input type="text" class="input" required />
+          <input type="text" class="input" required formControlName="email" />
         </div>
       </div>
       <div class="field">
         <label class="label" for="password">Password</label>
         <div class="control">
-          <input type="password" class="input" required minlength="8" />
+          <input type="password" class="input" required minlength="8" formControlName="password" />
         </div>
       </div>
       <button type="submit" class="button is-primary">Submit</button>

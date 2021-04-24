@@ -2,7 +2,6 @@ import { CacheInterceptor, CacheModule, Module } from '@nestjs/common';
 import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
-import * as redisStore from 'cache-manager-redis-store';
 import { join } from 'path';
 
 import { AppController } from './app.controller';
@@ -19,15 +18,9 @@ import { GithubModule } from './github/github.module';
 
 @Module({
   imports: [
-    CacheModule.registerAsync({
-      imports: [ ConfigModule ],
-      inject: [ ConfigService ],
-      useFactory: ($configService: ConfigService) => ({
-        store: redisStore,
-        host: $configService.get<string>('REDIS_HOST'),
-        port: 6379,
-        max: 50
-      })
+    CacheModule.register({
+      ttl: 5 * 60,
+      max: 50
     }),
     ConfigModule.forRoot({
       isGlobal: true,
@@ -36,7 +29,8 @@ import { GithubModule } from './github/github.module';
     GraphQLModule.forRoot({
       autoSchemaFile: join(__dirname, 'schema.gql'),
       debug: false,
-      playground: (process.env.NODE_ENV === 'development')
+      playground: (process.env.NODE_ENV === 'development'),
+      cors: (process.env.NODE_ENV === 'development')
     }),
     AuthModule,
     ArticlesModule,
@@ -52,14 +46,14 @@ import { GithubModule } from './github/github.module';
     AppController
   ],
   providers: [
-    {
-      provide: APP_GUARD,
-      useClass: JwtAuthGuard
-    },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: JwtAuthGuard
+    // },
     // {
     //   provide: APP_INTERCEPTOR,
     //   useClass: CacheInterceptor
-    // },
+    // }
   ]
 })
 export class AppModule {}
