@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanLoad {
+export class AdminLoadGuard implements CanLoad {
   constructor(
     private readonly $httpClient: HttpClient,
     private readonly $router: Router

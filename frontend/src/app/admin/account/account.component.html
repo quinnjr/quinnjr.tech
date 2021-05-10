@@ -1,1 +1,104 @@
-<p>account works!</p>
+<div class="content">
+  <section class="section">
+    <form [formGroup]="accountForm" (ngSubmit)="onSubmitPassword()">
+      <h1 class="legend">Update Password</h1>
+      <div class="field">
+        <label class="label" for="currentPassword">Current Password</label>
+        <div class="control">
+          <input class="input"
+            id="currentPassword"
+            formControlName="currentPassword"
+            type="password"
+            required
+            minlength="8"
+          />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label" for="newPassword">New Password</label>
+        <div class="control">
+          <input class="input"
+            id="newPassword"
+            formControlName="newPassword"
+            type="password"
+            required
+            minlength="8"
+          />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label" for="newPasswordConfirm">Confirm New Password</label>
+        <div class="control">
+          <input class="input"
+            id="newPasswordConfirm"
+            formControlName="newPasswordConfirm"
+            type="password"
+            required
+            minlength="8"
+          />
+        </div>
+      </div>
+      <div class="field">
+        <button class="button is-primary" type="submit" [disabled]="!accountForm.valid">Submit</button>
+      </div>
+    </form>
+  </section>
+  <section>
+    <form (ngSubmit)="onSubmitOTP()">
+      <div class="field">
+
+      </div>
+
+    </form>
+  </section>
+  <section class="section">
+    <form (ngSubmit)="onSubmitProfile()">
+      <h1 class="legend">Update Account Profile</h1>
+      <h2>Biographic Information</h2>
+      <div class="field">
+        <label class="label">First Name</label>
+        <div class="control">
+          <input class="input" type="text" required />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Middle Name</label>
+        <div class="control">
+          <input class="input" type="text" />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Last Name</label>
+        <div class="control">
+          <input class="input" type="text" required />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label" for="birthday">Birthday</label>
+        <div class="control">
+          <input type="date" required />
+        </div>
+      </div>
+      <h2>Site Information</h2>
+      <div class="field">
+        <label class="label" for="profile">Profile</label>
+        <div class="control">
+          <textarea class="textarea"></textarea>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label" for="account-image">Account Image</label>
+        <div class="control">
+          <img [src]="" alt="Account Profile Image" />
+          <input class="input"
+            id="account-image"
+            type="file"
+          />
+        </div>
+      </div>
+      <div class="field">
+        <button class="button is-primary" type="submit" [disabled]="!accountProfileForm.valid">Submit</button>
+      </div>
+    </form>
+  </section>
+</div>

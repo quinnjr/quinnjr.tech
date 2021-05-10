@@ -6,12 +6,15 @@ import { Observable } from 'rxjs';
 import { IS_PUBLIC_KEY } from './public.decorator';
 
 @Injectable()
-export class JwtAuthGuard extends AuthGuard('jwt')
+export class JwtGraphqlAuthGuard extends AuthGuard('jwt')
   implements CanActivate {
-  constructor(
-    private readonly $reflector: Reflector
-  ) {
+  constructor(private readonly $reflector: Reflector) {
     super();
+  }
+
+  public getRequest(context: ExecutionContext): any {
+    const ctx = GqlExecutionContext.create(context);
+    return ctx.getContext().req;
   }
 
   public canActivate(

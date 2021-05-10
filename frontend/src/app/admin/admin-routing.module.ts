@@ -12,39 +12,37 @@ import { UpdateResumeComponent } from './update-resume/update-resume.component';
 
 const routes: List<Route> = List([
   {
-    path: '',
+    path: 'admin',
     component: AdminComponent,
     children: [
       {
+        path: 'site',
+        component: ControlsComponent
+      },
+      {
         path: 'account',
-        component: AccountComponent,
-        outlet: 'adminContent'
+        component: AccountComponent
       },
       {
         path: 'create-article',
-        component: CreateArticleComponent,
-        outlet: 'adminContent'
+        component: CreateArticleComponent
       },
       {
         path: 'manage-articles',
-        component: ManageArticlesComponent,
-        outlet: 'adminContent'
+        component: ManageArticlesComponent
       },
       {
         path: 'manage-projects',
-        component: ManageProjectsComponent,
-        outlet: 'adminContent'
+        component: ManageProjectsComponent
       },
       {
         path: 'update-resume',
-        component: UpdateResumeComponent,
-        outlet: 'adminContent'
+        component: UpdateResumeComponent
       },
       {
         path: '',
         pathMatch: 'full',
-        component: ControlsComponent,
-        outlet: 'adminContent'
+        redirectTo: '/admin/site'
       }
     ]
   }

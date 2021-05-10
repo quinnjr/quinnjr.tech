@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 enum AdminSubroutes {
-  SiteAdministration = '',
+  SiteAdministration = '/admin',
   AccountAdministration = './account',
   ManageArticles = './manage-articles',
   CreateArticle = './create-article',

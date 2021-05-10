@@ -6,7 +6,8 @@ WORKDIR /app
 
 COPY . .
 
-RUN npm i -g pnpm && \
+RUN apk add --no-cache --virtual .build-deps build-base python3 && \
+  npm i -g pnpm && \
   pnpm i -g @nestjs/cli && \
   chown -R node:node /app
 

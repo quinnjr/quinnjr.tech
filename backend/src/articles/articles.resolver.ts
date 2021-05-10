@@ -1,5 +1,5 @@
 import { Args, Int, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql';
-import { ParseIntPipe } from '@nestjs/common';
+import { ParseIntPipe, UseGuards } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 
 import { UsersService } from '../users/users.service';
@@ -11,6 +11,7 @@ import { ArticlesService } from './articles.service';
 
 import { ArticleWhereInput } from './dto/article-where-input';
 import { CurrentUser } from '../auth/current-user.decorator';
+import { JwtGraphqlAuthGuard } from 'src/auth/jwt-graphql-auth.guard';
 
 @Resolver(of => Article)
 export class ArticlesResolver {
@@ -19,7 +20,6 @@ export class ArticlesResolver {
     private readonly $usersService: UsersService
   ) {}
 
-  @Public()
   @Query(returns => [Article], { name: 'articles' })
   public async getArticles(
     // @Args('where') where?: ArticleWhereInput,
@@ -31,7 +31,6 @@ export class ArticlesResolver {
     return this.$articlesService.findMany(params);
   }
 
-  @Public()
   @Query(returns => Article, { name: 'article' })
   public async getArticle(@Args('id') id: string): Promise<Article> {
     return this.$articlesService.findOne({ where: {id} });
@@ -47,6 +46,7 @@ export class ArticlesResolver {
     });
   }
 
+  @UseGuards(JwtGraphqlAuthGuard)
   @Mutation(returns => Article)
   public async createArticle(
     @CurrentUser() user: User,
@@ -63,6 +63,7 @@ export class ArticlesResolver {
     return this.$articlesService.create(data as unknown as Prisma.ArticleCreateInput);
   }
 
+  @UseGuards(JwtGraphqlAuthGuard)
   @Mutation(returns => Article)
   public async updateArticle(
     @Args('id') id: string,

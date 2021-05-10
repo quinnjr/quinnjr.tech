@@ -27,7 +27,7 @@ import { JwtInterceptor } from './jwt.interceptor';
 import { LoginComponent } from './login/login.component';
 import { LoadingBarModule } from './loading-bar/loading-bar.module';
 import { UserService } from './user.service';
-import { AdminGuard } from './admin.guard';
+import { AdminLoadGuard } from './admin-load.guard';
 import { HttpErrorInterceptor } from './http-error.interceptor';
 import { NotFoundComponent } from './not-found/not-found.component';
 
@@ -63,7 +63,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   providers: [
     UserService,
-    AdminGuard,
+    AdminLoadGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,

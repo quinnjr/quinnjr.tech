@@ -25,7 +25,7 @@ export class UsersService {
     return await this.$database.user.create({data}) as User;
   }
 
-  public async update(id: string, data: Prisma.UserUpdateInput): Promise<User> {
+  public async update(id: string, data: any): Promise<User> {
     return await this.$database.user.update({
       where: { id },
       data

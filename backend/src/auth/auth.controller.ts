@@ -14,13 +14,16 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @HttpCode(200)
   @Post('login')
-  public async login(@Request() req): Promise<any> {
-    return this.$authService.login(req.user);
+  public async login(
+    @Request() req: any,
+    @Body('otp') otp: string
+  ): Promise<any> {
+    return this.$authService.login(req.user, otp);
   }
 
   @HttpCode(200)
   @Post('refresh-token')
-  public async refreshToken(@Request() req): Promise<any> {
+  public async refreshToken(@Request() req: any): Promise<any> {
     return '';
   }
 
@@ -36,5 +39,15 @@ export class AuthController {
     }
 
     return req.user.role === body.role;
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(200)
+  @Post('tfa/register')
+  public async tfaRegister(
+    @Request() req: any,
+    @Body('otp') otp: string
+  ): Promise<unknown> {
+    return this.$authService.registerYubikey(req.user, otp);
   }
 }

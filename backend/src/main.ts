@@ -34,16 +34,16 @@ async function bootstrap(): Promise<INestApplication> {
     throw new Error('Environment variable `DATABASE_URL` is not defined.');
   }
 
-  if(!configService.get<string>('REDIS_HOST')) {
-    throw new Error('Environment variable `REDIS_HOST` is not defined.');
-  }
-
   if(!configService.get<string>('JWT_SECRET')) {
     throw new Error('Environment variable `JWT_SECRET` is not defined.');
   }
 
   if(!configService.get<string>('SECRET_KEY')) {
     throw new Error('Environment variable `SECRET_KEY` is not defined.');
+  }
+
+  if(!configService.get<string>('YUBIKEY_CLIENT_ID') || !configService.get<string>('YUBIKEY_CLIENT_SECRET')) {
+    throw new Error('Yubikey Environment was not defined.');
   }
 
   return app;

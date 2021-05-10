@@ -4,33 +4,47 @@
       <p class="menu-label">Administration</p>
       <ul class="menu-list">
         <li>
-          <a [routerLink]="[eAdminSubroutes.SiteAdministration]"
+          <a [routerLink]="['/admin/site']"
             routerLinkActive="is-active"
           >Site Administration</a>
         </li>
         <li>
-          <a [routerLink]="[eAdminSubroutes.AccountAdministration]"
+          <a [routerLink]="['/admin/account']"
             routerLinkActive="is-active"
           >Account Administration</a>
         </li>
       </ul>
       <p class="menu-label">Articles</p>
       <ul class="menu-list">
-        <li><a>Manage Articles</a></li>
-        <li><a>Create Article</a></li>
+        <li>
+          <a [routerLink]="['/admin/manage-articles']"
+            routerLinkActive="is-active"
+          >Manage Articles</a>
+        </li>
+        <li>
+          <a [routerLink]="['/admin/create-article']"
+            routerLinkActive="is-active"
+          >Create Article</a></li>
       </ul>
       <p class="menu-label">Resume</p>
       <ul class="menu-list">
-        <li><a>Update Resume</a></li>
+        <li>
+          <a [routerLink]="['/admin/update-resume']"
+            routerLinkActive="is-active"
+          >Update Resume</a>
+        </li>
       </ul>
       <p class="menu-label">Projects</p>
       <ul class="menu-list">
-        <li><a>Manage Projects</a></li>
-        <li><a>Create Project</a></li>
+        <li>
+          <a [routerLink]="['/admin/manage-projects']"
+            routerLinkActive="is-active"
+          >Manage Projects</a>
+        </li>
       </ul>
     </aside>
   </div>
   <div class="column">
-    <router-outlet name="adminContent"></router-outlet>
+    <router-outlet></router-outlet>
   </div>
 </div>
