@@ -1,7 +1,7 @@
 import { Field, ObjectType, ID, InputType, PartialType, PickType } from '@nestjs/graphql';
 import { Article as ArticleModel, Prisma } from '@prisma/client';
 
-import { User } from '../../users/dto/user';
+import { User } from './user';
 
 @ObjectType({ description: 'Article model' })
 export class Article implements ArticleModel {

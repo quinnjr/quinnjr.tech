@@ -1,7 +1,7 @@
 import { Field, ObjectType, ID, InputType, PartialType, PickType } from '@nestjs/graphql';
 import { Certification as CertificationModel, Prisma } from '@prisma/client';
 
-import { User } from '../../users/dto/user';
+import { User } from './user';
 
 @ObjectType({ description: 'Certification model' })
 export class Certification implements CertificationModel {

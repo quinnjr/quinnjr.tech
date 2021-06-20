@@ -5,15 +5,8 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 
 import { AppController } from './app.controller';
-import { ArticlesModule } from './articles/articles.module';
-import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
-import { DatabaseModule } from './database/database.module';
-import { ExperiencesModule } from './experiences/experiences.module';
-import { EducationModule } from './education/education.module';
-import { CertificationsModule } from './certifications/certifications.module';
-import { ProjectsModule } from './projects/projects.module';
 import { GithubModule } from './github/github.module';
+import { ResolversModule } from './resolvers/resolvers.module';
 
 @Module({
   imports: [
@@ -32,15 +25,8 @@ import { GithubModule } from './github/github.module';
       cors: (process.env.NODE_ENV === 'development'),
       context: ({ req }) => ({ req })
     }),
-    AuthModule,
-    ArticlesModule,
-    DatabaseModule,
-    UsersModule,
-    ExperiencesModule,
-    EducationModule,
-    CertificationsModule,
-    ProjectsModule,
-    GithubModule
+    GithubModule,
+    ResolversModule
   ],
   controllers: [
     AppController

@@ -1,13 +1,13 @@
 import { Args, Int, Query, Resolver } from '@nestjs/graphql';
+import { DatabaseService } from '../database/database.service';
 
-import { ProjectsService } from './projects.service';
 import { Public } from '../auth/public.decorator';
-import { Project } from './dto/project';
+import { Project } from '../dto/project';
 
 @Resolver(of => Project)
 export class ProjectsResolver {
   constructor(
-    private readonly $projectsService: ProjectsService
+    private readonly $databaseService: DatabaseService
   ) {}
 
   @Public()
@@ -16,7 +16,7 @@ export class ProjectsResolver {
     @Args('userId', { nullable: true }) userId?: string,
     @Args('take', { type: () => Int, nullable: true}) take?: number
   ): Promise<Project[]> {
-    return this.$projectsService.findMany({
+    return this.$databaseService.project.findMany({
       where: {
         userId
       },

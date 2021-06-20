@@ -18,8 +18,8 @@ import kebabCase from 'lodash.kebabcase';
 
 import { SortOrder } from '../enum/sort-order';
 import { Public } from '../auth/public.decorator';
-import { Article, CreateArticle, UpdateArticle } from './dto/article';
-import { User } from '../users/dto/user';
+import { Article, CreateArticle, UpdateArticle } from '../dto/article';
+import { User } from '../dto/user';
 import { DatabaseService } from '../database/database.service';
 
 import { CurrentUser } from '../auth/current-user.decorator';
@@ -37,7 +37,6 @@ registerEnumType(SortOrder, {
 @Resolver(of => Article)
 export class ArticlesResolver {
   constructor(
-    private readonly $articlesService: ArticlesService,
     private readonly $databaseService: DatabaseService
   ) {}
 
