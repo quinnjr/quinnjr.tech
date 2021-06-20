@@ -47,6 +47,7 @@
     "graphql-tools": "^7.0.4",
     "html-minifier-terser": "^5.1.1",
     "immutable": "^4.0.0-rc.12",
+    "lodash.kebabcase": "^4.1.1",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",

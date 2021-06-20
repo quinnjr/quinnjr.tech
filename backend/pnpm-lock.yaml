@@ -45,6 +45,7 @@ specifiers:
   html-minifier-terser: ^5.1.1
   immutable: ^4.0.0-rc.12
   jest: ^26.6.3
+  lodash.kebabcase: ^4.1.1
   passport: ^0.4.1
   passport-jwt: ^4.0.0
   passport-local: ^1.0.0
@@ -86,6 +87,7 @@ dependencies:
   graphql-tools: 7.0.4_e8af247d8cbe222373b7b3304d2eec1e
   html-minifier-terser: 5.1.1
   immutable: 4.0.0-rc.12
+  lodash.kebabcase: 4.1.1
   passport: 0.4.1
   passport-jwt: 4.0.0
   passport-local: 1.0.0
@@ -6249,6 +6251,10 @@ packages:
 
   /lodash.isstring/4.0.1:
     resolution: {integrity: sha1-1SfftUVuynzJu5XV2ur4i6VKVFE=}
+    dev: false
+
+  /lodash.kebabcase/4.1.1:
+    resolution: {integrity: sha1-hImxyw0p/4gZXM7KRI/21swpXDY=}
     dev: false
 
   /lodash.once/4.1.1:
