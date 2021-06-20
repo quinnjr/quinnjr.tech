@@ -26,6 +26,10 @@ import { HomeComponent } from './home/home.component';
 import { JwtInterceptor } from './jwt.interceptor';
 import { LoginComponent } from './login/login.component';
 import { LoadingBarModule } from './loading-bar/loading-bar.module';
+import { UserService } from './user.service';
+import { AdminLoadGuard } from './admin-load.guard';
+import { HttpErrorInterceptor } from './http-error.interceptor';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   imports: [
@@ -49,18 +53,25 @@ import { LoadingBarModule } from './loading-bar/loading-bar.module';
     FlashMessageModule,
     LoadingBarModule,
     NavigationModule,
-    ProjectsModule,
-    // MarkdownModule
+    ProjectsModule
   ],
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    NotFoundComponent
   ],
   providers: [
+    UserService,
+    AdminLoadGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
       multi: true
     },
     {
@@ -69,7 +80,7 @@ import { LoadingBarModule } from './loading-bar/loading-bar.module';
         return {
           cache: new InMemoryCache(),
           link: httpLink.create({
-            uri: process.env.API_ENTRYPOINT
+            uri: process.env.API_ENTRYPOINT + '/graphql'
           })
         }
       },

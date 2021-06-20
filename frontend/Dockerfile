@@ -20,3 +20,5 @@ WORKDIR /app
 
 COPY --from=builder /app/dist/frontend /app/dist/
 COPY --from=builder /app/etc/nginx/templates/default.conf.template /etc/nginx/templates/
+
+EXPOSE 4200

@@ -6,7 +6,8 @@ WORKDIR /app
 
 COPY . .
 
-RUN npm i -g npm@6 && \
+RUN apk --no-cache --virtual .build-deps build-base python3 && \
+  npm i -g npm@6 && \
   npm i -g pnpm && \
   pnpm set store-dir /app/.pnpm-store && \
   pnpm i -g @nestjs/cli && \
@@ -20,6 +21,19 @@ RUN pnpm set store-dir /app/.pnpm-store && \
   pnpx nest build --webpack && \
   pnpm prune --prod && \
   pnpm store prune
+
+FROM node:lts-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app .
+
+RUN npm i -g npm@6 && \
+  npm i -g pnpm && \
+  pnpm i -g @nestjs/cli && \
+  chown -R node:node /app
+
+USER node
 
 ENV NODE_ENV production
 

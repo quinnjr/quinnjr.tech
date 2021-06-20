@@ -5,7 +5,8 @@
   "author": "Joseph R. Quinn <423821+quinnjr@users.noreply.github.com>",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --watch --host 0.0.0.0 --live-reload --disable-host-check --ssl --ssl-cert /certs/localhost+2.pem --ssl-key /certs/localhost+2-key.pem",
+    "start": "ng serve --watch --host 0.0.0.0 --live-reload --disable-host-check",
+    "start:ssl": "ng serve --watch --host 0.0.0.0 --live-reload --disable-host-check --ssl --ssl-cert /certs/localhost+2.pem --ssl-key /certs/localhost+2-key.pem",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

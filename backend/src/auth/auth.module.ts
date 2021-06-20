@@ -10,6 +10,7 @@ import { AuthService } from './auth.service';
 import { LocalStrategy } from './local.strategy';
 import { JwtStrategy } from './jwt.strategy';
 import { DatabaseService } from 'src/database/database.service';
+import { YubikeyService } from './yubikey/yubikey.service';
 
 @Module({
   imports: [
@@ -36,7 +37,8 @@ import { DatabaseService } from 'src/database/database.service';
     DatabaseService,
     AuthService,
     LocalStrategy,
-    JwtStrategy
+    JwtStrategy,
+    YubikeyService
   ],
   exports: [
     JwtModule,

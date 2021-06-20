@@ -1,6 +1,5 @@
 import { CacheModule, HttpModule, Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import * as redisStore from 'cache-manager-redis-store';
+import { ConfigModule } from '@nestjs/config';
 import { GithubService } from './github.service';
 import { GithubResolver } from './github.resolver';
 
@@ -8,19 +7,9 @@ import { GithubResolver } from './github.resolver';
   imports: [
     ConfigModule,
     HttpModule,
-    CacheModule.registerAsync({
-      imports: [ ConfigModule ],
-      inject: [ ConfigService ],
-      useFactory: ($configService: ConfigService) => ({
-        store: redisStore,
-        host: $configService.get<string>('REDIS_HOST'),
-        port: 6379,
-        max: 50
-      })
+    CacheModule.register({
+      ttl: 5 * 60
     })
-  ],
-  controllers: [
-    // GithubController
   ],
   providers: [
     GithubService,

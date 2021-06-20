@@ -14,11 +14,6 @@ export class JwtAuthGuard extends AuthGuard('jwt')
     super();
   }
 
-  public getRequest(context: ExecutionContext) {
-    const ctx = GqlExecutionContext.create(context);
-    return ctx.getContext().req;
-  }
-
   public canActivate(
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {

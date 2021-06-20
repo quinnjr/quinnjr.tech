@@ -3,7 +3,6 @@ import { DatabaseModule } from '../database/database.module';
 import { UsersModule } from '../users/users.module';
 
 import { ArticlesResolver } from './articles.resolver';
-import { ArticlesService } from './articles.service';
 
 @Module({
   imports: [
@@ -11,8 +10,7 @@ import { ArticlesService } from './articles.service';
     UsersModule
   ],
   providers: [
-    ArticlesResolver,
-    ArticlesService
+    ArticlesResolver
   ]
 })
 export class ArticlesModule {

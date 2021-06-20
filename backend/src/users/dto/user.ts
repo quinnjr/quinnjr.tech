@@ -35,8 +35,11 @@ export class User implements UserModel {
   @Field(type => [String])
   public skills: string[];
 
-  @Field(type => Int)
+  @Field(type => String)
   public role: Role;
+
+  @Field(type => [String], { nullable: true })
+  public yubikeys?: string[];
 
   @Field(type => [Article], { nullable: true })
   public articles?: Article[];
