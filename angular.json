@@ -38,8 +38,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/manifest.webmanifest",
-              "src/wasm/pulldown_cmark_pipe_bg.wasm"
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.scss"
@@ -49,6 +48,14 @@
             ]
           },
           "configurations": {
+            "development": {
+              "optimization": false,
+              "outputHashing": "none",
+              "sourceMap": true,
+              "namedChunks": true,
+              "vendorChunk": true,
+              "buildOptimizer": true
+            },
             "production": {
               "optimization": true,
               "outputHashing": "all",
@@ -127,6 +134,9 @@
           "configurations": {
             "production": {
               "devServerTarget": "frontend:serve:production"
+            },
+            "development": {
+              "devServerTarget": "frontend:server:development"
             }
           }
         },
@@ -140,11 +150,21 @@
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
             "externalDependencies": [
+              "fs",
               "@nestjs/microservices",
               "@nestjs/microservices/microservices-module",
               "@nestjs/websockets",
               "@nestjs/websockets/socket-module",
-              "cache-manager"
+              "cache-manager",
+              "_http_common",
+              "@nestjs/axios",
+              "@nestjs/common",
+              "@nestjs/config",
+              "@nestjs/core",
+              "@nestjs/graphql",
+              "@nestjs/jwt",
+              "@nestjs/passport",
+              "@nestjs/platform-express"
             ]
           },
           "configurations": {
@@ -153,9 +173,14 @@
               "optimization": false,
               "sourceMap": false,
               "extractLicenses": true
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": true
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",
