@@ -21,5 +21,11 @@ export class EducationMinAggregate {
     graduationYear?: number;
 
     @Field(() => String, {nullable:true})
+    campusImage?: string;
+
+    @Field(() => String, {nullable:true})
+    url?: string;
+
+    @Field(() => String, {nullable:true})
     userId?: string;
 }

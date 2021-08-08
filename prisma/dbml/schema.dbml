@@ -1,0 +1,109 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table User {
+  id String [pk]
+  email String [unique, not null]
+  passwordHash String [not null]
+  firstName String [unique, not null]
+  middleName String
+  lastName String [unique, not null]
+  profilePicture String
+  profile String [not null]
+  birthday DateTime [not null, default: 1970-01-01T00:00:00+00:00]
+  skills String [not null]
+  yubikeys String [not null]
+  role Role [not null, default: 'User']
+  articles Article [not null]
+  experiences Experience [not null]
+  eductations Education [not null]
+  certifications Certification [not null]
+  projects Project [not null]
+  conferences Conference [not null]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+}
+
+Table Article {
+  id String [pk]
+  title String [unique, not null]
+  titleSlug String [unique, not null]
+  author User [not null]
+  authorId String [not null]
+  content String [not null]
+  description String [not null]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+}
+
+Table Experience {
+  id String [pk]
+  employer String [not null]
+  title String [not null]
+  location String [not null]
+  startYear Int [not null]
+  endYear Int
+  description String [not null]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  user User [not null]
+  userId String [not null]
+}
+
+Table Education {
+  id String [pk]
+  name String [unique, not null]
+  location String [not null]
+  degree String [not null]
+  graduationYear Int [unique]
+  activities String [not null]
+  campusImage String [not null]
+  url String [not null]
+  user User [not null]
+  userId String [not null]
+}
+
+Table Certification {
+  id String [pk]
+  name String [unique, not null]
+  certifier String [not null]
+  user User [not null]
+  userId String [not null]
+}
+
+Table Project {
+  id String [pk]
+  name String [unique, not null]
+  url String [not null]
+  content String [not null]
+  description String [not null]
+  user User [not null]
+  userId String [not null]
+}
+
+Table Conference {
+  id String [pk]
+  name String [unique, not null]
+  startDate DateTime [not null]
+  endDate DateTime [not null]
+  user User [not null]
+  userId String [not null]
+}
+
+Enum Role {
+  User
+  Admin
+}
+
+Ref: Article.authorId > User.id
+
+Ref: Experience.userId > User.id
+
+Ref: Education.userId > User.id
+
+Ref: Certification.userId > User.id
+
+Ref: Project.userId > User.id
+
+Ref: Conference.userId > User.id

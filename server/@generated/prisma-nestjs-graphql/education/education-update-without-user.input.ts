@@ -22,6 +22,12 @@ export class EducationUpdateWithoutUserInput {
     @Field(() => NullableIntFieldUpdateOperationsInput, {nullable:true})
     graduationYear?: NullableIntFieldUpdateOperationsInput;
 
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    campusImage?: StringFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    url?: StringFieldUpdateOperationsInput;
+
     @Field(() => EducationUpdateactivitiesInput, {nullable:true})
     activities?: EducationUpdateactivitiesInput;
 }

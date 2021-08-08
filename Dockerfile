@@ -1,24 +1,26 @@
+# syntax=docker/dockerfile:1.3-labs
 FROM node:lts-alpine as builder
 
 WORKDIR /app
 
 COPY . .
 
-RUN apk --no-cache add libc6-compat && \
-  npm i -g pnpm && \
+RUN <<EOF
+  apk --no-cache add libc6-compat
+  npm i -g pnpm
   chown -R node:node /app
+EOF
 
 USER node
 
-RUN pnpm set store-dir ~/.pnpm-store && \
-  pnpm i --no-optional && \
-  pnpx ng build --prod --aot
+RUN <<EOF
+  pnpm set store-dir $HOME/.pnpm-store
+  pnpm install --no-optional
+  pnpx prisma generate
+  pnpm run build:ssr
+  pnpm prune --no-optional --prod
+EOF
 
-FROM nginx:mainline-alpine
+EXPOSE 3000
 
-WORKDIR /app
-
-COPY --from=builder /app/dist/frontend /app/dist/
-COPY --from=builder /app/etc/nginx/templates/default.conf.template /etc/nginx/templates/
-
-EXPOSE 4200
+ENTRYPOINT ["pnpm", "run", "serve:ssr"]

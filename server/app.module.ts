@@ -6,7 +6,7 @@ import { AngularUniversalModule } from '@nestjs/ng-universal';
 import { join } from 'path';
 import { AppServerModule } from '../src/main.server';
 
-import { GithubModule } from './github/github.module';
+// import { GithubModule } from './github/github.module';
 import { DatabaseService } from './database/database.service';
 import { ArticlesResolver } from './articles/articles.resolver';
 import { CertificationsResolver } from './certifications/certifications.resolver';
@@ -35,7 +35,7 @@ import { UsersResolver } from './users/users.resolver';
       cors: process.env.ENV === 'development',
       context: ({ req }) => ({ req })
     }),
-    GithubModule
+    // GithubModule
   ],
   controllers: [],
   providers: [

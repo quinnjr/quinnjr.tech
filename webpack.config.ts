@@ -10,8 +10,8 @@ import SriPlugin from 'webpack-subresource-integrity';
 import * as PreloadWebpackPlugin from '@vue/preload-webpack-plugin';
 // @ts-ignore
 import ImageminMinimizerPlugin from 'image-minimizer-webpack-plugin';
-import * as DotenvPlugin from 'dotenv-webpack';
-import * as nodeExternals from 'webpack-node-externals';
+import DotenvPlugin from 'dotenv-webpack';
+import nodeExternals from 'webpack-node-externals';
 import * as pkg from './package.json';
 
 const PurgeCSSPlugin = require('purgecss-webpack-plugin');
@@ -86,7 +86,7 @@ export default (
     }
   }
 
-  if (['serve', 'server'].includes(targetOptions.target)) {
+  if (['server'].includes(targetOptions.target)) {
     config.resolve?.extensions?.push('.mjs', '.graphql', '.gql');
 
     config.module?.rules?.push({
@@ -115,7 +115,8 @@ export default (
             'class-transform',
             'apollo-server-fastify',
             'bufferutil',
-            'utf-8-validate'
+            'utf-8-validate',
+            'graphql-ws'
           ];
 
           if (!lazyImports.includes(resource)) {

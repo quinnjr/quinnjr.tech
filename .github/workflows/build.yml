@@ -5,11 +5,20 @@ on:
     branches: [release/*]
 
 jobs:
-  build_frontend:
+  build_webapp:
     runs-on: ubuntu-latest
     environment: staging
     env:
-      API_ENTRYPOINT: ${{ secrets.API_ENTRYPOINT }}
+      API_ENTRYPOINT: ${{secrets.API_ENTRYPOINT}}
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
+      JWT_SECRET: ${{secrets.JWT_SECRET}}
+      REDIS_HOST: ${{secrets.REDIS_HOST}}
+      REDIS_PORT: ${{secrets.REDIS_PORT}}
+      DATABASE_URL: ${{secrets.DATABASE_URL}}
+      GH_TOKEN: ${{secrets.GH_TOKEN}}
+      SETUP_PASSWORD: ${{secrets.SETUP_PASSWORD}}
+      ENV: 'production'
+      NODE_ENV: 'production'
     steps:
       - uses: actions/checkout@v2
 
@@ -20,50 +29,16 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN}}
+          username: ${{github.repository_owner}}
+          password: ${{secrets.GITHUB_TOKEN}}
 
       - id: docker_build
         name: Build and push Docker images
         uses: docker/build-push-action@v2.4.0
         with:
-          context: ./frontend
+          context: ./
           push: true
-          tags: quinnjr/quinnjrtech_frontend:latest
-
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
-
-  build_backend:
-    runs-on: ubuntu-latest
-    environment: staging
-    env:
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      JWT_SECRET: ${{ secrets.JWT_SECRET }}
-      REDIS_HOST: ${{ secrets.REDIS_HOST }}
-      SECRET_KEY: ${{ secrets.SECRET_KEY }}
-      SETUP_PASSWORD: ${{ secrets.SETUP_PASSWORD }}
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Docker BuildX
-        uses: docker/setup-buildx-action@v1
-
-      - name: Login to Github Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN}}
-
-      - id: docker_build
-        name: Build and push Docker images
-        uses: docker/build-push-action@v2.4.0
-        with:
-          context: ./backend
-          push: true
-          tags: quinnjr/quinnjrtech_backend:latest
+          tags: quinnjr/quinnjrtech_webapp:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

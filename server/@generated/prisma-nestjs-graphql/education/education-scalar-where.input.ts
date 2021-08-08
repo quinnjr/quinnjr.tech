@@ -35,5 +35,11 @@ export class EducationScalarWhereInput {
     activities?: StringNullableListFilter;
 
     @Field(() => StringFilter, {nullable:true})
+    campusImage?: StringFilter;
+
+    @Field(() => StringFilter, {nullable:true})
+    url?: StringFilter;
+
+    @Field(() => StringFilter, {nullable:true})
     userId?: StringFilter;
 }

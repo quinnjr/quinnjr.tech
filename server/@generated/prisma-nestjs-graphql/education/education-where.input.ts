@@ -35,6 +35,12 @@ export class EducationWhereInput {
     @Field(() => StringNullableListFilter, {nullable:true})
     activities?: StringNullableListFilter;
 
+    @Field(() => StringFilter, {nullable:true})
+    campusImage?: StringFilter;
+
+    @Field(() => StringFilter, {nullable:true})
+    url?: StringFilter;
+
     @Field(() => UserRelationFilter, {nullable:true})
     user?: UserRelationFilter;
 

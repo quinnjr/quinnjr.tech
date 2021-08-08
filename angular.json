@@ -6,7 +6,7 @@
     "packageManager": "pnpm"
   },
   "projects": {
-    "frontend": {
+    "quinnjr-tech": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -29,7 +29,7 @@
             "allowedCommonJsDependencies": [
               "zen-observable"
             ],
-            "outputPath": "dist/frontend/browser",
+            "outputPath": "dist/quinnjr-tech/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -84,18 +84,18 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "frontend:build"
+            "browserTarget": "quinnjr-tech:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "frontend:build:production"
+              "browserTarget": "quinnjr-tech:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-builders/custom-webpack:extract-i18n",
           "options": {
-            "browserTarget": "frontend:build"
+            "browserTarget": "quinnjr-tech:build"
           }
         },
         "test": {
@@ -133,10 +133,10 @@
           },
           "configurations": {
             "production": {
-              "devServerTarget": "frontend:serve:production"
+              "devServerTarget": "quinnjr-tech:serve:production"
             },
             "development": {
-              "devServerTarget": "frontend:server:development"
+              "devServerTarget": "quinnjr-tech:server:development"
             }
           }
         },
@@ -146,7 +146,7 @@
             "customWebpackConfig": {
               "path": "./webpack.config.ts"
             },
-            "outputPath": "dist/frontend/server",
+            "outputPath": "dist/quinnjr-tech/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
             "externalDependencies": [
@@ -164,7 +164,10 @@
               "@nestjs/graphql",
               "@nestjs/jwt",
               "@nestjs/passport",
-              "@nestjs/platform-express"
+              "@nestjs/platform-express",
+              "encoding",
+              "prisma",
+              "@prisma/client"
             ]
           },
           "configurations": {
@@ -186,12 +189,12 @@
           "builder": "@nguniversal/builders:ssr-dev-server",
           "configurations": {
             "development": {
-              "browserTarget": "frontend:build:development",
-              "serverTarget": "frontend:server:development"
+              "browserTarget": "quinnjr-tech:build:development",
+              "serverTarget": "quinnjr-tech:server:development"
             },
             "production": {
-              "browserTarget": "frontend:build:production",
-              "serverTarget": "frontend:server:production"
+              "browserTarget": "quinnjr-tech:build:production",
+              "serverTarget": "quinnjr-tech:server:production"
             }
           },
           "defaultConfiguration": "development"
@@ -205,12 +208,12 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "frontend:build:production",
-              "serverTarget": "frontend:server:production"
+              "browserTarget": "quinnjr-tech:build:production",
+              "serverTarget": "quinnjr-tech:server:production"
             },
             "development": {
-              "browserTarget": "frontend:build:development",
-              "serverTarget": "frontend:server:development"
+              "browserTarget": "quinnjr-tech:build:development",
+              "serverTarget": "quinnjr-tech:server:development"
             }
           },
           "defaultConfiguration": "production"
@@ -218,5 +221,5 @@
       }
     }
   },
-  "defaultProject": "frontend"
+  "defaultProject": "quinnjr-tech"
 }

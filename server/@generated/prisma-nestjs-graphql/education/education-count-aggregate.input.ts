@@ -23,6 +23,12 @@ export class EducationCountAggregateInput {
     activities?: true;
 
     @Field(() => Boolean, {nullable:true})
+    campusImage?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    url?: true;
+
+    @Field(() => Boolean, {nullable:true})
     userId?: true;
 
     @Field(() => Boolean, {nullable:true})

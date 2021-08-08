@@ -5,7 +5,8 @@
 target/
 pkg/
 src/assets/profile_picture.*
-
+certs/
+server/@generated
 
 # IDEs and editors
 /.idea

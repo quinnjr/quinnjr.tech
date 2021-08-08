@@ -35,5 +35,11 @@ export class EducationScalarWhereWithAggregatesInput {
     activities?: StringNullableListFilter;
 
     @Field(() => StringWithAggregatesFilter, {nullable:true})
+    campusImage?: StringWithAggregatesFilter;
+
+    @Field(() => StringWithAggregatesFilter, {nullable:true})
+    url?: StringWithAggregatesFilter;
+
+    @Field(() => StringWithAggregatesFilter, {nullable:true})
     userId?: StringWithAggregatesFilter;
 }

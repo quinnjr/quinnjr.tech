@@ -23,6 +23,12 @@ export class EducationUncheckedUpdateInput {
     graduationYear?: NullableIntFieldUpdateOperationsInput;
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    campusImage?: StringFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    url?: StringFieldUpdateOperationsInput;
+
+    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     userId?: StringFieldUpdateOperationsInput;
 
     @Field(() => EducationUpdateactivitiesInput, {nullable:true})

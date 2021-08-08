@@ -21,6 +21,12 @@ export class EducationCreateManyUserInput {
     @Field(() => Int, {nullable:true})
     graduationYear?: number;
 
+    @Field(() => String, {nullable:false})
+    campusImage!: string;
+
+    @Field(() => String, {nullable:false})
+    url!: string;
+
     @Field(() => EducationCreateManyactivitiesInput, {nullable:true})
     activities?: EducationCreateManyactivitiesInput;
 }

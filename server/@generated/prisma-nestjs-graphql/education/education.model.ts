@@ -22,4 +22,8 @@ export class Education {
     user?: User;
     @Field(() => String, {nullable:false})
     userId!: string;
+    @Field(() => String, {nullable:false})
+    campusImage!: string;
+    @Field(() => String, {nullable:false})
+    url!: string;
 }

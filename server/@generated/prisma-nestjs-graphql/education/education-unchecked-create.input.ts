@@ -22,6 +22,12 @@ export class EducationUncheckedCreateInput {
     graduationYear?: number;
 
     @Field(() => String, {nullable:false})
+    campusImage!: string;
+
+    @Field(() => String, {nullable:false})
+    url!: string;
+
+    @Field(() => String, {nullable:false})
     userId!: string;
 
     @Field(() => EducationCreateactivitiesInput, {nullable:true})

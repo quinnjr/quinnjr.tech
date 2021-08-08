@@ -24,6 +24,12 @@ export class EducationCountAggregate {
     activities!: number;
 
     @Field(() => Int, {nullable:false})
+    campusImage!: number;
+
+    @Field(() => Int, {nullable:false})
+    url!: number;
+
+    @Field(() => Int, {nullable:false})
     userId!: number;
 
     @Field(() => Int, {nullable:false})

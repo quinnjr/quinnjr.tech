@@ -20,5 +20,11 @@ export class EducationMaxAggregateInput {
     graduationYear?: true;
 
     @Field(() => Boolean, {nullable:true})
+    campusImage?: true;
+
+    @Field(() => Boolean, {nullable:true})
+    url?: true;
+
+    @Field(() => Boolean, {nullable:true})
     userId?: true;
 }

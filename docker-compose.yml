@@ -1,21 +1,9 @@
 version: "3"
 
 services:
-  frontend:
+  webapp:
     build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    environment:
-      NODE_ENV: production
-      API_ENTRYPOINT: ${API_ENTRYPOINT}
-    ports:
-      - "4200:4200"
-    depends_on:
-      - backend
-
-  backend:
-    build:
-      context: ./backend
+      context: ./
       dockerfile: Dockerfile
     environment:
       SECRET_KEY: ${SECRET_KEY}
@@ -24,10 +12,14 @@ services:
       DATABASE_URL: ${DATABASE_URL}
       GH_TOKEN: ${GH_TOKEN}
       SETUP_PASSWORD: ${SETUP_PASSWORD}
-    ports:
-      - "3000:3000"
+      ENV: production
+      NODE_ENV: production
+      PORT: 3000
     depends_on:
       - database
+    ports:
+      - "4200:4200"
+      - "3000:3000"
 
   database:
     image: postgres:alpine

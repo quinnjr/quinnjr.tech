@@ -5,42 +5,10 @@ on:
     branches: [main, develop]
 
 jobs:
-  frontend:
+  webapp:
     defaults:
       run:
-        working-directory: frontend
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x]
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Cache pnpm modules
-      uses: actions/cache@v2
-      env:
-        cache-name: cache-pnpm-modules
-      with:
-        path: ~/.pnpm-store
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/package.json') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
-
-
-    - uses: pnpm/action-setup@v2.0.0
-      with:
-        version: 6.0.2
-        run_install: |
-          - args: [--global, "@angular/cli"]
-          - recursive: true
-
-    - run: pnpm test
-
-
-  backend:
-    defaults:
-      run:
-        working-directory: backend
+        working-directory: ./
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -65,7 +33,8 @@ jobs:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
       SETUP_PASSWORD: ${{ secrets.SETUP_PASSWORD }}
-
+      REDIS_HOST: ${{ secrets.REDIS_HOST }}
+      REDIS_PORT: ${{ secrets.REDIS_PORT }}
     steps:
     - uses: actions/checkout@v2
 
@@ -84,9 +53,8 @@ jobs:
       with:
         version: 6.0.2
         run_install: |
-          - args: [--global,"@nestjs/cli"]
+          - args: [--global, "@angular/cli", "@nestjs/cli"]
           - recursive: true
-
-    - run: pnpm run prisma generate
-    - run: pnpm run prisma migrate
+    - run: pnpx prisma generate
+    - run: pnpx prisma migrate
     - run: pnpm test

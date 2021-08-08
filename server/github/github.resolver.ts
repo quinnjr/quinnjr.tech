@@ -1,8 +1,7 @@
 import { Resolver, Query } from '@nestjs/graphql';
 import { Public } from '../auth/public.decorator';
 import { GithubResponse } from './dto/github-response';
-import { GithubService } from './github.service';
-import { ApolloClient, gql, InMemoryCache, useQuery } from '@apollo/client';
+import { ApolloClient, gql, InMemoryCache } from '@apollo/client';
 
 @Resolver((of: any) => GithubResponse)
 export class GithubResolver {
@@ -11,7 +10,7 @@ export class GithubResolver {
     uri: 'https://api.github.com/graphql'
   });
 
-  constructor(private readonly $ghService: GithubService) {}
+  constructor() {}
 
   @Public()
   @Query((returns) => GithubResponse, { name: 'github' })
