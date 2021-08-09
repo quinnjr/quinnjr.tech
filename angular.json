@@ -171,7 +171,8 @@
               "@prisma/client",
               "argon2",
               "@mapbox/node-pre-gyp",
-              "iconv-lite"
+              "iconv-lite",
+              "zen-observable"
             ]
           },
           "configurations": {

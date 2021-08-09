@@ -12,7 +12,6 @@ import * as PreloadWebpackPlugin from '@vue/preload-webpack-plugin';
 import ImageminMinimizerPlugin from 'image-minimizer-webpack-plugin';
 import DotenvPlugin from 'dotenv-webpack';
 import nodeExternals from 'webpack-node-externals';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import * as pkg from './package.json';
 
 const PurgeCSSPlugin = require('purgecss-webpack-plugin');
