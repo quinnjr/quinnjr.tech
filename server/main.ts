@@ -1,14 +1,12 @@
 import * as fs from 'fs';
 import { NestFactory } from '@nestjs/core';
-import { INestApplication, ValidationPipe } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { ValidationPipe } from '@nestjs/common';
 import { NestExpressApplication } from '@nestjs/platform-express';
 
 import { AppModule } from './app.module';
 
 /* eslint prefer-arrow/prefer-arrow-functions: "off" */
 async function bootstrap(): Promise<NestExpressApplication> {
-
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: ['log', 'error', 'warn'],
     cors: process.env.ENV === 'development'

@@ -62,7 +62,7 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
+              "vendorChunk": true,
               "buildOptimizer": true,
               "budgets": [
                 {
@@ -165,18 +165,20 @@
               "@nestjs/jwt",
               "@nestjs/passport",
               "@nestjs/platform-express",
+              "express",
               "encoding",
               "prisma",
               "@prisma/client",
               "argon2",
-              "@mapbox/node-pre-gyp"
+              "@mapbox/node-pre-gyp",
+              "iconv-lite"
             ]
           },
           "configurations": {
             "production": {
               "outputHashing": "media",
-              "optimization": false,
-              "sourceMap": false,
+              "optimization": true,
+              "sourceMap": true,
               "extractLicenses": true
             },
             "development": {
