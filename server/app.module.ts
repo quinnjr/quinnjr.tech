@@ -1,12 +1,13 @@
+import { join } from 'path';
 import { CacheInterceptor, CacheModule, Module } from '@nestjs/common';
 import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { AngularUniversalModule } from '@nestjs/ng-universal';
-import { join } from 'path';
 import { AppServerModule } from '../src/main.server';
 
 // import { GithubModule } from './github/github.module';
+// import { AuthModule } from './auth/auth.module';
 import { DatabaseService } from './database/database.service';
 import { ArticlesResolver } from './articles/articles.resolver';
 import { CertificationsResolver } from './certifications/certifications.resolver';
@@ -19,7 +20,7 @@ import { UsersResolver } from './users/users.resolver';
   imports: [
     AngularUniversalModule.forRoot({
       bootstrap: AppServerModule,
-      viewsPath: join(process.cwd(), 'dist/frontend/browser')
+      viewsPath: join(process.cwd(), 'dist/quinnjr-tech/browser')
     }),
     ConfigModule.forRoot({
       isGlobal: true,
@@ -35,7 +36,8 @@ import { UsersResolver } from './users/users.resolver';
       cors: process.env.ENV === 'development',
       context: ({ req }) => ({ req })
     }),
-    // GithubModule
+    // GithubModule,
+    // AuthModule
   ],
   controllers: [],
   providers: [

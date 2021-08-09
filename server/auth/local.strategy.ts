@@ -3,13 +3,11 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 
 import { AuthService } from './auth.service';
-import { User } from '../dto/user';
+import { User } from '../@generated/prisma-nestjs-graphql/user/user.model';
 
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
-  constructor(
-    private readonly $authService: AuthService
-  ) {
+  constructor(private readonly $authService: AuthService) {
     super({
       usernameField: 'email'
     });

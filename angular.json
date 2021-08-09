@@ -167,7 +167,9 @@
               "@nestjs/platform-express",
               "encoding",
               "prisma",
-              "@prisma/client"
+              "@prisma/client",
+              "argon2",
+              "@mapbox/node-pre-gyp"
             ]
           },
           "configurations": {

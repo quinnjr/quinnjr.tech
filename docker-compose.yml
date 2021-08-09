@@ -14,7 +14,6 @@ services:
       SETUP_PASSWORD: ${SETUP_PASSWORD}
       ENV: production
       NODE_ENV: production
-      PORT: 3000
     depends_on:
       - database
     ports:

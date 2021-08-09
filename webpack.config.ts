@@ -86,7 +86,7 @@ export default (
     }
   }
 
-  if (['server'].includes(targetOptions.target)) {
+  if (targetOptions.target === 'server') {
     config.resolve?.extensions?.push('.mjs', '.graphql', '.gql');
 
     config.module?.rules?.push({
