@@ -30,8 +30,6 @@ import { ManageProjectsComponent } from './manage-projects/manage-projects.compo
     ManageProjectsComponent,
     UpdateResumeComponent
   ],
-  providers: [
-    UserService
-  ]
+  providers: [UserService]
 })
 export class AdminModule {}

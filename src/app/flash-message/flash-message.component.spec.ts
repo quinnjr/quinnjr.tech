@@ -9,14 +9,9 @@ describe('FlashMessageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        FlashMessageComponent
-      ],
-      providers: [
-        FlashMessageService
-      ]
-    })
-    .compileComponents();
+      declarations: [FlashMessageComponent],
+      providers: [FlashMessageService]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FlashMessageComponent);
     component = fixture.componentInstance;

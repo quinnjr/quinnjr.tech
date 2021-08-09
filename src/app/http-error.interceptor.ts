@@ -12,19 +12,18 @@ import { FlashMessageService } from './flash-message/flash-message.service';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
+  constructor(private readonly $flashMessageService: FlashMessageService) {}
 
-  constructor(
-    private readonly $flashMessageService: FlashMessageService
-  ) {}
+  public intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
+    return next.handle(request).pipe(
+      catchError((err: HttpErrorResponse) => {
+        this.$flashMessageService.add(err.message);
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request)
-      .pipe(
-        catchError((err: HttpErrorResponse) => {
-          this.$flashMessageService.add(err.message);
-
-          return throwError(err);
-        })
-      );
+        return throwError(err);
+      })
+    );
   }
 }

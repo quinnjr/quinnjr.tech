@@ -1,4 +1,11 @@
-import { Body, Controller, HttpCode, Post, Request, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpCode,
+  Post,
+  Request,
+  UseGuards
+} from '@nestjs/common';
 
 import { LocalAuthGuard } from './local-auth.guard';
 import { AuthService } from './auth.service';
@@ -7,9 +14,7 @@ import { JwtAuthGuard } from './jwt-auth.guard';
 
 @Controller('auth')
 export class AuthController {
-  constructor(
-    private readonly $authService: AuthService
-  ) {}
+  constructor(private readonly $authService: AuthService) {}
 
   @UseGuards(LocalAuthGuard)
   @HttpCode(200)
@@ -34,7 +39,7 @@ export class AuthController {
     @Request() req: any,
     @Body() body: { role: string }
   ): Promise<boolean> {
-    if(!req.user) {
+    if (!req.user) {
       return false;
     }
 

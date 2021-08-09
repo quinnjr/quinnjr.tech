@@ -1,4 +1,4 @@
-declare var process: any;
+declare const process: any;
 
 // External imports
 import { BrowserModule } from '@angular/platform-browser';
@@ -43,6 +43,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     }),
     // 3rd Party Imports
     StorageModule.forRoot({
+      /* eslint @typescript-eslint/naming-convention: off */
       IDBDBName: 'quinnjr.tech',
       LSPrefix: 'quinnjr_tech_'
     }),
@@ -82,13 +83,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
           link: httpLink.create({
             uri: process.env.API_ENTRYPOINT + '/graphql'
           })
-        }
+        };
       },
-      deps: [ HttpLink ]
+      deps: [HttpLink]
     }
   ],
-  bootstrap: [
-    AppComponent
-  ]
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

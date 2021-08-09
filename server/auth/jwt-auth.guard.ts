@@ -6,23 +6,20 @@ import { Observable } from 'rxjs';
 import { IS_PUBLIC_KEY } from './public.decorator';
 
 @Injectable()
-export class JwtAuthGuard extends AuthGuard('jwt')
-  implements CanActivate {
-  constructor(
-    private readonly $reflector: Reflector
-  ) {
+export class JwtAuthGuard extends AuthGuard('jwt') implements CanActivate {
+  constructor(private readonly $reflector: Reflector) {
     super();
   }
 
   public canActivate(
-    context: ExecutionContext,
+    context: ExecutionContext
   ): boolean | Promise<boolean> | Observable<boolean> {
     const isPublic = this.$reflector.getAllAndOverride<boolean>(IS_PUBLIC_KEY, [
       context.getHandler(),
       context.getClass()
     ]);
 
-    if(isPublic) {
+    if (isPublic) {
       return true;
     }
 

@@ -18,9 +18,7 @@ describe('AppComponent', () => {
         LoadingBarModule,
         FlashMessageModule
       ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(AppComponent);

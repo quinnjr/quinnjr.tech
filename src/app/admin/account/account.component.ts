@@ -7,34 +7,21 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
-
   public accountForm = this.$fb.group({
-    currentPassword: ['', [ Validators.required, Validators.minLength(8)]],
-    newPassword: ['', [ Validators.required, Validators.minLength(8) ]],
-    newPasswordConfirm: ['', [ Validators.required, Validators.minLength(8) ]]
+    currentPassword: ['', [Validators.required, Validators.minLength(8)]],
+    newPassword: ['', [Validators.required, Validators.minLength(8)]],
+    newPasswordConfirm: ['', [Validators.required, Validators.minLength(8)]]
   });
 
-  public accountProfileForm = this.$fb.group({
+  public accountProfileForm = this.$fb.group({});
 
-  });
+  constructor(private readonly $fb: FormBuilder) {}
 
-  constructor(
-    private readonly $fb: FormBuilder
-  ) { }
+  public ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
+  public onSubmitPassword() {}
 
-  public onSubmitPassword() {
+  public onSubmitOTP() {}
 
-  }
-
-  public onSubmitOTP() {
-
-  }
-
-  public onSubmitProfile() {
-
-  }
-
+  public onSubmitProfile() {}
 }

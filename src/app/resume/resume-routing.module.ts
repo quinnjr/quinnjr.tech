@@ -15,4 +15,4 @@ const routes: Set<Route> = Set([
   imports: [RouterModule.forChild(routes.toArray())],
   exports: [RouterModule]
 })
-export class ResumeRoutingModule { }
+export class ResumeRoutingModule {}

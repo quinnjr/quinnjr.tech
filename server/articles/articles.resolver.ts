@@ -1,19 +1,13 @@
 import {
   Args,
-  Context,
-  Field,
   Int,
-  InputType,
   Mutation,
   Parent,
   Query,
   ResolveField,
-  Resolver,
-  Root,
-  registerEnumType
+  Resolver
 } from '@nestjs/graphql';
-import { ParseIntPipe, UseGuards } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
+import { UseGuards } from '@nestjs/common';
 import kebabCase from 'lodash.kebabcase';
 
 import { Public } from '../auth/public.decorator';

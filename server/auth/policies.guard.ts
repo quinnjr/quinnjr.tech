@@ -13,10 +13,11 @@ export class PoliciesGuard implements CanActivate {
   ) {}
 
   public async canActivate(context: ExecutionContext): Promise<boolean> {
-    const handlers = this.$relector.get<PolicyHandler[]>(
-      CHECK_POLICIES_KEY,
-      context.getHandler()
-    ) || [];
+    const handlers =
+      this.$relector.get<PolicyHandler[]>(
+        CHECK_POLICIES_KEY,
+        context.getHandler()
+      ) || [];
 
     const { user } = context.switchToHttp().getRequest();
 
@@ -27,8 +28,11 @@ export class PoliciesGuard implements CanActivate {
     });
   }
 
-  private execPolicyHandler(handler: PolicyHandler, ability: AppAbility): boolean {
-    if(typeof handler === 'function') {
+  private execPolicyHandler(
+    handler: PolicyHandler,
+    ability: AppAbility
+  ): boolean {
+    if (typeof handler === 'function') {
       return handler(ability);
     }
 

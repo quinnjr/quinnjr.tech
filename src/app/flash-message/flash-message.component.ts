@@ -12,13 +12,9 @@ import { Message } from './message';
   styleUrls: ['./flash-message.component.scss']
 })
 export class FlashMessageComponent implements OnInit {
+  constructor(private readonly $flashMessageService: FlashMessageService) {}
 
-  constructor(
-    private readonly $flashMessageService: FlashMessageService
-  ) { }
-
-  ngOnInit(): void {
-  }
+  public ngOnInit(): void {}
 
   public get messages(): Observable<List<Message>> {
     return this.$flashMessageService.messages;

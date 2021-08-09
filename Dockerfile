@@ -21,6 +21,6 @@ RUN <<EOF
   pnpm prune --no-optional --prod
 EOF
 
-EXPOSE 3000
+EXPOSE 4200
 
 ENTRYPOINT ["pnpm", "run", "serve:ssr"]

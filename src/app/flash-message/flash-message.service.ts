@@ -14,17 +14,13 @@ export class FlashMessageService {
   }
 
   public add(value: string, level: Level = Level.Primary) {
-    let prevValue = this.messagesSubject.value;
-    this.messagesSubject.next(
-      prevValue.push({value, level})
-    );
+    const prevValue = this.messagesSubject.value;
+    this.messagesSubject.next(prevValue.push({ value, level }));
   }
 
   public remove(idx: number) {
-    let prevValue = this.messagesSubject.value;
-    this.messagesSubject.next(
-      prevValue.remove(idx)
-    );
+    const prevValue = this.messagesSubject.value;
+    this.messagesSubject.next(prevValue.remove(idx));
   }
 
   public get messages(): Observable<List<Message>> {

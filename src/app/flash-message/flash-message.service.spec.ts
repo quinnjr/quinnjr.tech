@@ -7,9 +7,7 @@ describe('FlashMessageService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        FlashMessageService
-      ]
+      providers: [FlashMessageService]
     });
     service = TestBed.inject(FlashMessageService);
   });

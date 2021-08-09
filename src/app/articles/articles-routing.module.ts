@@ -18,11 +18,7 @@ const routes: Set<Route> = Set([
 ]);
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes.toArray())
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forChild(routes.toArray())],
+  exports: [RouterModule]
 })
 export class ArticlesRoutingModule {}

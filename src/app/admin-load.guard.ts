@@ -1,4 +1,4 @@
-declare var process: any;
+declare const process: any;
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -19,16 +19,18 @@ export class AdminLoadGuard implements CanLoad {
     route: Route,
     segments: UrlSegment[]
   ): Observable<boolean | UrlTree> {
-    return this.$httpClient.post<boolean>(`${ process.env.API_ENTRYPOINT }/auth/can-access`, { role: 'Admin' })
+    return this.$httpClient
+      .post<boolean>(`${process.env.API_ENTRYPOINT}/auth/can-access`, {
+        role: 'Admin'
+      })
       .pipe(
         map((b: boolean) => {
-          if(b) {
-            return true
+          if (b) {
+            return true;
           } else {
             return this.$router.parseUrl('/login');
           }
         })
-      )
+      );
   }
-
 }

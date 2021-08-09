@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { User } from './models/user';
+import { User } from '../../server/@generated/prisma-nestjs-graphql/user/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
   private userBehaviorSubject: BehaviorSubject<User>;
 
   constructor() {

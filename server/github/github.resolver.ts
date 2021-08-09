@@ -1,15 +1,10 @@
 import { Resolver, Query } from '@nestjs/graphql';
 import { Public } from '../auth/public.decorator';
 import { GithubResponse } from './dto/github-response';
-import { ApolloClient, gql, InMemoryCache } from '@apollo/client';
+import { gql } from 'apollo-server-core';
 
 @Resolver((of: any) => GithubResponse)
 export class GithubResolver {
-  private client = new ApolloClient({
-    cache: new InMemoryCache(),
-    uri: 'https://api.github.com/graphql'
-  });
-
   constructor() {}
 
   @Public()
@@ -47,15 +42,10 @@ export class GithubResolver {
       }
     `;
 
-    return this.client.query({
-      query
-    })
-      .then((res: any) => {
-        return {
-          url: res.url,
-          gists: res.gists.map((v: any) => v.node),
-          repositories: res.gists.map((v: any) => v.node)
-        } as GithubResponse;
-      });
+    return {
+      url: '',
+      gists: [],
+      repositories: []
+    };
   }
 }

@@ -15,7 +15,10 @@ export class AuthService {
     private readonly $yubikeyService: YubikeyService
   ) {}
 
-  public async validateUser(email: string, password: string): Promise<any | null> {
+  public async validateUser(
+    email: string,
+    password: string
+  ): Promise<any | null> {
     const user = await this.$database.user.findUnique({
       where: {
         email
@@ -55,7 +58,7 @@ export class AuthService {
         );
       }
 
-      const _isValid = await this.$yubikeyService.verify(otp);
+      await this.$yubikeyService.verify(otp);
     }
 
     const payload = {

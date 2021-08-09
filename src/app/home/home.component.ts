@@ -3,8 +3,8 @@ import { Apollo, gql } from 'apollo-angular';
 import { Set } from 'immutable';
 import { FlashMessageService } from '../flash-message/flash-message.service';
 
-import { Article } from '../models/article';
-import { Project } from '../models/project';
+import { Article } from '../../../server/@generated/prisma-nestjs-graphql/article/article.model';
+import { Project } from '../../../server/@generated/prisma-nestjs-graphql/project/project.model';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +12,6 @@ import { Project } from '../models/project';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
   public articles: Set<Article>;
   public projects: Set<Project>;
 
@@ -29,32 +28,34 @@ export class HomeComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.$apollo.watchQuery({
-      query: gql`
-        {
-          articles(take: 5) {
-            id
-            title
-            description
-            createdAt
+    this.$apollo
+      .watchQuery({
+        query: gql`
+          {
+            articles(take: 5) {
+              id
+              title
+              description
+              createdAt
+            }
+            projects(take: 5) {
+              id
+              description
+            }
           }
-          projects(take: 5) {
-            id
-            description
+        `
+      })
+      .valueChanges.subscribe(
+        (res: any) => {
+          if (res.error) {
+            this.$flashMessage.add(res.error);
           }
-        }
-      `
-    })
-      .valueChanges.subscribe((res: any) => {
-        if(res.error) {
-          this.$flashMessage.add(res.error);
-        }
 
-        for(const article of res?.data?.articles) {
-          this.articles = this.articles.add(article);
-        }
-      },
-      (err) => this.$flashMessage.add(err));
+          for (const article of res?.data?.articles) {
+            this.articles = this.articles.add(article);
+          }
+        },
+        (err) => this.$flashMessage.add(err)
+      );
   }
-
 }

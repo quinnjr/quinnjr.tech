@@ -6,13 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
-
   private collapsed = true;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public get isCollapsed(): boolean {
     return this.collapsed;
@@ -21,5 +19,4 @@ export class NavigationComponent implements OnInit {
   public toggleCollapse(): void {
     this.collapsed = !this.collapsed;
   }
-
 }

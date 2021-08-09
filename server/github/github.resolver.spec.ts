@@ -1,8 +1,7 @@
-import { CacheModule, HttpModule } from '@nestjs/common';
+import { CacheModule } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
 import { GithubResolver } from './github.resolver';
-import { GithubService } from './github.service';
 
 describe('GithubResolver', () => {
   let resolver: GithubResolver;
@@ -11,19 +10,15 @@ describe('GithubResolver', () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
         ConfigModule,
-        HttpModule,
         CacheModule.registerAsync({
-          imports: [ ConfigModule ],
-          inject: [ ConfigService ],
+          imports: [ConfigModule],
+          inject: [ConfigService],
           useFactory: ($configService: ConfigService) => ({
             max: 50
           })
         })
       ],
-      providers: [
-        GithubResolver,
-        GithubService
-      ],
+      providers: [GithubResolver]
     }).compile();
 
     resolver = module.get<GithubResolver>(GithubResolver);

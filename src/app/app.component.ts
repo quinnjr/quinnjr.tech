@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { StorageMap } from '@ngx-pwa/local-storage';
-import { Apollo, gql } from 'apollo-angular';
+import { Apollo } from 'apollo-angular';
 
 import { UserService } from './user.service';
 
@@ -9,14 +9,10 @@ import { UserService } from './user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   constructor(
     private readonly $storage: StorageMap,
     private readonly $userService: UserService,
     private readonly $apollo: Apollo
   ) {}
-
-  public ngOnInit() {
-
-  }
 }

@@ -8,11 +8,7 @@ describe('PoliciesGuard', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        PoliciesGuard,
-        Reflector,
-        AbilityFactory
-      ]
+      providers: [PoliciesGuard, Reflector, AbilityFactory]
     }).compile();
 
     guard = module.get<PoliciesGuard>(PoliciesGuard);

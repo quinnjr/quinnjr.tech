@@ -12,7 +12,7 @@ import { CurrentUser } from '../auth/current-user.decorator';
 import { DatabaseService } from '../database/database.service';
 
 import { Certification } from '../@generated/prisma-nestjs-graphql/certification/certification.model';
-import { CertificationCreateInput } from  '../@generated/prisma-nestjs-graphql/certification/certification-create.input';
+import { CertificationCreateInput } from '../@generated/prisma-nestjs-graphql/certification/certification-create.input';
 import { User } from '../@generated/prisma-nestjs-graphql/user/user.model';
 
 @Resolver((of: any) => Certification)

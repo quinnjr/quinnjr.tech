@@ -11,13 +11,9 @@ import { LoadingBarComponent } from './loading-bar.component';
     CommonModule,
     NgxLoadingBarModule,
     LoadingBarHttpClientModule,
-    LoadingBarRouterModule,
+    LoadingBarRouterModule
   ],
-  declarations: [
-    LoadingBarComponent
-  ],
-  exports: [
-    LoadingBarComponent
-  ]
+  declarations: [LoadingBarComponent],
+  exports: [LoadingBarComponent]
 })
-export class LoadingBarModule { }
+export class LoadingBarModule {}

@@ -6,7 +6,6 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
 import { LoadingBarComponent } from './loading-bar.component';
 
-
 describe('LoadingBarComponent', () => {
   let component: LoadingBarComponent;
   let fixture: ComponentFixture<LoadingBarComponent>;
@@ -19,11 +18,8 @@ describe('LoadingBarComponent', () => {
         LoadingBarHttpClientModule,
         LoadingBarRouterModule
       ],
-      declarations: [
-        LoadingBarComponent
-      ]
-    })
-    .compileComponents();
+      declarations: [LoadingBarComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LoadingBarComponent);
     component = fixture.componentInstance;

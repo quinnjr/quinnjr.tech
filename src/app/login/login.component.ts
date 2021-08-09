@@ -1,4 +1,4 @@
-declare var process: any;
+declare let process: any;
 
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -13,13 +13,9 @@ import { FlashMessageService } from '../flash-message/flash-message.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
   public loginForm: FormGroup = this.$fb.group({
     email: ['', Validators.required],
-    password: ['', [
-      Validators.required,
-      Validators.minLength(8)
-    ]]
+    password: ['', [Validators.required, Validators.minLength(8)]]
   });
 
   constructor(
@@ -33,7 +29,8 @@ export class LoginComponent implements OnInit {
   public ngOnInit(): void {}
 
   public submit(): void {
-    this.$httpClient.post(`${ process.env.API_ENTRYPOINT }/auth/login`, this.loginForm.value)
+    this.$httpClient
+      .post(`${process.env.API_ENTRYPOINT}/auth/login`, this.loginForm.value)
       .subscribe(
         (res: any) => {
           this.$storage.set('access_token', res.access_token).subscribe();

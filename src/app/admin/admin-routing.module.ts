@@ -49,11 +49,7 @@ const routes: List<Route> = List([
 ]);
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(routes.toArray())
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forChild(routes.toArray())],
+  exports: [RouterModule]
 })
 export class AdminRoutingModule {}

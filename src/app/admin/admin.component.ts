@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+/* eslint @typescript-eslint/naming-convention: off */
 enum AdminSubroutes {
   SiteAdministration = '/admin',
   AccountAdministration = './account',
@@ -17,11 +18,9 @@ enum AdminSubroutes {
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-
   public eAdminSubroutes = AdminSubroutes;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  public ngOnInit(): void {}
 }

@@ -1,4 +1,4 @@
-declare var process: any;
+declare const process: any;
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Route, PreloadAllModules } from '@angular/router';
@@ -37,14 +37,18 @@ const routes: List<Route> = List([
   },
   {
     path: 'resume',
-    loadChildren: () => import('./resume/resume.module')
-      .then(m => m.ResumeModule)
+    loadChildren: () =>
+      import('./resume/resume.module')
+        .then((m) => m.ResumeModule)
+        .catch(console.error)
   },
   {
     path: 'admin',
-    loadChildren: () => import('./admin/admin.module')
-      .then(m => m.AdminModule),
-    canLoad: [ AdminLoadGuard ]
+    loadChildren: () =>
+      import('./admin/admin.module')
+        .then((m) => m.AdminModule)
+        .catch(console.error),
+    canLoad: [AdminLoadGuard]
   },
   {
     path: '',
@@ -60,15 +64,11 @@ const routes: List<Route> = List([
 @NgModule({
   imports: [
     RouterModule.forRoot(routes.toArray(), {
-    enableTracing: (process.env.NODE_ENV === 'development'),
-    initialNavigation: 'enabled'
-})
+      enableTracing: process.env.NODE_ENV === 'development',
+      initialNavigation: 'enabled'
+    })
   ],
-  providers: [
-    AdminLoadGuard
-  ],
-  exports: [
-    RouterModule
-  ]
+  providers: [AdminLoadGuard],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

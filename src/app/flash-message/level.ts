@@ -1,3 +1,4 @@
+/* eslint @typescript-eslint/naming-convention: off */
 export enum Level {
   Primary = 'is-primary',
   Secondary = 'is-link',

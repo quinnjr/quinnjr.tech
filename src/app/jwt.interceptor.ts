@@ -11,23 +11,23 @@ import { StorageMap } from '@ngx-pwa/local-storage';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
+  constructor(private readonly $storage: StorageMap) {}
 
-  constructor(
-    private readonly $storage: StorageMap
-  ) {}
+  public intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
+    return this.$storage.get('access_token').pipe(
+      switchMap((token) => {
+        request = request.clone({
+          setHeaders: {
+            /* eslint @typescript-eslint/naming-convention: off*/
+            Authorization: `Bearer ${token}`
+          }
+        });
 
-  public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return this.$storage.get('access_token')
-      .pipe(
-        switchMap((token) => {
-          request = request.clone({
-            setHeaders: {
-              Authorization: `Bearer ${token}`
-            }
-          });
-
-          return next.handle(request);
-        })
-      );
+        return next.handle(request);
+      })
+    );
   }
 }
