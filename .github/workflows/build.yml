@@ -3,6 +3,7 @@ name: Build CI
 on:
   push:
     branches: [release/*]
+    tags: [v1.*]
 
 jobs:
   build_webapp:
