@@ -12,6 +12,7 @@ import * as PreloadWebpackPlugin from '@vue/preload-webpack-plugin';
 import ImageminMinimizerPlugin from 'image-minimizer-webpack-plugin';
 import DotenvPlugin from 'dotenv-webpack';
 import nodeExternals from 'webpack-node-externals';
+import TerserPlugin from 'terser-webpack-plugin';
 import * as pkg from './package.json';
 
 const PurgeCSSPlugin = require('purgecss-webpack-plugin');
@@ -32,6 +33,7 @@ export default (
     }),
     new DefinePlugin({
       /* eslint @typescript-eslint/naming-convention: off */
+      APP_NAME: pkg.name,
       APP_VERSION: pkg.version
     })
   );
@@ -102,6 +104,28 @@ export default (
         allowlist: [/^(?!(livereload|concurrently|fsevents)).*/]
       })
     );
+
+    config.optimization = {
+      minimize: config.mode === 'production',
+      minimizer: [
+        (compiler) => {
+          new TerserPlugin({
+            terserOptions: {
+              mangle: false,
+              ecma: 2017,
+              keep_classnames: true,
+              toplevel: true,
+              ie8: false
+            }
+          }).apply(compiler);
+        }
+      ],
+      moduleIds: config.mode === 'production' ? 'deterministic' : 'named',
+      chunkIds: config.mode === 'production' ? 'deterministic' : 'named',
+      removeAvailableModules: true,
+      mergeDuplicateChunks: true,
+      mangleExports: false
+    };
 
     config.plugins?.push(
       new IgnorePlugin({

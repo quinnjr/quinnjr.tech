@@ -111,6 +111,7 @@ specifiers:
   reflect-metadata: ^0.1.13
   rxjs: ^7.3.0
   supertest: ^6.1.4
+  terser-webpack-plugin: ^5.1.4
   ts-jest: ^27.0.4
   ts-morph: ^11.0.3
   ts-node: ^9.1.1
@@ -238,6 +239,7 @@ devDependencies:
   prisma-nestjs-graphql: 12.2.1_@prisma+client@2.28.0
   purgecss-webpack-plugin: 4.0.3
   supertest: 6.1.4
+  terser-webpack-plugin: 5.1.4_webpack@5.49.0
   ts-jest: 27.0.4_52cc4273aa16028085013af47e479e10
   ts-morph: 11.0.3
   ts-node: 9.1.1_typescript@4.3.5
