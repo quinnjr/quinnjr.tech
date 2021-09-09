@@ -5,8 +5,11 @@ export enum EducationScalarFieldEnum {
     name = "name",
     location = "location",
     degree = "degree",
+    startYear = "startYear",
     graduationYear = "graduationYear",
     activities = "activities",
+    campusImage = "campusImage",
+    url = "url",
     userId = "userId"
 }
 

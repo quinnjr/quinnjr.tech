@@ -1,9 +1,10 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
+import { NullableDateTimeFieldUpdateOperationsInput } from '../prisma/nullable-date-time-field-update-operations.input';
 import { NullableIntFieldUpdateOperationsInput } from '../prisma/nullable-int-field-update-operations.input';
 import { EducationUpdateactivitiesInput } from '../prisma/education-updateactivities.input';
-import { UserUpdateOneRequiredWithoutEductationsInput } from '../user/user-update-one-required-without-eductations.input';
+import { UserUpdateOneRequiredWithoutEducationsInput } from '../user/user-update-one-required-without-educations.input';
 
 @InputType()
 export class EducationUpdateInput {
@@ -20,6 +21,9 @@ export class EducationUpdateInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     degree?: StringFieldUpdateOperationsInput;
 
+    @Field(() => NullableDateTimeFieldUpdateOperationsInput, {nullable:true})
+    startYear?: NullableDateTimeFieldUpdateOperationsInput;
+
     @Field(() => NullableIntFieldUpdateOperationsInput, {nullable:true})
     graduationYear?: NullableIntFieldUpdateOperationsInput;
 
@@ -32,6 +36,6 @@ export class EducationUpdateInput {
     @Field(() => EducationUpdateactivitiesInput, {nullable:true})
     activities?: EducationUpdateactivitiesInput;
 
-    @Field(() => UserUpdateOneRequiredWithoutEductationsInput, {nullable:true})
-    user?: UserUpdateOneRequiredWithoutEductationsInput;
+    @Field(() => UserUpdateOneRequiredWithoutEducationsInput, {nullable:true})
+    user?: UserUpdateOneRequiredWithoutEducationsInput;
 }

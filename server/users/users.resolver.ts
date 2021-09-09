@@ -14,22 +14,21 @@ import { Project } from '../@generated/prisma-nestjs-graphql/project/project.mod
 export class UsersResolver {
   constructor(private readonly $databaseService: DatabaseService) {}
 
-  @Public()
   @Query((returns) => User, { name: 'user' })
   public async getUser(
-    @Args('id', { nullable: true }) id?: string,
-    @Args('firstName', { nullable: true }) firstName?: string,
-    @Args('lastName', { nullable: true }) lastName?: string,
-    @Args('email', { nullable: true }) email?: string
-  ): Promise<User | null> {
-    return this.$databaseService.user.findUnique({
+    @Args('email') email: string
+  ): Promise<User> {
+    const user = await this.$databaseService.user.findUnique({
       where: {
-        id,
-        firstName,
-        lastName,
         email
       }
     });
+
+    if (!user) {
+      throw new Error('No user was found')
+    } else {
+      return user;
+    }
   }
 
   @ResolveField('articles', (returns) => [Article])

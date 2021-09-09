@@ -1,9 +1,10 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { StringFilter } from '../prisma/string-filter.input';
+import { HideField } from '@nestjs/graphql';
 import { StringNullableFilter } from '../prisma/string-nullable-filter.input';
-import { DateTimeFilter } from '../prisma/date-time-filter.input';
 import { StringNullableListFilter } from '../prisma/string-nullable-list-filter.input';
+import { DateTimeFilter } from '../prisma/date-time-filter.input';
 import { EnumRoleFilter } from '../prisma/enum-role-filter.input';
 import { ArticleListRelationFilter } from '../article/article-list-relation-filter.input';
 import { ExperienceListRelationFilter } from '../experience/experience-list-relation-filter.input';
@@ -30,7 +31,7 @@ export class UserWhereInput {
     @Field(() => StringFilter, {nullable:true})
     email?: StringFilter;
 
-    @Field(() => StringFilter, {nullable:true})
+    @HideField()
     passwordHash?: StringFilter;
 
     @Field(() => StringFilter, {nullable:true})
@@ -43,10 +44,22 @@ export class UserWhereInput {
     lastName?: StringFilter;
 
     @Field(() => StringNullableFilter, {nullable:true})
+    website?: StringNullableFilter;
+
+    @Field(() => StringNullableFilter, {nullable:true})
+    linkedin?: StringNullableFilter;
+
+    @Field(() => StringNullableFilter, {nullable:true})
+    github?: StringNullableFilter;
+
+    @Field(() => StringNullableFilter, {nullable:true})
     profilePicture?: StringNullableFilter;
 
     @Field(() => StringFilter, {nullable:true})
     profile?: StringFilter;
+
+    @Field(() => StringNullableListFilter, {nullable:true})
+    profileHighlights?: StringNullableListFilter;
 
     @Field(() => DateTimeFilter, {nullable:true})
     birthday?: DateTimeFilter;
@@ -56,6 +69,9 @@ export class UserWhereInput {
 
     @Field(() => StringNullableListFilter, {nullable:true})
     yubikeys?: StringNullableListFilter;
+
+    @Field(() => StringNullableListFilter, {nullable:true})
+    professionalMemberships?: StringNullableListFilter;
 
     @Field(() => EnumRoleFilter, {nullable:true})
     role?: EnumRoleFilter;
@@ -67,7 +83,7 @@ export class UserWhereInput {
     experiences?: ExperienceListRelationFilter;
 
     @Field(() => EducationListRelationFilter, {nullable:true})
-    eductations?: EducationListRelationFilter;
+    educations?: EducationListRelationFilter;
 
     @Field(() => CertificationListRelationFilter, {nullable:true})
     certifications?: CertificationListRelationFilter;

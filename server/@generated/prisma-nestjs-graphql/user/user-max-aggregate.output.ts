@@ -1,5 +1,6 @@
 import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
+import { HideField } from '@nestjs/graphql';
 import { Role } from '../prisma/role.enum';
 
 @ObjectType()
@@ -11,7 +12,7 @@ export class UserMaxAggregate {
     @Field(() => String, {nullable:true})
     email?: string;
 
-    @Field(() => String, {nullable:true})
+    @HideField()
     passwordHash?: string;
 
     @Field(() => String, {nullable:true})
@@ -22,6 +23,15 @@ export class UserMaxAggregate {
 
     @Field(() => String, {nullable:true})
     lastName?: string;
+
+    @Field(() => String, {nullable:true})
+    website?: string;
+
+    @Field(() => String, {nullable:true})
+    linkedin?: string;
+
+    @Field(() => String, {nullable:true})
+    github?: string;
 
     @Field(() => String, {nullable:true})
     profilePicture?: string;
@@ -35,7 +45,7 @@ export class UserMaxAggregate {
     @Field(() => Role, {nullable:true})
     role?: keyof typeof Role;
 
-    @Field(() => Date, {nullable:true})
+    @HideField()
     createdAt?: Date | string;
 
     @Field(() => Date, {nullable:true})

@@ -1,9 +1,10 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { StringWithAggregatesFilter } from '../prisma/string-with-aggregates-filter.input';
+import { HideField } from '@nestjs/graphql';
 import { StringNullableWithAggregatesFilter } from '../prisma/string-nullable-with-aggregates-filter.input';
-import { DateTimeWithAggregatesFilter } from '../prisma/date-time-with-aggregates-filter.input';
 import { StringNullableListFilter } from '../prisma/string-nullable-list-filter.input';
+import { DateTimeWithAggregatesFilter } from '../prisma/date-time-with-aggregates-filter.input';
 import { EnumRoleWithAggregatesFilter } from '../prisma/enum-role-with-aggregates-filter.input';
 
 @InputType()
@@ -24,7 +25,7 @@ export class UserScalarWhereWithAggregatesInput {
     @Field(() => StringWithAggregatesFilter, {nullable:true})
     email?: StringWithAggregatesFilter;
 
-    @Field(() => StringWithAggregatesFilter, {nullable:true})
+    @HideField()
     passwordHash?: StringWithAggregatesFilter;
 
     @Field(() => StringWithAggregatesFilter, {nullable:true})
@@ -37,10 +38,22 @@ export class UserScalarWhereWithAggregatesInput {
     lastName?: StringWithAggregatesFilter;
 
     @Field(() => StringNullableWithAggregatesFilter, {nullable:true})
+    website?: StringNullableWithAggregatesFilter;
+
+    @Field(() => StringNullableWithAggregatesFilter, {nullable:true})
+    linkedin?: StringNullableWithAggregatesFilter;
+
+    @Field(() => StringNullableWithAggregatesFilter, {nullable:true})
+    github?: StringNullableWithAggregatesFilter;
+
+    @Field(() => StringNullableWithAggregatesFilter, {nullable:true})
     profilePicture?: StringNullableWithAggregatesFilter;
 
     @Field(() => StringWithAggregatesFilter, {nullable:true})
     profile?: StringWithAggregatesFilter;
+
+    @Field(() => StringNullableListFilter, {nullable:true})
+    profileHighlights?: StringNullableListFilter;
 
     @Field(() => DateTimeWithAggregatesFilter, {nullable:true})
     birthday?: DateTimeWithAggregatesFilter;
@@ -50,6 +63,9 @@ export class UserScalarWhereWithAggregatesInput {
 
     @Field(() => StringNullableListFilter, {nullable:true})
     yubikeys?: StringNullableListFilter;
+
+    @Field(() => StringNullableListFilter, {nullable:true})
+    professionalMemberships?: StringNullableListFilter;
 
     @Field(() => EnumRoleWithAggregatesFilter, {nullable:true})
     role?: EnumRoleWithAggregatesFilter;

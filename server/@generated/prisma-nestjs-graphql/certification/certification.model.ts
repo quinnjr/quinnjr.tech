@@ -5,14 +5,19 @@ import { User } from '../user/user.model';
 
 @ObjectType()
 export class Certification {
+
     @Field(() => ID, {nullable:false})
     id!: string;
+
     @Field(() => String, {nullable:false})
     name!: string;
+
     @Field(() => String, {nullable:false})
     certifier!: string;
+
     @Field(() => User, {nullable:false})
     user?: User;
+
     @Field(() => String, {nullable:false})
     userId!: string;
 }

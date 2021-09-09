@@ -1,5 +1,6 @@
 import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
+import { HideField } from '@nestjs/graphql';
 import { Role } from '../prisma/role.enum';
 import { UserCountAggregate } from './user-count-aggregate.output';
 import { UserMinAggregate } from './user-min-aggregate.output';
@@ -14,7 +15,7 @@ export class UserGroupBy {
     @Field(() => String, {nullable:false})
     email!: string;
 
-    @Field(() => String, {nullable:false})
+    @HideField()
     passwordHash!: string;
 
     @Field(() => String, {nullable:false})
@@ -27,10 +28,22 @@ export class UserGroupBy {
     lastName!: string;
 
     @Field(() => String, {nullable:true})
+    website?: string;
+
+    @Field(() => String, {nullable:true})
+    linkedin?: string;
+
+    @Field(() => String, {nullable:true})
+    github?: string;
+
+    @Field(() => String, {nullable:true})
     profilePicture?: string;
 
     @Field(() => String, {nullable:false})
     profile!: string;
+
+    @Field(() => [String], {nullable:true})
+    profileHighlights?: Array<string>;
 
     @Field(() => Date, {nullable:false})
     birthday!: Date | string;
@@ -41,10 +54,13 @@ export class UserGroupBy {
     @Field(() => [String], {nullable:true})
     yubikeys?: Array<string>;
 
+    @Field(() => [String], {nullable:true})
+    professionalMemberships?: Array<string>;
+
     @Field(() => Role, {nullable:false})
     role!: keyof typeof Role;
 
-    @Field(() => Date, {nullable:false})
+    @HideField()
     createdAt!: Date | string;
 
     @Field(() => Date, {nullable:false})

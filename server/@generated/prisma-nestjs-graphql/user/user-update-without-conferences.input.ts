@@ -1,11 +1,14 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
+import { HideField } from '@nestjs/graphql';
 import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-string-field-update-operations.input';
 import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
 import { EnumRoleFieldUpdateOperationsInput } from '../prisma/enum-role-field-update-operations.input';
+import { UserUpdateprofileHighlightsInput } from '../prisma/user-updateprofile-highlights.input';
 import { UserUpdateskillsInput } from '../prisma/user-updateskills.input';
 import { UserUpdateyubikeysInput } from '../prisma/user-updateyubikeys.input';
+import { UserUpdateprofessionalMembershipsInput } from '../prisma/user-updateprofessional-memberships.input';
 import { ArticleUpdateManyWithoutAuthorInput } from '../article/article-update-many-without-author.input';
 import { ExperienceUpdateManyWithoutUserInput } from '../experience/experience-update-many-without-user.input';
 import { EducationUpdateManyWithoutUserInput } from '../education/education-update-many-without-user.input';
@@ -21,7 +24,7 @@ export class UserUpdateWithoutConferencesInput {
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     email?: StringFieldUpdateOperationsInput;
 
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
+    @HideField()
     passwordHash?: StringFieldUpdateOperationsInput;
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
@@ -32,6 +35,15 @@ export class UserUpdateWithoutConferencesInput {
 
     @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
     lastName?: StringFieldUpdateOperationsInput;
+
+    @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
+    website?: NullableStringFieldUpdateOperationsInput;
+
+    @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
+    linkedin?: NullableStringFieldUpdateOperationsInput;
+
+    @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
+    github?: NullableStringFieldUpdateOperationsInput;
 
     @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
     profilePicture?: NullableStringFieldUpdateOperationsInput;
@@ -51,11 +63,17 @@ export class UserUpdateWithoutConferencesInput {
     @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
     updatedAt?: DateTimeFieldUpdateOperationsInput;
 
+    @Field(() => UserUpdateprofileHighlightsInput, {nullable:true})
+    profileHighlights?: UserUpdateprofileHighlightsInput;
+
     @Field(() => UserUpdateskillsInput, {nullable:true})
     skills?: UserUpdateskillsInput;
 
     @Field(() => UserUpdateyubikeysInput, {nullable:true})
     yubikeys?: UserUpdateyubikeysInput;
+
+    @Field(() => UserUpdateprofessionalMembershipsInput, {nullable:true})
+    professionalMemberships?: UserUpdateprofessionalMembershipsInput;
 
     @Field(() => ArticleUpdateManyWithoutAuthorInput, {nullable:true})
     articles?: ArticleUpdateManyWithoutAuthorInput;
@@ -64,7 +82,7 @@ export class UserUpdateWithoutConferencesInput {
     experiences?: ExperienceUpdateManyWithoutUserInput;
 
     @Field(() => EducationUpdateManyWithoutUserInput, {nullable:true})
-    eductations?: EducationUpdateManyWithoutUserInput;
+    educations?: EducationUpdateManyWithoutUserInput;
 
     @Field(() => CertificationUpdateManyWithoutUserInput, {nullable:true})
     certifications?: CertificationUpdateManyWithoutUserInput;

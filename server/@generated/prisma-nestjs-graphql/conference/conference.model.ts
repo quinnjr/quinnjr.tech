@@ -5,16 +5,22 @@ import { User } from '../user/user.model';
 
 @ObjectType()
 export class Conference {
+
     @Field(() => ID, {nullable:false})
     id!: string;
+
     @Field(() => String, {nullable:false})
     name!: string;
+
     @Field(() => Date, {nullable:false})
     startDate!: Date;
+
     @Field(() => Date, {nullable:false})
     endDate!: Date;
+
     @Field(() => User, {nullable:false})
     user?: User;
+
     @Field(() => String, {nullable:false})
     userId!: string;
 }

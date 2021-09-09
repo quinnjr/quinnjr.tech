@@ -2,7 +2,7 @@ import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
 import { EducationCreateactivitiesInput } from '../prisma/education-createactivities.input';
-import { UserCreateNestedOneWithoutEductationsInput } from '../user/user-create-nested-one-without-eductations.input';
+import { UserCreateNestedOneWithoutEducationsInput } from '../user/user-create-nested-one-without-educations.input';
 
 @InputType()
 export class EducationCreateInput {
@@ -19,6 +19,9 @@ export class EducationCreateInput {
     @Field(() => String, {nullable:false})
     degree!: string;
 
+    @Field(() => Date, {nullable:true})
+    startYear?: Date | string;
+
     @Field(() => Int, {nullable:true})
     graduationYear?: number;
 
@@ -31,6 +34,6 @@ export class EducationCreateInput {
     @Field(() => EducationCreateactivitiesInput, {nullable:true})
     activities?: EducationCreateactivitiesInput;
 
-    @Field(() => UserCreateNestedOneWithoutEductationsInput, {nullable:false})
-    user!: UserCreateNestedOneWithoutEductationsInput;
+    @Field(() => UserCreateNestedOneWithoutEducationsInput, {nullable:false})
+    user!: UserCreateNestedOneWithoutEducationsInput;
 }

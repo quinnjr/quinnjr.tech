@@ -17,6 +17,9 @@ export class EducationMaxAggregateInput {
     degree?: true;
 
     @Field(() => Boolean, {nullable:true})
+    startYear?: true;
+
+    @Field(() => Boolean, {nullable:true})
     graduationYear?: true;
 
     @Field(() => Boolean, {nullable:true})

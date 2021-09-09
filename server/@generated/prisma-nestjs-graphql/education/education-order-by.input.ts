@@ -18,6 +18,9 @@ export class EducationOrderByInput {
     degree?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})
+    startYear?: keyof typeof SortOrder;
+
+    @Field(() => SortOrder, {nullable:true})
     graduationYear?: keyof typeof SortOrder;
 
     @Field(() => SortOrder, {nullable:true})

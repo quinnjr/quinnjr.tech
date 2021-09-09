@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { ObjectType } from '@nestjs/graphql';
 import { Int } from '@nestjs/graphql';
+import { HideField } from '@nestjs/graphql';
 
 @ObjectType()
 export class UserCountAggregate {
@@ -11,7 +12,7 @@ export class UserCountAggregate {
     @Field(() => Int, {nullable:false})
     email!: number;
 
-    @Field(() => Int, {nullable:false})
+    @HideField()
     passwordHash!: number;
 
     @Field(() => Int, {nullable:false})
@@ -24,10 +25,22 @@ export class UserCountAggregate {
     lastName!: number;
 
     @Field(() => Int, {nullable:false})
+    website!: number;
+
+    @Field(() => Int, {nullable:false})
+    linkedin!: number;
+
+    @Field(() => Int, {nullable:false})
+    github!: number;
+
+    @Field(() => Int, {nullable:false})
     profilePicture!: number;
 
     @Field(() => Int, {nullable:false})
     profile!: number;
+
+    @Field(() => Int, {nullable:false})
+    profileHighlights!: number;
 
     @Field(() => Int, {nullable:false})
     birthday!: number;
@@ -39,9 +52,12 @@ export class UserCountAggregate {
     yubikeys!: number;
 
     @Field(() => Int, {nullable:false})
-    role!: number;
+    professionalMemberships!: number;
 
     @Field(() => Int, {nullable:false})
+    role!: number;
+
+    @HideField()
     createdAt!: number;
 
     @Field(() => Int, {nullable:false})

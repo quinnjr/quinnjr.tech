@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { StorageMap } from '@ngx-pwa/local-storage';
-import { Apollo } from 'apollo-angular';
+// import { Apollo } from 'apollo-angular';
 
 import { UserService } from './user.service';
 
@@ -13,6 +13,6 @@ export class AppComponent {
   constructor(
     private readonly $storage: StorageMap,
     private readonly $userService: UserService,
-    private readonly $apollo: Apollo
+    // private readonly $apollo: Apollo
   ) {}
 }

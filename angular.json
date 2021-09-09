@@ -23,6 +23,7 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "preserveSymlinks": true,
             "customWebpackConfig": {
               "path": "./webpack.config.ts"
             },
@@ -37,14 +38,12 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/manifest.webmanifest"
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/marked/lib/marked.js"
             ]
           },
           "configurations": {
@@ -75,11 +74,10 @@
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
                 }
-              ],
-              "serviceWorker": true,
-              "ngswConfigPath": "ngsw-config.json"
+              ]
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
@@ -89,8 +87,12 @@
           "configurations": {
             "production": {
               "browserTarget": "quinnjr-tech:build:production"
+            },
+            "development": {
+              "browserTarget": "quinnjr-tech:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-builders/custom-webpack:extract-i18n",
@@ -138,7 +140,8 @@
             "development": {
               "devServerTarget": "quinnjr-tech:server:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "server": {
           "builder": "@angular-builders/custom-webpack:server",
@@ -150,14 +153,14 @@
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
             "externalDependencies": [
-              "fs",
               "@nestjs/microservices",
               "@nestjs/microservices/microservices-module",
               "@nestjs/websockets",
               "@nestjs/websockets/socket-module",
               "cache-manager",
               "_http_common",
-              "@nestjs/axios",
+              "argon2",
+              "express",
               "@nestjs/common",
               "@nestjs/config",
               "@nestjs/core",
@@ -165,30 +168,24 @@
               "@nestjs/jwt",
               "@nestjs/passport",
               "@nestjs/platform-express",
-              "express",
-              "encoding",
-              "prisma",
               "@prisma/client",
-              "argon2",
-              "@mapbox/node-pre-gyp",
-              "iconv-lite",
-              "zen-observable"
+              "apollo-server-core",
+              "apollo-server-express",
+              "@apollo/client",
+              "graphql",
+              "graphql-ws",
+              "passport",
+              "passport-jwt",
+              "passport-local",
+              "yubikey-async",
+              "rxjs"
             ]
           },
           "configurations": {
-            "production": {
-              "outputHashing": "media",
-              "optimization": true,
-              "sourceMap": true,
-              "extractLicenses": true
-            },
-            "development": {
-              "optimization": false,
-              "sourceMap": true,
-              "extractLicenses": true
-            }
+            "development": {},
+            "production": {}
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "production"
         },
         "serve-ssr": {
           "builder": "@nguniversal/builders:ssr-dev-server",

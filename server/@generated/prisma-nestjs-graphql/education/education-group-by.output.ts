@@ -22,6 +22,9 @@ export class EducationGroupBy {
     @Field(() => String, {nullable:false})
     degree!: string;
 
+    @Field(() => Date, {nullable:true})
+    startYear?: Date | string;
+
     @Field(() => Int, {nullable:true})
     graduationYear?: number;
 

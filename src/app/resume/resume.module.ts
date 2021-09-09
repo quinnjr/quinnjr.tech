@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ResumeRoutingModule } from './resume-routing.module';
 import { ResumeComponent } from './resume.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
-  imports: [CommonModule, ResumeRoutingModule],
-  declarations: [ResumeComponent]
+  imports: [CommonModule],
+  declarations: [ResumeComponent, SidebarComponent]
 })
 export class ResumeModule {}

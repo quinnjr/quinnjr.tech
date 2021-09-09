@@ -18,6 +18,9 @@ export class EducationCountAggregate {
     degree!: number;
 
     @Field(() => Int, {nullable:false})
+    startYear!: number;
+
+    @Field(() => Int, {nullable:false})
     graduationYear!: number;
 
     @Field(() => Int, {nullable:false})

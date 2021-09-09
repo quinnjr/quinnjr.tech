@@ -1,6 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { StringFilter } from '../prisma/string-filter.input';
+import { DateTimeNullableFilter } from '../prisma/date-time-nullable-filter.input';
 import { IntNullableFilter } from '../prisma/int-nullable-filter.input';
 import { StringNullableListFilter } from '../prisma/string-nullable-list-filter.input';
 
@@ -27,6 +28,9 @@ export class EducationScalarWhereInput {
 
     @Field(() => StringFilter, {nullable:true})
     degree?: StringFilter;
+
+    @Field(() => DateTimeNullableFilter, {nullable:true})
+    startYear?: DateTimeNullableFilter;
 
     @Field(() => IntNullableFilter, {nullable:true})
     graduationYear?: IntNullableFilter;

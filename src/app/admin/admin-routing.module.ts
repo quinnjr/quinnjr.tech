@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Route } from '@angular/router';
-import { List } from 'immutable';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin.component';
@@ -10,7 +9,7 @@ import { ManageArticlesComponent } from './manage-articles/manage-articles.compo
 import { ManageProjectsComponent } from './manage-projects/manage-projects.component';
 import { UpdateResumeComponent } from './update-resume/update-resume.component';
 
-const routes: List<Route> = List([
+const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
@@ -46,10 +45,10 @@ const routes: List<Route> = List([
       }
     ]
   }
-]);
+];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes.toArray())],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class AdminRoutingModule {}

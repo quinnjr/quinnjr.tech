@@ -15,4 +15,10 @@ export class UserWhereUniqueInput {
 
     @Field(() => String, {nullable:true})
     lastName?: string;
+
+    @Field(() => String, {nullable:true})
+    linkedin?: string;
+
+    @Field(() => String, {nullable:true})
+    github?: string;
 }

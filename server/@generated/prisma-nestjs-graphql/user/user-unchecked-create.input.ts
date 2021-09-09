@@ -1,8 +1,11 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
+import { HideField } from '@nestjs/graphql';
 import { Role } from '../prisma/role.enum';
+import { UserCreateprofileHighlightsInput } from '../prisma/user-createprofile-highlights.input';
 import { UserCreateskillsInput } from '../prisma/user-createskills.input';
 import { UserCreateyubikeysInput } from '../prisma/user-createyubikeys.input';
+import { UserCreateprofessionalMembershipsInput } from '../prisma/user-createprofessional-memberships.input';
 import { ArticleUncheckedCreateNestedManyWithoutAuthorInput } from '../article/article-unchecked-create-nested-many-without-author.input';
 import { ExperienceUncheckedCreateNestedManyWithoutUserInput } from '../experience/experience-unchecked-create-nested-many-without-user.input';
 import { EducationUncheckedCreateNestedManyWithoutUserInput } from '../education/education-unchecked-create-nested-many-without-user.input';
@@ -19,7 +22,7 @@ export class UserUncheckedCreateInput {
     @Field(() => String, {nullable:false})
     email!: string;
 
-    @Field(() => String, {nullable:false})
+    @HideField()
     passwordHash!: string;
 
     @Field(() => String, {nullable:false})
@@ -30,6 +33,15 @@ export class UserUncheckedCreateInput {
 
     @Field(() => String, {nullable:false})
     lastName!: string;
+
+    @Field(() => String, {nullable:true})
+    website?: string;
+
+    @Field(() => String, {nullable:true})
+    linkedin?: string;
+
+    @Field(() => String, {nullable:true})
+    github?: string;
 
     @Field(() => String, {nullable:true})
     profilePicture?: string;
@@ -49,11 +61,17 @@ export class UserUncheckedCreateInput {
     @Field(() => Date, {nullable:true})
     updatedAt?: Date | string;
 
+    @Field(() => UserCreateprofileHighlightsInput, {nullable:true})
+    profileHighlights?: UserCreateprofileHighlightsInput;
+
     @Field(() => UserCreateskillsInput, {nullable:true})
     skills?: UserCreateskillsInput;
 
     @Field(() => UserCreateyubikeysInput, {nullable:true})
     yubikeys?: UserCreateyubikeysInput;
+
+    @Field(() => UserCreateprofessionalMembershipsInput, {nullable:true})
+    professionalMemberships?: UserCreateprofessionalMembershipsInput;
 
     @Field(() => ArticleUncheckedCreateNestedManyWithoutAuthorInput, {nullable:true})
     articles?: ArticleUncheckedCreateNestedManyWithoutAuthorInput;
@@ -62,7 +80,7 @@ export class UserUncheckedCreateInput {
     experiences?: ExperienceUncheckedCreateNestedManyWithoutUserInput;
 
     @Field(() => EducationUncheckedCreateNestedManyWithoutUserInput, {nullable:true})
-    eductations?: EducationUncheckedCreateNestedManyWithoutUserInput;
+    educations?: EducationUncheckedCreateNestedManyWithoutUserInput;
 
     @Field(() => CertificationUncheckedCreateNestedManyWithoutUserInput, {nullable:true})
     certifications?: CertificationUncheckedCreateNestedManyWithoutUserInput;

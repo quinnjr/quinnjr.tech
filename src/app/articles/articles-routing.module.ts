@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Route } from '@angular/router';
-import { Set } from 'immutable';
+import { RouterModule, Routes } from '@angular/router';
 
 import { ArticlesComponent } from './articles.component';
 import { ArticleComponent } from './article/article.component';
 
-const routes: Set<Route> = Set([
+const routes: Routes = [
   {
     path: '',
     component: ArticlesComponent,
@@ -15,10 +14,10 @@ const routes: Set<Route> = Set([
     path: ':id',
     component: ArticleComponent
   }
-]);
+];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes.toArray())],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class ArticlesRoutingModule {}

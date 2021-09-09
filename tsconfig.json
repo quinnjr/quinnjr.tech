@@ -28,7 +28,9 @@
       "node",
       "jest",
       "cypress"
-    ]
+    ],
+    "skipLibCheck": true,
+    "preserveSymlinks": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

@@ -13,14 +13,20 @@ EOF
 
 USER node
 
-RUN <<EOF
-  pnpm set store-dir $HOME/.pnpm-store
-  pnpm install --no-optional
-  pnpx prisma generate
-  pnpm run build:ssr
+# RUN <<EOF
+#   pnpm set store-dir $HOME/.pnpm-store
+#   pnpm install --no-optional
+#   pnpx prisma generate
+#   pnpm run build:ssr
+#   pnpm prune --no-optional --prod
+# EOF
+
+RUN pnpm set store-dir $HOME/.pnpm-store && \
+  pnpm install --no-optional && \
+  pnpx prisma generate && \
+  pnpm run build:ssr && \
   pnpm prune --no-optional --prod
-EOF
 
 EXPOSE 4200
 
-ENTRYPOINT ["pnpm", "run", "serve:ssr"]
+ENTRYPOINT ["./docker-entry.sh"]

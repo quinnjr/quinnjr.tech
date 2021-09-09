@@ -1,8 +1,7 @@
 declare const process: any;
 
 import { NgModule } from '@angular/core';
-import { RouterModule, Route, PreloadAllModules } from '@angular/router';
-import { List } from 'immutable';
+import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { ProjectsComponent } from './projects/projects.component';
@@ -11,8 +10,9 @@ import { AdminLoadGuard } from './admin-load.guard';
 import { ArticlesComponent } from './articles/articles.component';
 import { ArticleComponent } from './articles/article/article.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ResumeComponent } from './resume/resume.component';
 
-const routes: List<Route> = List([
+const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
@@ -37,19 +37,16 @@ const routes: List<Route> = List([
   },
   {
     path: 'resume',
-    loadChildren: () =>
-      import('./resume/resume.module')
-        .then((m) => m.ResumeModule)
-        .catch(console.error)
+    component: ResumeComponent
   },
-  {
-    path: 'admin',
-    loadChildren: () =>
-      import('./admin/admin.module')
-        .then((m) => m.AdminModule)
-        .catch(console.error),
-    canLoad: [AdminLoadGuard]
-  },
+  // {
+  //   path: 'admin',
+  //   loadChildren: () =>
+  //     import('./admin/admin.module')
+  //       .then((m) => m.AdminModule)
+  //       .catch(console.error),
+  //   canLoad: [AdminLoadGuard]
+  // },
   {
     path: '',
     redirectTo: '/home',
@@ -59,15 +56,10 @@ const routes: List<Route> = List([
     path: '**',
     component: NotFoundComponent
   }
-]);
+];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes.toArray(), {
-      enableTracing: process.env.NODE_ENV === 'development',
-      initialNavigation: 'enabled'
-    })
-  ],
+  imports: [RouterModule.forRoot(routes)],
   providers: [AdminLoadGuard],
   exports: [RouterModule]
 })

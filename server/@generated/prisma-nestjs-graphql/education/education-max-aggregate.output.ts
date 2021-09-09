@@ -17,6 +17,9 @@ export class EducationMaxAggregate {
     @Field(() => String, {nullable:true})
     degree?: string;
 
+    @Field(() => Date, {nullable:true})
+    startYear?: Date | string;
+
     @Field(() => Int, {nullable:true})
     graduationYear?: number;
 

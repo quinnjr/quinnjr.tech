@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MarkdownModule } from 'ngx-markdown';
-
 import { AdminRoutingModule } from './admin-routing.module';
 import { UserService } from '../user.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -15,12 +13,7 @@ import { UpdateResumeComponent } from './update-resume/update-resume.component';
 import { ManageProjectsComponent } from './manage-projects/manage-projects.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    MarkdownModule.forChild(),
-    ReactiveFormsModule,
-    AdminRoutingModule
-  ],
+  imports: [CommonModule, ReactiveFormsModule, AdminRoutingModule],
   declarations: [
     AdminComponent,
     AccountComponent,

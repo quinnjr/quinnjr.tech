@@ -1,6 +1,6 @@
 import { join } from 'path';
 import glob from 'glob';
-import { Configuration, DefinePlugin, IgnorePlugin } from 'webpack';
+import { default as webpack, Configuration, DefinePlugin, IgnorePlugin } from 'webpack';
 import {
   CustomWebpackBrowserSchema,
   TargetOptions
@@ -13,6 +13,7 @@ import ImageminMinimizerPlugin from 'image-minimizer-webpack-plugin';
 import DotenvPlugin from 'dotenv-webpack';
 import nodeExternals from 'webpack-node-externals';
 import * as pkg from './package.json';
+import webpackNodeExternals from 'webpack-node-externals';
 
 const PurgeCSSPlugin = require('purgecss-webpack-plugin');
 
@@ -117,7 +118,8 @@ export default (
             'bufferutil',
             'utf-8-validate',
             'graphql-ws',
-            'react'
+            'ws',
+            'ts-morph'
           ];
 
           if (!lazyImports.includes(resource)) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Apollo, gql } from 'apollo-angular';
+// import { Apollo, gql } from 'apollo-angular';
 import { Set } from 'immutable';
 import { FlashMessageService } from '../flash-message/flash-message.service';
 
@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   public projects: Set<Project>;
 
   constructor(
-    private readonly $apollo: Apollo,
+    // private readonly $apollo: Apollo,
     private readonly $flashMessage: FlashMessageService
   ) {
     this.articles = Set();
@@ -28,34 +28,34 @@ export class HomeComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.$apollo
-      .watchQuery({
-        query: gql`
-          {
-            articles(take: 5) {
-              id
-              title
-              description
-              createdAt
-            }
-            projects(take: 5) {
-              id
-              description
-            }
-          }
-        `
-      })
-      .valueChanges.subscribe(
-        (res: any) => {
-          if (res.error) {
-            this.$flashMessage.add(res.error);
-          }
+    // this.$apollo
+    //   .watchQuery({
+    //     query: gql`
+    //       {
+    //         articles(take: 5) {
+    //           id
+    //           title
+    //           description
+    //           createdAt
+    //         }
+    //         projects(take: 5) {
+    //           id
+    //           description
+    //         }
+    //       }
+    //     `
+    //   })
+    //   .valueChanges.subscribe(
+    //     (res: any) => {
+    //       if (res.error) {
+    //         this.$flashMessage.add(res.error);
+    //       }
 
-          for (const article of res?.data?.articles) {
-            this.articles = this.articles.add(article);
-          }
-        },
-        (err) => this.$flashMessage.add(err)
-      );
+    //       for (const article of res?.data?.articles) {
+    //         this.articles = this.articles.add(article);
+    //       }
+    //     },
+    //     (err) => this.$flashMessage.add(err)
+    //   );
   }
 }
