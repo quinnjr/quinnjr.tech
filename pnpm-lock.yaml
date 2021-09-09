@@ -91,6 +91,7 @@ specifiers:
   graphql-tag: ^2.12.5
   graphql-ws: ^5.3.0
   html-webpack-plugin: ^5.3.2
+  husky: ^7.0.2
   image-minimizer-webpack-plugin: ^1.0.0
   imagemin-jpegtran: ^7.0.0
   imagemin-optipng: ^8.0.0
@@ -111,9 +112,14 @@ specifiers:
   purgecss-webpack-plugin: ^4.0.3
   reflect-metadata: ^0.1.13
   rxjs: ^7.3.0
+<<<<<<< HEAD
   supertest: ^6.1.5
   symbol-observable: ^4.0.0
   ts-invariant: ^0.9.1
+=======
+  supertest: ^6.1.4
+  terser-webpack-plugin: ^5.1.4
+>>>>>>> e7d98137176cf4ffe71fd56d74753441d66a3d68
   ts-jest: ^27.0.4
   ts-morph: ^11.0.3
   ts-node: ^9.1.1
@@ -230,9 +236,15 @@ devDependencies:
   extract-files: 11.0.0
   file-loader: 6.2.0_webpack@5.50.0
   glob: 7.1.7
+<<<<<<< HEAD
   graphql-scalars: 1.10.0_graphql@15.5.1
   html-webpack-plugin: 5.3.2_webpack@5.50.0
   image-minimizer-webpack-plugin: 1.0.0_webpack@5.50.0
+=======
+  html-webpack-plugin: 5.3.2_webpack@5.49.0
+  husky: 7.0.2
+  image-minimizer-webpack-plugin: 1.0.0_webpack@5.49.0
+>>>>>>> e7d98137176cf4ffe71fd56d74753441d66a3d68
   imagemin-jpegtran: 7.0.0
   imagemin-optipng: 8.0.0
   imagemin-svgo: 9.0.0
@@ -242,9 +254,14 @@ devDependencies:
   prettier: 2.3.2
   prisma-dbml-generator: 0.6.0
   purgecss-webpack-plugin: 4.0.3
+<<<<<<< HEAD
   supertest: 6.1.5
   symbol-observable: 4.0.0
   ts-invariant: 0.9.1
+=======
+  supertest: 6.1.4
+  terser-webpack-plugin: 5.1.4_webpack@5.49.0
+>>>>>>> e7d98137176cf4ffe71fd56d74753441d66a3d68
   ts-jest: 27.0.4_52cc4273aa16028085013af47e479e10
   ts-morph: 11.0.3
   ts-node: 9.1.1_typescript@4.3.5
@@ -9980,6 +9997,12 @@ packages:
     resolution: {integrity: sha1-xG4xWaKT9riW2ikxbYtv6Lt5u+0=}
     dependencies:
       ms: 2.1.3
+
+  /husky/7.0.2:
+    resolution: {integrity: sha512-8yKEWNX4z2YsofXAMT7KvA1g8p+GxtB1ffV8XtpAEGuXNAbCV5wdNKH+qTpw8SM9fh4aMPDR+yQuKfgnreyZlg==}
+    engines: {node: '>=12'}
+    hasBin: true
+    dev: true
 
   /iconv-lite/0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
