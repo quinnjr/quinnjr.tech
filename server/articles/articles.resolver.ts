@@ -17,7 +17,7 @@ import { CurrentUser } from '../auth/current-user.decorator';
 import { JwtGraphqlAuthGuard } from '../auth/jwt-graphql-auth.guard';
 
 import { Article } from '../@generated/prisma-nestjs-graphql/article/article.model';
-import { ArticleOrderByInput } from '../@generated/prisma-nestjs-graphql/article/article-order-by.input';
+import { ArticleOrderByWithRelationInput } from '../@generated/prisma-nestjs-graphql/article/article-order-by-with-relation.input';
 import { ArticleUpdateInput } from '../@generated/prisma-nestjs-graphql/article/article-update.input';
 import { ArticleCreateInput } from '../@generated/prisma-nestjs-graphql/article/article-create.input';
 import { User } from '../@generated/prisma-nestjs-graphql/user/user.model';
@@ -42,7 +42,7 @@ export class ArticlesResolver {
     @Args('searchString', { nullable: true }) searchString: string,
     @Args('take', { type: () => Int, nullable: true }) take: number,
     @Args('skip', { type: () => Int, nullable: true }) skip: number,
-    @Args('orderBy', { nullable: true }) orderBy: ArticleOrderByInput
+    @Args('orderBy', { nullable: true }) orderBy: ArticleOrderByWithRelationInput
   ): Promise<Article[]> {
     const or = searchString
       ? {

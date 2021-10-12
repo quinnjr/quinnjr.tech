@@ -12,7 +12,6 @@ import { UserService } from './user.service';
 export class AppComponent {
   constructor(
     private readonly $storage: StorageMap,
-    private readonly $userService: UserService,
-    // private readonly $apollo: Apollo
+    private readonly $userService: UserService
   ) {}
 }

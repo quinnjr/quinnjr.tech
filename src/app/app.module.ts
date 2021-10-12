@@ -13,15 +13,16 @@ import { InjectionToken, NgModule } from '@angular/core';
 
 import { APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
-import { InMemoryCache } from '@apollo/client/core';
-import { StorageModule } from '@ngx-pwa/local-storage';
+import { InMemoryCache, ApolloLink } from '@apollo/client/core';
+import { setContext } from '@apollo/client/link/context';
+import { StorageMap, StorageModule } from '@ngx-pwa/local-storage';
 
 // App Modules
 import { AdminModule } from './admin/admin.module';
 import { AppRoutingModule } from './app-routing.module';
 import { FlashMessageModule } from './flash-message/flash-message.module';
 import { NavigationModule } from './navigation/navigation.module';
-// import { ProjectsModule } from './projects/projects.module';
+import { ProjectsModule } from './projects/projects.module';
 
 // Top-level components
 import { AppComponent } from './app.component';
@@ -33,6 +34,7 @@ import { AdminLoadGuard } from './admin-load.guard';
 import { HttpErrorInterceptor } from './http-error.interceptor';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ResumeModule } from './resume/resume.module';
+import { AuthService } from './auth.service';
 
 const APOLLO_CACHE = new InjectionToken<InMemoryCache>('apollo-cache');
 const STATE_KEY = makeStateKey<any>('apollo.state');
@@ -57,7 +59,7 @@ const STATE_KEY = makeStateKey<any>('apollo.state');
     FlashMessageModule,
     NavigationModule,
     ResumeModule,
-    // ProjectsModule
+    ProjectsModule
   ],
   declarations: [
     AppComponent,
@@ -67,6 +69,7 @@ const STATE_KEY = makeStateKey<any>('apollo.state');
   ],
   providers: [
     UserService,
+    AuthService,
     AdminLoadGuard,
     {
       provide: HTTP_INTERCEPTORS,
@@ -87,7 +90,8 @@ const STATE_KEY = makeStateKey<any>('apollo.state');
       useFactory: (
         httpLink: HttpLink,
         cache: InMemoryCache,
-        transferState: TransferState
+        transferState: TransferState,
+        store: StorageMap
       ) => {
         const isBrowser = transferState.hasKey<any>(STATE_KEY);
 
@@ -98,14 +102,40 @@ const STATE_KEY = makeStateKey<any>('apollo.state');
           transferState.onSerialize(STATE_KEY, () => cache.extract());
         }
 
-        return {
-          cache,
-          link: httpLink.create({
+        const basic = setContext((operation, context) => ({
+          headers: {
+            Accept: 'charset=utf-8'
+          }
+        }));
+
+        const auth = setContext((operation, context) => {
+          const token = store.get('accessToken').subscribe(() => {});
+
+          if (token === null) {
+            return {};
+          } else {
+            return {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            };
+          }
+        });
+
+        const link = ApolloLink.from([
+          basic,
+          auth,
+          httpLink.create({
             uri: '/graphql'
           })
+        ]);
+
+        return {
+          cache,
+          link
         };
       },
-      deps: [HttpLink, APOLLO_CACHE, TransferState]
+      deps: [HttpLink, APOLLO_CACHE, TransferState, StorageMap]
     }
   ],
   bootstrap: [AppComponent]

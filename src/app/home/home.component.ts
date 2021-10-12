@@ -15,10 +15,7 @@ export class HomeComponent implements OnInit {
   public articles: Set<Article>;
   public projects: Set<Project>;
 
-  constructor(
-    // private readonly $apollo: Apollo,
-    private readonly $flashMessage: FlashMessageService
-  ) {
+  constructor(private readonly $flashMessage: FlashMessageService) {
     this.articles = Set();
     this.projects = Set();
   }
@@ -50,7 +47,7 @@ export class HomeComponent implements OnInit {
     //       if (res.error) {
     //         this.$flashMessage.add(res.error);
     //       }
-
+    //
     //       for (const article of res?.data?.articles) {
     //         this.articles = this.articles.add(article);
     //       }
