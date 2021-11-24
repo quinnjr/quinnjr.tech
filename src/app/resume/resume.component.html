@@ -1,0 +1,105 @@
+<div class="columns">
+  <div class="column is-one-fifth">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="column">
+    <div *ngIf="loading && !user; else elseBlock">
+      Loading...
+    </div>
+    <ng-template #elseBlock>
+      <section id="header" class="content section">
+        <div class="container is-fluid has-text-centered">
+          <img alt="headshot" [src]="user?.profilePicture"
+            class="image is-rounded" />
+          <h1 class="title">{{ user?.firstName }} {{ user?.middleName }} {{ user?.lastName }}</h1>
+          <p class="subtitle">
+            <a href="mailto:{{user?.email}}">{{ user?.email }}</a>&nbsp;&#x26AC;&nbsp;<a [href]="user?.linkedin">LinkedIn</a>&nbsp;&#x26AC;&nbsp;<a [href]="user?.github">Github</a></p>
+        </div>
+      </section>
+      <section id="profile" class="section">
+        <h1>Profile</h1>
+        <hr />
+        <div class="content">
+          <p>{{ user?.profile }}</p>
+          <ul>
+            <li *ngFor="let highlight of user?.profileHighlights">{{ highlight }}</li>
+          </ul>
+        </div>
+      </section>
+      <section id="education" class="section">
+        <h1>Education</h1>
+        <hr />
+        <div class="content" *ngIf="user?.educations">
+          <ng-container *ngFor="let institution in user.educations">
+            <div class="media">
+              <figure class="media-left">
+                <span class="image is-128x128">
+                  <a [href]="institution.url">
+                    <img [src]="institution.campusImage" alt="Campus Image" />
+                  </a>
+                </span>
+              </figure>
+              <div class="media-content">
+                <div class="content">
+                  <dl>
+                    <dt>{{ institution.name }}</dt>
+                    <dd>{{ institution.location }} -
+                      <ng-template *ngIf="institution.startYear && !institution.graduationYear; else elseGraduationBlock">
+                        {{ institution.startYear }} - Present
+                      </ng-template>
+                      <ng-template #elseGraduationBlock>
+                        {{ institution.startYear }} - {{ institution.graduationYear }}
+                      </ng-template>
+                    </dd>
+                    <dd><em>{{ institution.degree }}</em></dd>
+                    <dd>
+                      <ul>
+                        <li *ngFor="let activity in institution.activities">{{ activity }}</li>
+                      </ul>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </section>
+      <section id="experience" class="section">
+        <h1>Experience</h1>
+        <hr />
+        <div class="content">
+        </div>
+      </section>
+      <section id="skills" class="section">
+        <h1>Skills</h1>
+        <hr />
+        <div class="content">
+          <div class="columns">
+            <div class="column" *ngFor="let skillset of skillsSplit(3)">
+              <ul>
+                <li *ngFor="let skill of skillset">{{ skill }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="professionalMemberships" class="section">
+        <h1>Professional Memberships</h1>
+        <hr />
+        <div class="content">
+          <ul>
+            <li *ngFor="let membership in user?.professionalMemberships">
+              {{ membership }}
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section id="certifications" class="section">
+        <h1>Certifications</h1>
+        <hr />
+        <div class="content">
+        </div>
+      </section>
+    </ng-template>
+  </div>
+</div>

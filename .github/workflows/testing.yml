@@ -5,42 +5,10 @@ on:
     branches: [main, develop]
 
 jobs:
-  frontend:
+  webapp:
     defaults:
       run:
-        working-directory: frontend
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x]
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Cache pnpm modules
-      uses: actions/cache@v2
-      env:
-        cache-name: cache-pnpm-modules
-      with:
-        path: ~/.pnpm-store
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/package.json') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
-
-
-    - uses: pnpm/action-setup@v2.0.0
-      with:
-        version: 6.0.2
-        run_install: |
-          - args: [--global, "@angular/cli"]
-          - recursive: true
-
-    - run: pnpm test
-
-
-  backend:
-    defaults:
-      run:
-        working-directory: backend
+        working-directory: ./
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -57,15 +25,16 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-      redis-cache:
-        image: redis
+        ports:
+          - 5432:5432
     env:
       JWT_SECRET: ${{ secrets.JWT_SECRET }}
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
       SETUP_PASSWORD: ${{ secrets.SETUP_PASSWORD }}
-
+      REDIS_HOST: ${{ secrets.REDIS_HOST }}
+      REDIS_PORT: ${{ secrets.REDIS_PORT }}
+      DATABASE_URL: ${{secrets.DATABASE_URL}}
     steps:
     - uses: actions/checkout@v2
 
@@ -79,14 +48,13 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
 
-
     - uses: pnpm/action-setup@v2.0.0
       with:
-        version: 6.0.2
+        version: 6.23.2
         run_install: |
-          - args: [--global,"@nestjs/cli"]
-          - recursive: true
-
-    - run: pnpm run prisma generate
-    - run: pnpm run prisma migrate
-    - run: pnpm test
+          - args: [--global, "@angular/cli", "@nestjs/cli"]
+    - run: pnpm install
+    - run: pnpx prisma migrate deploy
+      env:
+        DATABASE_URL: ${{secrets.DATABASE_URL}}
+    - run: pnpm test -- --ci
