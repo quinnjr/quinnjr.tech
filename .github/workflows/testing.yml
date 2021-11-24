@@ -25,16 +25,16 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-      redis-cache:
-        image: redis
+        ports:
+          - 5432:5432
     env:
       JWT_SECRET: ${{ secrets.JWT_SECRET }}
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
       SETUP_PASSWORD: ${{ secrets.SETUP_PASSWORD }}
       REDIS_HOST: ${{ secrets.REDIS_HOST }}
       REDIS_PORT: ${{ secrets.REDIS_PORT }}
+      DATABASE_URL: ${{secrets.DATABASE_URL}}
     steps:
     - uses: actions/checkout@v2
 
@@ -54,6 +54,7 @@ jobs:
         run_install: |
           - args: [--global, "@angular/cli", "@nestjs/cli"]
     - run: pnpm install
-    - run: pnpx prisma generate
-    - run: pnpx prisma migrate
-    - run: pnpm test
+    - run: pnpx prisma migrate deploy
+      env:
+        DATABASE_URL: ${{secrets.DATABASE_URL}}
+    - run: pnpm test -- --ci

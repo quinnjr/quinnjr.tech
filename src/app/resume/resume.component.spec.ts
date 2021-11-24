@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { FlashMessageModule } from '../flash-message/flash-message.module';
 
 import { ResumeComponent } from './resume.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -9,7 +10,7 @@ describe('ResumeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ResumeComponent, SidebarComponent]
+      declarations: [ResumeComponent, SidebarComponent /*, FlashMessageModule*/]
     }).compileComponents();
   });
 

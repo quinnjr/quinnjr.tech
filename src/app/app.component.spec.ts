@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { FlashMessageModule } from './flash-message/flash-message.module';
-import { LoadingBarModule } from './loading-bar/loading-bar.module';
 
 import { NavigationModule } from './navigation/navigation.module';
 
@@ -12,12 +11,7 @@ describe('AppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        NavigationModule,
-        LoadingBarModule,
-        FlashMessageModule
-      ],
+      imports: [RouterTestingModule, NavigationModule, FlashMessageModule],
       declarations: [AppComponent]
     }).compileComponents();
 

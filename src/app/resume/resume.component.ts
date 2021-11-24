@@ -24,8 +24,8 @@ export class ResumeComponent implements OnInit, OnDestroy {
   private querySubscription?: Subscription;
 
   constructor(
-    private readonly $apollo: Apollo,
-    private readonly $flash: FlashMessageService
+    private readonly $apollo: Apollo /*,
+    private readonly $flash: FlashMessageService*/
   ) {}
 
   public ngOnInit(): void {
@@ -74,7 +74,7 @@ export class ResumeComponent implements OnInit, OnDestroy {
       })
       .subscribe(
         ({ data, loading, error }: ApolloQueryResult<{ user: User }>) => {
-          if (error) this.$flash.add(error.message);
+          // if (error) this.$flash.add(error.message);
 
           this.loading = loading;
           this.user = data.user;

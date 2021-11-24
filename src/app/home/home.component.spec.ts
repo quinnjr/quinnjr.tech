@@ -19,8 +19,8 @@ describe('HomeComponent', () => {
       imports: [
         RouterTestingModule,
         NavigationModule,
-        FlashMessageModule,
-        ApolloTestingModule
+        FlashMessageModule
+        // ApolloTestingModule
       ],
       declarations: [HomeComponent]
     }).compileComponents();
@@ -28,7 +28,7 @@ describe('HomeComponent', () => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    backend = TestBed.get(ApolloTestingController);
+    // backend = TestBed.get(ApolloTestingController);
   });
 
   it('should create', () => {
