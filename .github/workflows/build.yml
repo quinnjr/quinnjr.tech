@@ -17,7 +17,6 @@ jobs:
       JWT_SECRET: ${{secrets.JWT_SECRET}}
       REDIS_HOST: ${{secrets.REDIS_HOST}}
       REDIS_PORT: ${{secrets.REDIS_PORT}}
-      DATABASE_URL: ${{secrets.DATABASE_URL}}
       GH_TOKEN: ${{secrets.GH_TOKEN}}
       SETUP_PASSWORD: ${{secrets.SETUP_PASSWORD}}
       ENV: 'production'
@@ -28,6 +27,7 @@ jobs:
         env:
           POSTGRES_USER: ${{secrets.POSTGRES_USER}}
           POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
+          POSTGRES_DB: ${{secrets.POSTGRES_DB}}
     steps:
       - uses: actions/checkout@v2
 
@@ -46,7 +46,7 @@ jobs:
           push: true
           tags: registry.digitalocean.com/quinnjr/quinnjr.tech_webapp:latest,registry.digitalocean.com/quinnjr/quinnjrtech_webapp:${{github.events.inputs.version}}
           build-args: |
-            DATABASE_URL=postgresql://${{secrets.POSTGRES_USER}}:${{secrets.POSTGRES_PASSWORD}}@postgres:5432/quinnjr
+            DATABASE_URL=postgresql://${{secrets.POSTGRES_USER}}:${{secrets.POSTGRES_PASSWORD}}@postgres:5432/${{secrets.POSTGRES_DB}}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
