@@ -25,9 +25,6 @@ export class CertificationUncheckedUpdateManyWithoutUserInput {
     createMany?: CertificationCreateManyUserInputEnvelope;
 
     @Field(() => [CertificationWhereUniqueInput], {nullable:true})
-    connect?: Array<CertificationWhereUniqueInput>;
-
-    @Field(() => [CertificationWhereUniqueInput], {nullable:true})
     set?: Array<CertificationWhereUniqueInput>;
 
     @Field(() => [CertificationWhereUniqueInput], {nullable:true})
@@ -35,6 +32,9 @@ export class CertificationUncheckedUpdateManyWithoutUserInput {
 
     @Field(() => [CertificationWhereUniqueInput], {nullable:true})
     delete?: Array<CertificationWhereUniqueInput>;
+
+    @Field(() => [CertificationWhereUniqueInput], {nullable:true})
+    connect?: Array<CertificationWhereUniqueInput>;
 
     @Field(() => [CertificationUpdateWithWhereUniqueWithoutUserInput], {nullable:true})
     update?: Array<CertificationUpdateWithWhereUniqueWithoutUserInput>;

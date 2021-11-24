@@ -1,7 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { ArgsType } from '@nestjs/graphql';
 import { ExperienceWhereInput } from './experience-where.input';
-import { ExperienceOrderByInput } from './experience-order-by.input';
+import { ExperienceOrderByWithRelationInput } from './experience-order-by-with-relation.input';
 import { ExperienceWhereUniqueInput } from './experience-where-unique.input';
 import { Int } from '@nestjs/graphql';
 import { ExperienceCountAggregateInput } from './experience-count-aggregate.input';
@@ -16,8 +16,8 @@ export class ExperienceAggregateArgs {
     @Field(() => ExperienceWhereInput, {nullable:true})
     where?: ExperienceWhereInput;
 
-    @Field(() => [ExperienceOrderByInput], {nullable:true})
-    orderBy?: Array<ExperienceOrderByInput>;
+    @Field(() => [ExperienceOrderByWithRelationInput], {nullable:true})
+    orderBy?: Array<ExperienceOrderByWithRelationInput>;
 
     @Field(() => ExperienceWhereUniqueInput, {nullable:true})
     cursor?: ExperienceWhereUniqueInput;

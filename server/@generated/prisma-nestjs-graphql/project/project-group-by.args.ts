@@ -1,7 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { ArgsType } from '@nestjs/graphql';
 import { ProjectWhereInput } from './project-where.input';
-import { ProjectOrderByInput } from './project-order-by.input';
+import { ProjectOrderByWithAggregationInput } from './project-order-by-with-aggregation.input';
 import { ProjectScalarFieldEnum } from './project-scalar-field.enum';
 import { ProjectScalarWhereWithAggregatesInput } from './project-scalar-where-with-aggregates.input';
 import { Int } from '@nestjs/graphql';
@@ -15,8 +15,8 @@ export class ProjectGroupByArgs {
     @Field(() => ProjectWhereInput, {nullable:true})
     where?: ProjectWhereInput;
 
-    @Field(() => [ProjectOrderByInput], {nullable:true})
-    orderBy?: Array<ProjectOrderByInput>;
+    @Field(() => [ProjectOrderByWithAggregationInput], {nullable:true})
+    orderBy?: Array<ProjectOrderByWithAggregationInput>;
 
     @Field(() => [ProjectScalarFieldEnum], {nullable:false})
     by!: Array<keyof typeof ProjectScalarFieldEnum>;

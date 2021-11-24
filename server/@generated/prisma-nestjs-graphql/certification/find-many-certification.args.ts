@@ -1,7 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { ArgsType } from '@nestjs/graphql';
 import { CertificationWhereInput } from './certification-where.input';
-import { CertificationOrderByInput } from './certification-order-by.input';
+import { CertificationOrderByWithRelationInput } from './certification-order-by-with-relation.input';
 import { CertificationWhereUniqueInput } from './certification-where-unique.input';
 import { Int } from '@nestjs/graphql';
 import { CertificationScalarFieldEnum } from './certification-scalar-field.enum';
@@ -12,8 +12,8 @@ export class FindManyCertificationArgs {
     @Field(() => CertificationWhereInput, {nullable:true})
     where?: CertificationWhereInput;
 
-    @Field(() => [CertificationOrderByInput], {nullable:true})
-    orderBy?: Array<CertificationOrderByInput>;
+    @Field(() => [CertificationOrderByWithRelationInput], {nullable:true})
+    orderBy?: Array<CertificationOrderByWithRelationInput>;
 
     @Field(() => CertificationWhereUniqueInput, {nullable:true})
     cursor?: CertificationWhereUniqueInput;

@@ -1,9 +1,11 @@
 name: Build CI
 
 on:
-  push:
-    branches: [release/*]
-    tags: [v1.*]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Image version'
+        required: true
 
 jobs:
   build_webapp:
@@ -20,26 +22,31 @@ jobs:
       SETUP_PASSWORD: ${{secrets.SETUP_PASSWORD}}
       ENV: 'production'
       NODE_ENV: 'production'
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: ${{secrets.POSTGRES_USER}}
+          POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
     steps:
       - uses: actions/checkout@v2
 
       - name: Set up Docker BuildX
         uses: docker/setup-buildx-action@v1
 
-      - name: Login to Github Registry
-        uses: docker/login-action@v1
+      - name: Set up doctl
+        run: digitalocean/action-doctl@v2
         with:
-          registry: ghcr.io
-          username: ${{github.repository_owner}}
-          password: ${{secrets.GITHUB_TOKEN}}
+          token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}
 
-      - id: docker_build
-        name: Build and push Docker images
+      - name: Build and push Docker images
         uses: docker/build-push-action@v2.4.0
         with:
           context: ./
           push: true
-          tags: quinnjr/quinnjrtech_webapp:latest
+          tags: registry.digitalocean.com/quinnjr/quinnjr.tech_webapp:latest,registry.digitalocean.com/quinnjr/quinnjrtech_webapp:${{github.events.inputs.version}}
+          build-args: |
+            DATABASE_URL=postgresql://${{secrets.POSTGRES_USER}}:${{secrets.POSTGRES_PASSWORD}}@postgres:5432/quinnjr
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

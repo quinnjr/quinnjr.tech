@@ -1,7 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { ArgsType } from '@nestjs/graphql';
 import { ConferenceWhereInput } from './conference-where.input';
-import { ConferenceOrderByInput } from './conference-order-by.input';
+import { ConferenceOrderByWithRelationInput } from './conference-order-by-with-relation.input';
 import { ConferenceWhereUniqueInput } from './conference-where-unique.input';
 import { Int } from '@nestjs/graphql';
 import { ConferenceScalarFieldEnum } from './conference-scalar-field.enum';
@@ -12,8 +12,8 @@ export class FindManyConferenceArgs {
     @Field(() => ConferenceWhereInput, {nullable:true})
     where?: ConferenceWhereInput;
 
-    @Field(() => [ConferenceOrderByInput], {nullable:true})
-    orderBy?: Array<ConferenceOrderByInput>;
+    @Field(() => [ConferenceOrderByWithRelationInput], {nullable:true})
+    orderBy?: Array<ConferenceOrderByWithRelationInput>;
 
     @Field(() => ConferenceWhereUniqueInput, {nullable:true})
     cursor?: ConferenceWhereUniqueInput;

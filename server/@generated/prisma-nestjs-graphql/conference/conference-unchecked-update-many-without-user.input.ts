@@ -25,9 +25,6 @@ export class ConferenceUncheckedUpdateManyWithoutUserInput {
     createMany?: ConferenceCreateManyUserInputEnvelope;
 
     @Field(() => [ConferenceWhereUniqueInput], {nullable:true})
-    connect?: Array<ConferenceWhereUniqueInput>;
-
-    @Field(() => [ConferenceWhereUniqueInput], {nullable:true})
     set?: Array<ConferenceWhereUniqueInput>;
 
     @Field(() => [ConferenceWhereUniqueInput], {nullable:true})
@@ -35,6 +32,9 @@ export class ConferenceUncheckedUpdateManyWithoutUserInput {
 
     @Field(() => [ConferenceWhereUniqueInput], {nullable:true})
     delete?: Array<ConferenceWhereUniqueInput>;
+
+    @Field(() => [ConferenceWhereUniqueInput], {nullable:true})
+    connect?: Array<ConferenceWhereUniqueInput>;
 
     @Field(() => [ConferenceUpdateWithWhereUniqueWithoutUserInput], {nullable:true})
     update?: Array<ConferenceUpdateWithWhereUniqueWithoutUserInput>;

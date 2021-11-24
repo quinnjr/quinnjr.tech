@@ -9,6 +9,7 @@ import { Education } from '../education/education.model';
 import { Certification } from '../certification/certification.model';
 import { Project } from '../project/project.model';
 import { Conference } from '../conference/conference.model';
+import { UserCount } from './user-count.output';
 
 @ObjectType()
 export class User {
@@ -87,4 +88,7 @@ export class User {
 
     @Field(() => Date, {nullable:false})
     updatedAt!: Date;
+
+    @Field(() => UserCount, {nullable:false})
+    _count?: UserCount;
 }

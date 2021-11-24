@@ -25,9 +25,6 @@ export class ArticleUncheckedUpdateManyWithoutAuthorInput {
     createMany?: ArticleCreateManyAuthorInputEnvelope;
 
     @Field(() => [ArticleWhereUniqueInput], {nullable:true})
-    connect?: Array<ArticleWhereUniqueInput>;
-
-    @Field(() => [ArticleWhereUniqueInput], {nullable:true})
     set?: Array<ArticleWhereUniqueInput>;
 
     @Field(() => [ArticleWhereUniqueInput], {nullable:true})
@@ -35,6 +32,9 @@ export class ArticleUncheckedUpdateManyWithoutAuthorInput {
 
     @Field(() => [ArticleWhereUniqueInput], {nullable:true})
     delete?: Array<ArticleWhereUniqueInput>;
+
+    @Field(() => [ArticleWhereUniqueInput], {nullable:true})
+    connect?: Array<ArticleWhereUniqueInput>;
 
     @Field(() => [ArticleUpdateWithWhereUniqueWithoutAuthorInput], {nullable:true})
     update?: Array<ArticleUpdateWithWhereUniqueWithoutAuthorInput>;

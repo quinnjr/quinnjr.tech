@@ -12,30 +12,15 @@ export class AggregateEducation {
     @Field(() => EducationCountAggregate, {nullable:true})
     _count?: EducationCountAggregate;
 
-    @Field(() => EducationCountAggregate, {nullable:true})
-    count?: EducationCountAggregate;
-
     @Field(() => EducationAvgAggregate, {nullable:true})
     _avg?: EducationAvgAggregate;
-
-    @Field(() => EducationAvgAggregate, {nullable:true})
-    avg?: EducationAvgAggregate;
 
     @Field(() => EducationSumAggregate, {nullable:true})
     _sum?: EducationSumAggregate;
 
-    @Field(() => EducationSumAggregate, {nullable:true})
-    sum?: EducationSumAggregate;
-
     @Field(() => EducationMinAggregate, {nullable:true})
     _min?: EducationMinAggregate;
 
-    @Field(() => EducationMinAggregate, {nullable:true})
-    min?: EducationMinAggregate;
-
     @Field(() => EducationMaxAggregate, {nullable:true})
     _max?: EducationMaxAggregate;
-
-    @Field(() => EducationMaxAggregate, {nullable:true})
-    max?: EducationMaxAggregate;
 }

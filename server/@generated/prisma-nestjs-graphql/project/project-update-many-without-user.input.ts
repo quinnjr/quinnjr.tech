@@ -25,9 +25,6 @@ export class ProjectUpdateManyWithoutUserInput {
     createMany?: ProjectCreateManyUserInputEnvelope;
 
     @Field(() => [ProjectWhereUniqueInput], {nullable:true})
-    connect?: Array<ProjectWhereUniqueInput>;
-
-    @Field(() => [ProjectWhereUniqueInput], {nullable:true})
     set?: Array<ProjectWhereUniqueInput>;
 
     @Field(() => [ProjectWhereUniqueInput], {nullable:true})
@@ -35,6 +32,9 @@ export class ProjectUpdateManyWithoutUserInput {
 
     @Field(() => [ProjectWhereUniqueInput], {nullable:true})
     delete?: Array<ProjectWhereUniqueInput>;
+
+    @Field(() => [ProjectWhereUniqueInput], {nullable:true})
+    connect?: Array<ProjectWhereUniqueInput>;
 
     @Field(() => [ProjectUpdateWithWhereUniqueWithoutUserInput], {nullable:true})
     update?: Array<ProjectUpdateWithWhereUniqueWithoutUserInput>;

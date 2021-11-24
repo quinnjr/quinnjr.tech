@@ -23,18 +23,9 @@ export class EnumRoleWithAggregatesFilter {
     @Field(() => NestedIntFilter, {nullable:true})
     _count?: NestedIntFilter;
 
-    @Field(() => NestedIntFilter, {nullable:true})
-    count?: NestedIntFilter;
-
     @Field(() => NestedEnumRoleFilter, {nullable:true})
     _min?: NestedEnumRoleFilter;
 
     @Field(() => NestedEnumRoleFilter, {nullable:true})
-    min?: NestedEnumRoleFilter;
-
-    @Field(() => NestedEnumRoleFilter, {nullable:true})
     _max?: NestedEnumRoleFilter;
-
-    @Field(() => NestedEnumRoleFilter, {nullable:true})
-    max?: NestedEnumRoleFilter;
 }

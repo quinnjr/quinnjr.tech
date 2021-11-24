@@ -12,30 +12,15 @@ export class AggregateExperience {
     @Field(() => ExperienceCountAggregate, {nullable:true})
     _count?: ExperienceCountAggregate;
 
-    @Field(() => ExperienceCountAggregate, {nullable:true})
-    count?: ExperienceCountAggregate;
-
     @Field(() => ExperienceAvgAggregate, {nullable:true})
     _avg?: ExperienceAvgAggregate;
-
-    @Field(() => ExperienceAvgAggregate, {nullable:true})
-    avg?: ExperienceAvgAggregate;
 
     @Field(() => ExperienceSumAggregate, {nullable:true})
     _sum?: ExperienceSumAggregate;
 
-    @Field(() => ExperienceSumAggregate, {nullable:true})
-    sum?: ExperienceSumAggregate;
-
     @Field(() => ExperienceMinAggregate, {nullable:true})
     _min?: ExperienceMinAggregate;
 
-    @Field(() => ExperienceMinAggregate, {nullable:true})
-    min?: ExperienceMinAggregate;
-
     @Field(() => ExperienceMaxAggregate, {nullable:true})
     _max?: ExperienceMaxAggregate;
-
-    @Field(() => ExperienceMaxAggregate, {nullable:true})
-    max?: ExperienceMaxAggregate;
 }

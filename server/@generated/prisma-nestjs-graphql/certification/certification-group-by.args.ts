@@ -1,7 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { ArgsType } from '@nestjs/graphql';
 import { CertificationWhereInput } from './certification-where.input';
-import { CertificationOrderByInput } from './certification-order-by.input';
+import { CertificationOrderByWithAggregationInput } from './certification-order-by-with-aggregation.input';
 import { CertificationScalarFieldEnum } from './certification-scalar-field.enum';
 import { CertificationScalarWhereWithAggregatesInput } from './certification-scalar-where-with-aggregates.input';
 import { Int } from '@nestjs/graphql';
@@ -15,8 +15,8 @@ export class CertificationGroupByArgs {
     @Field(() => CertificationWhereInput, {nullable:true})
     where?: CertificationWhereInput;
 
-    @Field(() => [CertificationOrderByInput], {nullable:true})
-    orderBy?: Array<CertificationOrderByInput>;
+    @Field(() => [CertificationOrderByWithAggregationInput], {nullable:true})
+    orderBy?: Array<CertificationOrderByWithAggregationInput>;
 
     @Field(() => [CertificationScalarFieldEnum], {nullable:false})
     by!: Array<keyof typeof CertificationScalarFieldEnum>;

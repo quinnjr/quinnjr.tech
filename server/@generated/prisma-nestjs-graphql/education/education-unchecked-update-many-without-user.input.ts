@@ -25,9 +25,6 @@ export class EducationUncheckedUpdateManyWithoutUserInput {
     createMany?: EducationCreateManyUserInputEnvelope;
 
     @Field(() => [EducationWhereUniqueInput], {nullable:true})
-    connect?: Array<EducationWhereUniqueInput>;
-
-    @Field(() => [EducationWhereUniqueInput], {nullable:true})
     set?: Array<EducationWhereUniqueInput>;
 
     @Field(() => [EducationWhereUniqueInput], {nullable:true})
@@ -35,6 +32,9 @@ export class EducationUncheckedUpdateManyWithoutUserInput {
 
     @Field(() => [EducationWhereUniqueInput], {nullable:true})
     delete?: Array<EducationWhereUniqueInput>;
+
+    @Field(() => [EducationWhereUniqueInput], {nullable:true})
+    connect?: Array<EducationWhereUniqueInput>;
 
     @Field(() => [EducationUpdateWithWhereUniqueWithoutUserInput], {nullable:true})
     update?: Array<EducationUpdateWithWhereUniqueWithoutUserInput>;

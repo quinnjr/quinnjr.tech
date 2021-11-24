@@ -1,7 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { ArgsType } from '@nestjs/graphql';
 import { UserWhereInput } from './user-where.input';
-import { UserOrderByInput } from './user-order-by.input';
+import { UserOrderByWithAggregationInput } from './user-order-by-with-aggregation.input';
 import { UserScalarFieldEnum } from './user-scalar-field.enum';
 import { UserScalarWhereWithAggregatesInput } from './user-scalar-where-with-aggregates.input';
 import { Int } from '@nestjs/graphql';
@@ -15,8 +15,8 @@ export class UserGroupByArgs {
     @Field(() => UserWhereInput, {nullable:true})
     where?: UserWhereInput;
 
-    @Field(() => [UserOrderByInput], {nullable:true})
-    orderBy?: Array<UserOrderByInput>;
+    @Field(() => [UserOrderByWithAggregationInput], {nullable:true})
+    orderBy?: Array<UserOrderByWithAggregationInput>;
 
     @Field(() => [UserScalarFieldEnum], {nullable:false})
     by!: Array<keyof typeof UserScalarFieldEnum>;

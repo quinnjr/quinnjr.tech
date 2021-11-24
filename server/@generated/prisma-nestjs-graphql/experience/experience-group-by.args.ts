@@ -1,7 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { ArgsType } from '@nestjs/graphql';
 import { ExperienceWhereInput } from './experience-where.input';
-import { ExperienceOrderByInput } from './experience-order-by.input';
+import { ExperienceOrderByWithAggregationInput } from './experience-order-by-with-aggregation.input';
 import { ExperienceScalarFieldEnum } from './experience-scalar-field.enum';
 import { ExperienceScalarWhereWithAggregatesInput } from './experience-scalar-where-with-aggregates.input';
 import { Int } from '@nestjs/graphql';
@@ -17,8 +17,8 @@ export class ExperienceGroupByArgs {
     @Field(() => ExperienceWhereInput, {nullable:true})
     where?: ExperienceWhereInput;
 
-    @Field(() => [ExperienceOrderByInput], {nullable:true})
-    orderBy?: Array<ExperienceOrderByInput>;
+    @Field(() => [ExperienceOrderByWithAggregationInput], {nullable:true})
+    orderBy?: Array<ExperienceOrderByWithAggregationInput>;
 
     @Field(() => [ExperienceScalarFieldEnum], {nullable:false})
     by!: Array<keyof typeof ExperienceScalarFieldEnum>;

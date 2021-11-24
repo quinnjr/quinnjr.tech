@@ -10,18 +10,9 @@ export class AggregateCertification {
     @Field(() => CertificationCountAggregate, {nullable:true})
     _count?: CertificationCountAggregate;
 
-    @Field(() => CertificationCountAggregate, {nullable:true})
-    count?: CertificationCountAggregate;
-
     @Field(() => CertificationMinAggregate, {nullable:true})
     _min?: CertificationMinAggregate;
 
-    @Field(() => CertificationMinAggregate, {nullable:true})
-    min?: CertificationMinAggregate;
-
     @Field(() => CertificationMaxAggregate, {nullable:true})
     _max?: CertificationMaxAggregate;
-
-    @Field(() => CertificationMaxAggregate, {nullable:true})
-    max?: CertificationMaxAggregate;
 }

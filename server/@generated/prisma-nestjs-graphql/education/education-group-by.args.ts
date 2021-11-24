@@ -1,7 +1,7 @@
 import { Field } from '@nestjs/graphql';
 import { ArgsType } from '@nestjs/graphql';
 import { EducationWhereInput } from './education-where.input';
-import { EducationOrderByInput } from './education-order-by.input';
+import { EducationOrderByWithAggregationInput } from './education-order-by-with-aggregation.input';
 import { EducationScalarFieldEnum } from './education-scalar-field.enum';
 import { EducationScalarWhereWithAggregatesInput } from './education-scalar-where-with-aggregates.input';
 import { Int } from '@nestjs/graphql';
@@ -17,8 +17,8 @@ export class EducationGroupByArgs {
     @Field(() => EducationWhereInput, {nullable:true})
     where?: EducationWhereInput;
 
-    @Field(() => [EducationOrderByInput], {nullable:true})
-    orderBy?: Array<EducationOrderByInput>;
+    @Field(() => [EducationOrderByWithAggregationInput], {nullable:true})
+    orderBy?: Array<EducationOrderByWithAggregationInput>;
 
     @Field(() => [EducationScalarFieldEnum], {nullable:false})
     by!: Array<keyof typeof EducationScalarFieldEnum>;

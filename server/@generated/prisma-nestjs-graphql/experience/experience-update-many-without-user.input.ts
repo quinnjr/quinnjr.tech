@@ -25,9 +25,6 @@ export class ExperienceUpdateManyWithoutUserInput {
     createMany?: ExperienceCreateManyUserInputEnvelope;
 
     @Field(() => [ExperienceWhereUniqueInput], {nullable:true})
-    connect?: Array<ExperienceWhereUniqueInput>;
-
-    @Field(() => [ExperienceWhereUniqueInput], {nullable:true})
     set?: Array<ExperienceWhereUniqueInput>;
 
     @Field(() => [ExperienceWhereUniqueInput], {nullable:true})
@@ -35,6 +32,9 @@ export class ExperienceUpdateManyWithoutUserInput {
 
     @Field(() => [ExperienceWhereUniqueInput], {nullable:true})
     delete?: Array<ExperienceWhereUniqueInput>;
+
+    @Field(() => [ExperienceWhereUniqueInput], {nullable:true})
+    connect?: Array<ExperienceWhereUniqueInput>;
 
     @Field(() => [ExperienceUpdateWithWhereUniqueWithoutUserInput], {nullable:true})
     update?: Array<ExperienceUpdateWithWhereUniqueWithoutUserInput>;
