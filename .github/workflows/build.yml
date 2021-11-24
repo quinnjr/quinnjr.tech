@@ -6,6 +6,7 @@ on:
       version:
         description: 'Image version'
         required: true
+        type: string
 
 jobs:
   build_webapp:
@@ -15,8 +16,6 @@ jobs:
       API_ENTRYPOINT: ${{secrets.API_ENTRYPOINT}}
       SECRET_KEY: ${{secrets.SECRET_KEY}}
       JWT_SECRET: ${{secrets.JWT_SECRET}}
-      REDIS_HOST: ${{secrets.REDIS_HOST}}
-      REDIS_PORT: ${{secrets.REDIS_PORT}}
       GH_TOKEN: ${{secrets.GH_TOKEN}}
       SETUP_PASSWORD: ${{secrets.SETUP_PASSWORD}}
       ENV: 'production'
@@ -44,7 +43,7 @@ jobs:
         with:
           context: ./
           push: true
-          tags: registry.digitalocean.com/quinnjr/quinnjr.tech_webapp:latest,registry.digitalocean.com/quinnjr/quinnjrtech_webapp:${{github.events.inputs.version}}
+          tags: registry.digitalocean.com/quinnjr/quinnjr.tech_webapp:latest
           build-args: |
             DATABASE_URL=postgresql://${{secrets.POSTGRES_USER}}:${{secrets.POSTGRES_PASSWORD}}@postgres:5432/${{secrets.POSTGRES_DB}}
 
