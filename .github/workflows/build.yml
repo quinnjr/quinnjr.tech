@@ -6,7 +6,6 @@ on:
       version:
         description: 'Image version'
         required: true
-        type: string
 
 jobs:
   build_webapp:
@@ -43,11 +42,7 @@ jobs:
         with:
           context: ./
           push: true
-<<<<<<< HEAD
           tags: registry.digitalocean.com/quinnjr/quinnjr.tech_webapp:latest
-=======
-          tags: registry.digitalocean.com/quinnjr/quinnjr.tech_webapp:latest,registry.digitalocean.com/quinnjr/quinnjrtech_webapp:${{inputs.version}}
->>>>>>> 1a4ae7af48ff7224bfc14b0a60a4215e306616ee
           build-args: |
             DATABASE_URL=postgresql://${{secrets.POSTGRES_USER}}:${{secrets.POSTGRES_PASSWORD}}@postgres:5432/${{secrets.POSTGRES_DB}}
 
