@@ -31,6 +31,7 @@ specifiers:
   '@apollo/client': ^3.5.5
   '@apollo/federation': ^0.26.0
   '@apollo/gateway': ^0.35.0
+  '@apollo/subgraph': ^0.1.5
   '@casl/ability': ^5.4.3
   '@graphql-typed-document-node/core': ^3.1.1
   '@nestjs/common': ^8.2.3
@@ -145,11 +146,12 @@ dependencies:
   '@apollo/client': 3.5.5_graphql@15.7.2
   '@apollo/federation': 0.26.0_graphql@15.7.2
   '@apollo/gateway': 0.35.1_graphql@15.7.2
+  '@apollo/subgraph': 0.1.5_graphql@15.7.2
   '@casl/ability': 5.4.3
   '@nestjs/common': 8.2.3_025902ca9802fb6e606cd6a530651d05
   '@nestjs/config': 1.1.3_4067a5d44d4606b10b1aff77c2f9d3cd
   '@nestjs/core': 8.2.3_1864eb04cdb557d7ef263925d28b0dee
-  '@nestjs/graphql': 9.1.2_0d0e0695dc303bb56dd11ed098bb87bc
+  '@nestjs/graphql': 9.1.2_4aeb4186e3a724071f473e5a9d6b9335
   '@nestjs/jwt': 8.0.0_@nestjs+common@8.2.3
   '@nestjs/ng-universal': 6.0.0_d052c3b1da99ba4381f15ea05d1890e6
   '@nestjs/passport': 8.0.1_058b9cbf368107dabf254fc76e49c727
@@ -918,6 +920,16 @@ packages:
       deep-equal: 2.0.5
       graphql: 15.7.2
       pretty-format: 26.6.2
+    dev: false
+
+  /@apollo/subgraph/0.1.5_graphql@15.7.2:
+    resolution: {integrity: sha512-i1uU9llldGMV7GcBOUQRqnbGfgOpc6nrOVw93oKlugZq5R00q8y/RX8KgvMfdXZyr4MJ2/gO6Kw7LzbjCKU+Kw==}
+    engines: {node: '>=12.13.0 <17.0'}
+    peerDependencies:
+      graphql: ^15.5.3
+    dependencies:
+      apollo-graphql: 0.9.5_graphql@15.7.2
+      graphql: 15.7.2
     dev: false
 
   /@apollographql/apollo-tools/0.5.2:
@@ -3598,7 +3610,7 @@ packages:
       uuid: 8.3.2
     dev: false
 
-  /@nestjs/graphql/9.1.2_0d0e0695dc303bb56dd11ed098bb87bc:
+  /@nestjs/graphql/9.1.2_4aeb4186e3a724071f473e5a9d6b9335:
     resolution: {integrity: sha512-ncxmkKmrswnHJ+jLgc6tbkRET6HAyC3gK6WKt1CdPLjvMnXVpFVpyQMFSenNXxAndInw9IgaiSyiJFdRYZVD/w==}
     peerDependencies:
       '@apollo/federation': ^0.26.0 || ^0.27.0 || ^0.29.0 || ^0.33.0
@@ -3630,6 +3642,7 @@ packages:
     dependencies:
       '@apollo/federation': 0.26.0_graphql@15.7.2
       '@apollo/gateway': 0.35.1_graphql@15.7.2
+      '@apollo/subgraph': 0.1.5_graphql@15.7.2
       '@graphql-tools/merge': 6.2.5_graphql@15.7.2
       '@graphql-tools/schema': 7.1.5_graphql@15.7.2
       '@graphql-tools/utils': 7.10.0_graphql@15.7.2

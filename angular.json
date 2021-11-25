@@ -157,7 +157,8 @@
               "@nestjs/websockets/socket-module",
               "argon2",
               "graphql-ws",
-              "ws"
+              "ws",
+              "_http_common"
             ]
           },
           "configurations": {
