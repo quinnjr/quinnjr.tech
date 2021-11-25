@@ -32,7 +32,7 @@ COPY --from=builder --chown=node:node /app/node_modules/@prisma ./node_modules/
 COPY --from=builder --chown=node:node /app/node_modules/.pnpm/argon2* ./node_modules/
 COPY --from=builder --chown=node:node /app/node_modules/argon2 /
 
-RUN npm i -g prisma && \
+RUN npm i -g pnpm && \
   chown -R node:node /app
 
 USER node
