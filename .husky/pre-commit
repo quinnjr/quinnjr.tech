@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
 
-pnpm run lint
-# pnpm run test
+pnpm run lint -- --fix
+pnpm run lint:server -- --fix
+pnpm run test -- --run-in-band
+pnpm run test:server -- --run-in-band

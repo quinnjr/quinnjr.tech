@@ -47,6 +47,7 @@ export class ArticlesResolver {
   ): Promise<Article[]> {
     const or = searchString
       ? {
+          /* eslint-disable-next-line @typescript-eslint/naming-convention */
           OR: [
             { title: { contains: searchString } },
             { content: { contains: searchString } }

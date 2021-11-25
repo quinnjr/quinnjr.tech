@@ -12,17 +12,19 @@
     "lint": "ng lint",
     "e2e": "cypress run",
     "test:cov": "ng test --coverage",
-    "test:ci": "jest --runInBand",
+    "test:ci": "ng test --ci",
     "dev:ssr": "ng run quinnjr-tech:serve-ssr",
     "serve:ssr": "node dist/quinnjr-tech/server/main.js",
     "build:ssr": "ng build --configuration production && ng run quinnjr-tech:server",
     "prerender": "ng run quinnjr-tech:prerender",
     "prebuild:ssr": "ngcc",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --run-in-band",
     "prisma": "prisma",
     "ts-node": "ts-node --compiler-options \"{\\\"module\\\":\\\"commonjs\\\"}\"",
     "test:e2e-headless": "cypress run --headless",
-    "postinstall": "npx husky install && npx prisma generate"
+    "postinstall": "npx husky install && npx prisma generate",
+    "lint:server": "eslint -c ./.eslintrc.json server/**/*.ts",
+    "test:server": "jest -c jest.server-config.json"
   },
   "license": "MIT",
   "repository": {

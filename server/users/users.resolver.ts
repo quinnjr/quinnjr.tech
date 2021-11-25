@@ -15,9 +15,7 @@ export class UsersResolver {
   constructor(private readonly $databaseService: DatabaseService) {}
 
   @Query((returns) => User, { name: 'user' })
-  public async getUser(
-    @Args('email') email: string
-  ): Promise<User> {
+  public async getUser(@Args('email') email: string): Promise<User> {
     const user = await this.$databaseService.user.findUnique({
       where: {
         email
@@ -25,7 +23,7 @@ export class UsersResolver {
     });
 
     if (!user) {
-      throw new Error('No user was found')
+      throw new Error('No user was found');
     } else {
       return user;
     }
