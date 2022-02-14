@@ -5,4 +5,5 @@ export enum SortOrder {
     desc = "desc"
 }
 
-registerEnumType(SortOrder, { name: 'SortOrder' })
+
+registerEnumType(SortOrder, { name: 'SortOrder', description: undefined })

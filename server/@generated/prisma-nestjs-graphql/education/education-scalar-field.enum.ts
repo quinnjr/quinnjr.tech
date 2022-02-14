@@ -13,4 +13,5 @@ export enum EducationScalarFieldEnum {
     userId = "userId"
 }
 
-registerEnumType(EducationScalarFieldEnum, { name: 'EducationScalarFieldEnum' })
+
+registerEnumType(EducationScalarFieldEnum, { name: 'EducationScalarFieldEnum', description: undefined })

@@ -9,4 +9,5 @@ export enum ProjectScalarFieldEnum {
     userId = "userId"
 }
 
-registerEnumType(ProjectScalarFieldEnum, { name: 'ProjectScalarFieldEnum' })
+
+registerEnumType(ProjectScalarFieldEnum, { name: 'ProjectScalarFieldEnum', description: undefined })

@@ -7,4 +7,5 @@ export enum CertificationScalarFieldEnum {
     userId = "userId"
 }
 
-registerEnumType(CertificationScalarFieldEnum, { name: 'CertificationScalarFieldEnum' })
+
+registerEnumType(CertificationScalarFieldEnum, { name: 'CertificationScalarFieldEnum', description: undefined })

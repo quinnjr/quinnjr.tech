@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InjectionToken, NgModule } from '@angular/core';
 
-import { APOLLO_OPTIONS } from 'apollo-angular';
+import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache, ApolloLink } from '@apollo/client/core';
 import { setContext } from '@apollo/client/link/context';
@@ -53,6 +53,7 @@ const STATE_KEY = makeStateKey<any>('apollo.state');
       IDBDBName: 'quinnjr.tech',
       LSPrefix: 'quinnjr_tech_'
     }),
+    ApolloModule,
     // Site imports
     AdminModule,
     AppRoutingModule,

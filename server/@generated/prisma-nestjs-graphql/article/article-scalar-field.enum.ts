@@ -11,4 +11,5 @@ export enum ArticleScalarFieldEnum {
     updatedAt = "updatedAt"
 }
 
-registerEnumType(ArticleScalarFieldEnum, { name: 'ArticleScalarFieldEnum' })
+
+registerEnumType(ArticleScalarFieldEnum, { name: 'ArticleScalarFieldEnum', description: undefined })

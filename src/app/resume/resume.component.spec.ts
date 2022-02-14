@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ApolloModule } from 'apollo-angular';
 // import { FlashMessageModule } from '../flash-message/flash-message.module';
 
 import { ResumeComponent } from './resume.component';
@@ -10,6 +11,7 @@ describe('ResumeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ApolloModule],
       declarations: [ResumeComponent, SidebarComponent /*, FlashMessageModule*/]
     }).compileComponents();
   });

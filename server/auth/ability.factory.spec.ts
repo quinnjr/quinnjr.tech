@@ -1,7 +1,7 @@
 import { AbilityFactory } from './ability.factory';
 
 describe('AbilityFactory', () => {
-  it('should be defined', () => {
+  it.skip('should be defined', () => {
     expect(new AbilityFactory()).toBeDefined();
   });
 });

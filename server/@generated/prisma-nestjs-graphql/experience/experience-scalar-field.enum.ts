@@ -13,4 +13,5 @@ export enum ExperienceScalarFieldEnum {
     userId = "userId"
 }
 
-registerEnumType(ExperienceScalarFieldEnum, { name: 'ExperienceScalarFieldEnum' })
+
+registerEnumType(ExperienceScalarFieldEnum, { name: 'ExperienceScalarFieldEnum', description: undefined })

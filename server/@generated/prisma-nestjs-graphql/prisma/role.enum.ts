@@ -5,4 +5,5 @@ export enum Role {
     Admin = "Admin"
 }
 
-registerEnumType(Role, { name: 'Role' })
+
+registerEnumType(Role, { name: 'Role', description: undefined })

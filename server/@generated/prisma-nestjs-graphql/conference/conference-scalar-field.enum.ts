@@ -8,4 +8,5 @@ export enum ConferenceScalarFieldEnum {
     userId = "userId"
 }
 
-registerEnumType(ConferenceScalarFieldEnum, { name: 'ConferenceScalarFieldEnum' })
+
+registerEnumType(ConferenceScalarFieldEnum, { name: 'ConferenceScalarFieldEnum', description: undefined })

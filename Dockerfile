@@ -12,7 +12,7 @@ COPY . .
 RUN <<EOF
   apk --no-cache add libc6-compat zlib zlib-dev optipng pkgconfig autoconf automake nasm build-base
   npm i -g pnpm
-  pnpm install --no-optional
+  pnpm install --no-optional --unsafe-perm
   pnpx prisma generate
   pnpm run build:ssr
 EOF
