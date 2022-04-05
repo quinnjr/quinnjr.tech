@@ -1,0 +1,27 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" [routerLink]="['/home']">
+      <img type="image/svg+xml" src="/assets/icons/icon.svg" class="image is-32x32" />
+    </a>
+
+    <a role="button" class="navbar-burger" [ngClass]="{ 'is-active': !isCollapsed }" (click)="toggleCollapse()"
+      aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbar-main" class="navbar-menu" [ngClass]="{ 'is-active': !isCollapsed }">
+    <div class="navbar-start">
+      <a class="navbar-item" [routerLink]="['/home']"><i class="fas fa-home"></i>&nbsp;Home</a>
+      <a class="navbar-item" [routerLink]="['/articles']"><i class="fas fa-newspaper"></i>&nbsp;Articles</a>
+      <a class="navbar-item" [routerLink]="['/resume']"><i class="fas fa-user-graduate"></i>&nbsp;Resume</a>
+      <a class="navbar-item" [routerLink]="['/projects']"><i class="fas fa-project-diagram"></i>&nbsp;Projects</a>
+    </div>
+    <div class="navbar-end">
+      <a class="navbar-item" href="https://github.com/quinnjr" target="_blank"><i
+          class="fab fa-github"></i>&nbsp;Github</a>
+    </div>
+  </div>
+</nav>

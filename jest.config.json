@@ -1,0 +1,18 @@
+{
+  "moduleFileExtensions": ["ts", "html", "js", "json", "mjs"],
+  "moduleNameMapper": {
+    "@core/(.*)": "<rootDir>/src/app/core/$1"
+  },
+  "preset": "jest-preset-angular",
+  "resolver": "jest-preset-angular/build/resolvers/ng-jest-resolver.js",
+  "rootDir": "./src",
+  "testMatch": ["**/+(*.)+(spec).+(ts)"],
+  "transform": {
+    "^.+\\.(ts|js|mjs|html|svg)$": "jest-preset-angular"
+  },
+  "transformIgnorePatterns": ["node_modules/(?!.*\\.mjs$)"],
+  "setupFilesAfterEnv": ["<rootDir>/jest.setup.ts"],
+  "collectCoverage": true,
+  "coverageDirectory": "./dist/coverage",
+  "testEnvironment": "jsdom"
+}

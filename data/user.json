@@ -1,0 +1,29 @@
+{
+  "email": "quinn.josephr@protonmail.com",
+  "firstName": "Joseph",
+  "middleName": "Robert",
+  "lastName": "Quinn",
+  "website": "quinnjr.tech",
+  "linkedin": "https://www.linkedin.com/in/quinnjosephr/",
+  "github": "https://github.com/quinnjr",
+  "profilePicture": null,
+  "profile": "A dedicated, versatile, fast-learner anxious to expand his programming and legal skills and make an immediate contribution. Able to efficiently juggle workloads, prevail over deadlines, and adapt to new and challenging environments. A strong team player with great ethical standards, communication skills, and respect for confidentiality.",
+  "profileHighlights": [
+    "Florida Bar, September 2016",
+    "Special interest in Intellectual Property Law, CyberLaw, Contract Law, Cyber Security, Systems Programming, and GPU-assisted Programming"],
+  "birthday": "1989-10-16T00:00:00Z",
+  "skills": [
+    "Analytics, Informatics",
+    "Cyberlaw",
+    "Linux server management",
+    "Rust, Go, C++/C, PHP, Node.js, F#",
+    "Private equity",
+    "Intermediate Spanish",
+    "Zoom/Microsoft Teams"
+  ],
+  "professionalMemberships": [
+    "Florida Bar",
+    "American Bar Assn.",
+    "Professional Assn. of Diving Instructors, Emergency First Response, Intl."
+  ]
+}

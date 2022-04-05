@@ -1,0 +1,92 @@
+<div class="columns">
+  <div class="column">
+    <section class="section" id="intro">
+      <h1>Welcome to my awesome website!</h1>
+      <div class="media">
+        <figure class="image is-128x128 media-left">
+          <img class="is-rounded" src="/assets/profile_picture.jpg" alt="My headshot" />
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <p>Welcome to the personal website of Joseph R. Quinn, Esq.</p>
+            <p>Herein you can find my Curiam Vitae/Resume, musings, tutorials on programming subjects, and links to
+              projects that I've worked on.</p>
+            <p>Please enjoy your stay!</p>
+            <small>PS: The source code for this website is available <a href="https://github.com/quinnjr/quinnjr.tech"
+                target="_blank">here</a>.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="info">
+      <div class="columns">
+        <div class="column">
+          <h2>Recent Articles</h2>
+          <div *ngIf="articles.entries.length > 0; else elseArticleBlock">
+            <div class="card" *ngFor="let article of articles">
+              <header class="card-header">
+                <div class="card-icon">
+                  <i class="fas fa-bookmark"></i>
+                </div>
+                <p class="card-header-title">{{ article.title }}</p>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  <p>{{ article.description }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-template #elseArticleBlock>
+            <p>There are currently no articles to display!</p>
+          </ng-template>
+        </div>
+        <div class="column">
+          <h2>Recent Work</h2>
+          <div *ngIf="projects.entries.length > 0; else elseProjectBlock">
+            <div class="card" *ngFor="let project of projects">
+              <header>
+                <div class="card-icon">
+                  <i class="fas fa-"></i>
+                </div>
+                <p class="card-header-title"></p>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  <p></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-template #elseProjectBlock>
+            <p>There are currently no projects to display!</p>
+          </ng-template>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="badges">
+      <div class="tile is-ancestor">
+        <div class="tile">
+          <div data-iframe-width="150" data-iframe-height="270"
+            data-share-badge-id="f7d0a878-887b-46bc-99ca-d8f8862ba21f" data-share-badge-host="https://www.credly.com">
+          </div>
+        </div>
+        <div class="tile">
+          <div data-iframe-width="150" data-iframe-height="270"
+            data-share-badge-id="f71dddf1-8bb4-417e-9157-6bab35e74076" data-share-badge-host="https://www.credly.com">
+          </div>
+        </div>
+        <div class="tile">
+          <div data-iframe-width="150" data-iframe-height="270"
+            data-share-badge-id="0b9d249c-bbd8-4b61-844b-932d1666ceb9" data-share-badge-host="https://www.credly.com">
+          </div>
+        </div>
+        <div class="tile">
+          <div data-iframe-width="150" data-iframe-height="270"
+            data-share-badge-id="2b3c83dd-5dbf-4771-86f7-8336877481d3" data-share-badge-host="https://www.credly.com">
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

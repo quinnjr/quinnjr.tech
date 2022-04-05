@@ -1,0 +1,14 @@
+{
+  "baseUrl": "http://localhost:4200",
+  "chromeWebSecurity": true,
+  "fileServerFolder": "./test",
+  "fixturesFolder": "./test/fixtures",
+  "integrationFolder": "./test/integration",
+  "pluginsFile": false,
+  "screenshotsFolder": "./dist/e2e/screenshots",
+  "screenshotOnRunFailure": true,
+  "supportFile": "./test/support/index.ts",
+  "trashAssetsBeforeRuns": true,
+  "video": false,
+  "videosFolder": "./dist/e2e/videos"
+}
