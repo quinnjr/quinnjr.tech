@@ -46,6 +46,16 @@ jobs:
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           build-args: |
+            API_ENTRYPOINT=${{secrets.API_ENTRYPOINT}}
+            ADMIN_EMAIL=${{secrets.ADMIN_EMAIL}}
+            SECRET_KEY=${{secrets.SECRET_KEY}}
+            JWT_SECRET=${{secrets.JWT_SECRET}}
+            GH_TOKEN=${{secrets.GH_TOKEN}}
+            SETUP_PASSWOR=${{secrets.SETUP_PASSWORD}}
+            YUBIKEY_CLIENT_ID=${{secrets.YUBIKEY_CLIENT_ID}}
+            YUBIKEY_CLIENT_SECRET=${{secrets.YUBIKEY_CLIENT_SECRET}}
+            REDIS_HOST=${{secrets.REDIS_HOST}}
+            REDIS_PORT=${{secrets.REDIS_PORT}}
             DATABASE_URL=postgresql://${{secrets.POSTGRES_USER}}:${{secrets.POSTGRES_PASSWORD}}@postgres:5432/${{secrets.POSTGRES_DB}}
 
       - name: Image digest
