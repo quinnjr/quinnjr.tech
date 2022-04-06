@@ -22,9 +22,7 @@ export class ResumeComponent implements OnInit, OnDestroy {
   private queryObservable?: Observable<ApolloQueryResult<User>>;
   private querySubscription?: Subscription;
 
-  constructor(
-    private readonly $apollo: Apollo
-  ) { }
+  constructor(private readonly $apollo: Apollo) {}
 
   public ngOnInit(): void {
     this.querySubscription = this.$apollo

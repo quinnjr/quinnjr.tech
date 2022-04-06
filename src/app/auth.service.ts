@@ -5,7 +5,7 @@ import { Apollo } from 'apollo-angular';
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private readonly apollo: Apollo) { }
+  constructor(private readonly apollo: Apollo) {}
 
   public logout() {
     //

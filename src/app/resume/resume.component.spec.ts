@@ -10,9 +10,8 @@ describe('ResumeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ApolloTestingModule],
-      declarations: [ ResumeComponent ]
-    })
-    .compileComponents();
+      declarations: [ResumeComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

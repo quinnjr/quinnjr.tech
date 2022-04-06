@@ -1,7 +1,16 @@
 declare const process: any;
 
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, RouterStateSnapshot, UrlSegment, UrlTree, Router } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  CanLoad,
+  Route,
+  RouterStateSnapshot,
+  UrlSegment,
+  UrlTree,
+  Router
+} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -16,13 +25,23 @@ export class AdminLoadGuard implements CanActivate, CanLoad {
   ) {}
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
     return true;
   }
 
   public canLoad(
     route: Route,
-    segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    segments: UrlSegment[]
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
     return this.$httpClient
       .post<boolean>(`${process.env.API_ENTRYPOINT}/auth/can-access`, {
         role: 'Admin'

@@ -6,13 +6,19 @@ import { Level } from './level';
 
 @Injectable()
 export class FlashMessageService {
-  private messagesSubject: BehaviorSubject<Message[]> = new BehaviorSubject([] as Message[]);
+  private messagesSubject: BehaviorSubject<Message[]> = new BehaviorSubject(
+    [] as Message[]
+  );
 
   constructor() {}
 
+  public get messages(): Observable<Message[]> {
+    return this.messagesSubject.asObservable();
+  }
+
   public add(value: string, level: Level = Level.Primary) {
     const val = this.messagesSubject.value;
-    val.push({value, level});
+    val.push({ value, level });
     this.messagesSubject.next(val);
   }
 
@@ -20,9 +26,5 @@ export class FlashMessageService {
     const val = this.messagesSubject.value;
     val.splice(idx);
     this.messagesSubject.next(val);
-  }
-
-  public get messages(): Observable<Message[]> {
-    return this.messagesSubject.asObservable();
   }
 }

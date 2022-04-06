@@ -11,13 +11,13 @@ import { Message } from './message';
   styleUrls: ['./flash-message.component.scss']
 })
 export class FlashMessageComponent implements OnInit {
-  constructor(private readonly $flashMessageService: FlashMessageService) { }
-
-  public ngOnInit(): void { }
+  constructor(private readonly $flashMessageService: FlashMessageService) {}
 
   public get messages(): Observable<Message[]> {
     return this.$flashMessageService.messages;
   }
+
+  public ngOnInit(): void {}
 
   public close(idx: number) {
     this.$flashMessageService.remove(idx);

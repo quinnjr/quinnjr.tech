@@ -10,7 +10,6 @@ import { ManageProjectsComponent } from './manage-projects/manage-projects.compo
 import { UpdateResumeComponent } from './update-resume/update-resume.component';
 import { AdminComponent } from './admin.component';
 
-
 @NgModule({
   declarations: [
     AccountComponent,
@@ -21,9 +20,6 @@ import { AdminComponent } from './admin.component';
     UpdateResumeComponent,
     AdminComponent
   ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule
-  ]
+  imports: [CommonModule, AdminRoutingModule]
 })
-export class AdminModule { }
+export class AdminModule {}

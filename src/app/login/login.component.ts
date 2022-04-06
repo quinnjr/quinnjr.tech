@@ -24,9 +24,9 @@ export class LoginComponent implements OnInit {
     private $fb: FormBuilder,
     private $router: Router,
     private $flashMessageService: FlashMessageService
-  ) { }
+  ) {}
 
-  public ngOnInit(): void { }
+  public ngOnInit(): void {}
 
   public submit(): void {
     this.$httpClient

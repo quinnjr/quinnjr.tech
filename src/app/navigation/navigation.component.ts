@@ -8,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class NavigationComponent implements OnInit {
   private collapsed = true;
 
-  constructor() { }
-
-  ngOnInit(): void { }
+  constructor() {}
 
   public get isCollapsed(): boolean {
     return this.collapsed;
   }
+
+  public ngOnInit(): void {}
 
   public toggleCollapse(): void {
     this.collapsed = !this.collapsed;

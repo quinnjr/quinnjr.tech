@@ -12,7 +12,7 @@ import { FlashMessageService } from './flash-message/flash-message.service';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
-  constructor(private readonly $flashMessageService: FlashMessageService) { }
+  constructor(private readonly $flashMessageService: FlashMessageService) {}
 
   public intercept(
     request: HttpRequest<unknown>,

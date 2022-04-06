@@ -1,5 +1,10 @@
 import { InjectionToken, NgModule } from '@angular/core';
-import { BrowserModule, BrowserTransferStateModule, TransferState, makeStateKey } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  BrowserTransferStateModule,
+  TransferState,
+  makeStateKey
+} from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -116,14 +121,9 @@ const STATE_KEY = makeStateKey<any>('apollo.state');
 
         return { cache, link };
       },
-      deps: [
-        HttpLink,
-        APOLLO_CACHE,
-        TransferState,
-        StorageMap
-      ]
+      deps: [HttpLink, APOLLO_CACHE, TransferState, StorageMap]
     }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -11,10 +11,10 @@ export class AppComponent {
   constructor(
     private readonly $storage: StorageMap,
     private readonly $elementRef: ElementRef,
-    @Inject(PLATFORM_ID) private readonly $platformId: Object
+    @Inject(PLATFORM_ID) private readonly $platformId: any
   ) {
     if (isPlatformBrowser(this.$platformId)) {
-      let newScript = document.createElement('script');
+      const newScript = document.createElement('script');
       newScript.type = 'text/javascript';
       newScript.src = '//cdn.credly.com/assets/utilities/embed.js';
       newScript.async = true;
