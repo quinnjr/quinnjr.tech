@@ -3,7 +3,7 @@ import { join } from 'path';
 import { CacheInterceptor, CacheModule, Module } from '@nestjs/common';
 import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { GraphQLModule } from '@nestjs/graph';
+import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { AngularUniversalModule } from '@nestjs/ng-universal';
 
