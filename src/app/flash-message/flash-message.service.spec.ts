@@ -6,7 +6,9 @@ describe('FlashMessageService', () => {
   let service: FlashMessageService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [FlashMessageService]
+    });
     service = TestBed.inject(FlashMessageService);
   });
 

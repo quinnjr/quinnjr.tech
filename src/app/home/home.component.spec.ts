@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FlashMessageService } from '../flash-message/flash-message.service';
 
 import { HomeComponent } from './home.component';
 
@@ -8,9 +9,9 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
-    })
-    .compileComponents();
+      declarations: [HomeComponent],
+      providers: [FlashMessageService]
+    }).compileComponents();
   });
 
   beforeEach(() => {
