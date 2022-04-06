@@ -5,6 +5,7 @@ ARG DATABASE_URL
 
 ENV ENV=development
 ENV NODE_ENV=development
+ENV NODE_OPTIONS="--max-old-space-size=8192"
 
 WORKDIR /app
 
@@ -25,16 +26,16 @@ ENV NODE_ENV=production
 
 WORKDIR /app
 
-COPY --from=builder --chown=node:node /app/dist/quinnjr-tech/browser /app/dist/quinnjr-tech/browser
-COPY --from=builder --chown=node:node /app/dist/quinnjr-tech/server /app/dist/quinnjr-tech/server
-COPY --from=builder --chown=node:node /app/prisma /app/prisma
+COPY --from=builder --chown=node:node /app/dist/quinnjr-tech/browser/ /app/dist/quinnjr-tech/browser
+COPY --from=builder --chown=node:node /app/dist/quinnjr-tech/server/ /app/dist/quinnjr-tech/server
+COPY --from=builder --chown=node:node /app/prisma/ /app/prisma/
 COPY --from=builder --chown=node:node /app/package.json /app/package.json
 COPY --from=builder --chown=node:node /app/angular.json /app/angular.json
 COPY --from=builder --chown=node:node /app/pnpm-lock.yaml /app/pnpm-lock.yaml
 COPY --from=builder --chown=node:node /app/node_modules/.pnpm/@prisma+client@* /app/node_modules/.pnpm
-COPY --from=builder --chown=node:node /app/node_modules/@prisma /app/node_modules/
+COPY --from=builder --chown=node:node /app/node_modules/@prisma/ /app/node_modules/
 COPY --from=builder --chown=node:node /app/node_modules/.pnpm/argon2* /app/node_modules/.pnpm
-COPY --from=builder --chown=node:node /app/node_modules/argon2 /app/node_modules/argon2
+COPY --from=builder --chown=node:node /app/node_modules/argon2/ /app/node_modules/argon2
 COPY --from=builder --chown=node:node /app/docker-entry.sh /app/docker-entry.sh
 
 RUN npm i -g pnpm && \

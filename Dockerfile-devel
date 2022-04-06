@@ -3,6 +3,8 @@ FROM node:lts-alpine as builder
 
 WORKDIR /app
 
+ENV NODE_OPTIONS="--max-old-space-size=8192"
+
 COPY . .
 
 RUN <<EOF
