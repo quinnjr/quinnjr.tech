@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng test && npm run test:server",
     "dev:ssr": "NODE_OPTIONS='--max-old-space-size=8192' ng run quinnjr.tech:serve-ssr",
     "serve:ssr": "node dist/quinnjr.tech/server/main.js",
     "build:ssr": "ng build && ng run quinnjr.tech:server",

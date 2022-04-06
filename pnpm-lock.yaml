@@ -63,7 +63,6 @@ specifiers:
   '@types/supertest': ^2.0.12
   '@types/webpack': ^5.28.0
   '@types/webpack-node-externals': ^2.5.3
-  '@types/webpack-subresource-integrity': ^5.0.0
   '@types/zen-observable': ^0.8.3
   '@typescript-eslint/eslint-plugin': 5.17.0
   '@typescript-eslint/parser': 5.17.0
@@ -215,7 +214,6 @@ devDependencies:
   '@types/supertest': 2.0.12
   '@types/webpack': 5.28.0
   '@types/webpack-node-externals': 2.5.3
-  '@types/webpack-subresource-integrity': 5.0.0_97d8863ea5051e555a37f54d23a7b04b
   '@types/zen-observable': 0.8.3
   '@typescript-eslint/eslint-plugin': 5.17.0_689ff565753ecf7c3328c07fad067df5
   '@typescript-eslint/parser': 5.17.0_eslint@8.12.0+typescript@4.6.3
@@ -4742,16 +4740,6 @@ packages:
       - esbuild
       - uglify-js
       - webpack-cli
-    dev: true
-
-  /@types/webpack-subresource-integrity/5.0.0_97d8863ea5051e555a37f54d23a7b04b:
-    resolution: {integrity: sha512-u9PamnLCCujELj/O3seVZKH17et1LurxbsgvI41469u9CO9fzlY8DrX8Vaeoc9Fc5T6z9nugN9HFv9yDpfXIvw==}
-    deprecated: This is a stub types definition. webpack-subresource-integrity provides its own type definitions, so you do not need this installed.
-    dependencies:
-      webpack-subresource-integrity: 5.1.0_97d8863ea5051e555a37f54d23a7b04b
-    transitivePeerDependencies:
-      - html-webpack-plugin
-      - webpack
     dev: true
 
   /@types/webpack/5.28.0:

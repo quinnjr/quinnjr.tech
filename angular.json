@@ -120,7 +120,10 @@
               "@nestjs/microservices/microservices-module",
               "@nestjs/websockets",
               "@nestjs/websockets/socket-module",
-              "cache-manager"
+              "cache-manager",
+              "_http_common",
+              "class-transformer/storage",
+              "apollo-server-fastify"
             ]
           },
           "configurations": {
@@ -132,7 +135,8 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": false
+              "optimization": true,
+              "extractLicenses": true
             },
             "development": {
               "optimization": false,

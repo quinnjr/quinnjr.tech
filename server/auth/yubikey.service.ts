@@ -8,8 +8,8 @@ export class YubikeyService {
 
   constructor() {
     this.service = new Yubikey(
-      process.env.YUBIKEY_CLIENT_ID,
-      process.env.YUBIKEY_CLIENT_SECRET
+      process.env['YUBIKEY_CLIENT_ID'],
+      process.env['YUBIKEY_CLIENT_SECRET']
     );
   }
 

@@ -19,7 +19,7 @@ export class JwtGraphqlAuthGuard
     return ctx.getContext().req;
   }
 
-  public canActivate(
+  public override canActivate(
     context: ExecutionContext
   ): boolean | Promise<boolean> | Observable<boolean> {
     const isPublic = this.$reflector.getAllAndOverride<boolean>(IS_PUBLIC_KEY, [
