@@ -13,6 +13,7 @@
   "transformIgnorePatterns": ["node_modules/(?!.*\\.mjs$)"],
   "setupFilesAfterEnv": ["<rootDir>/jest.setup.ts"],
   "collectCoverage": true,
-  "coverageDirectory": "<rootDir>/dist/coverage",
-  "testEnvironment": "jsdom"
+  "coverageDirectory": "<rootDir>/../dist/coverage",
+  "testEnvironment": "jsdom",
+  "modulePathIgnorePatterns": ["dist/**/*.html"]
 }

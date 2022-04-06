@@ -9,6 +9,6 @@
     "^.+\\.(t|j)s$": "ts-jest"
   },
   "collectCoverage": true,
-  "coverageDirectory": "./dist/coverage-server",
+  "coverageDirectory": "<rootDir>/../dist/coverage-server",
   "testEnvironment": "node"
 }
