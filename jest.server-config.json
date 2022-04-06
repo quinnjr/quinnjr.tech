@@ -10,6 +10,5 @@
   },
   "collectCoverage": true,
   "coverageDirectory": "<rootDir>/../dist/coverage-server",
-  "modulePathIgnorePatterns": ["dist/**"],
   "testEnvironment": "node"
 }
