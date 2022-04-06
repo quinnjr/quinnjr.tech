@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ApolloTestingModule } from 'apollo-angular/testing';
 
 import { ResumeComponent } from './resume.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 
 describe('ResumeComponent', () => {
   let component: ResumeComponent;
@@ -11,7 +10,7 @@ describe('ResumeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ApolloTestingModule],
-      declarations: [ ResumeComponent, SidebarComponent ]
+      declarations: [ ResumeComponent ]
     })
     .compileComponents();
   });
