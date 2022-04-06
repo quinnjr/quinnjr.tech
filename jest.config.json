@@ -15,5 +15,5 @@
   "collectCoverage": true,
   "coverageDirectory": "<rootDir>/../dist/coverage",
   "testEnvironment": "jsdom",
-  "modulePathIgnorePatterns": ["dist/**/*.html"]
+  "modulePathIgnorePatterns": ["dist/**"]
 }
