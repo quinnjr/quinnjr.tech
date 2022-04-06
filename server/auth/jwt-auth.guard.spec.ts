@@ -1,3 +1,4 @@
+import { ConfigModule } from '@nestjs/config';
 import { Reflector } from '@nestjs/core';
 import { TestingModule, Test } from '@nestjs/testing';
 import { AuthModule } from './auth.module';
@@ -8,7 +9,7 @@ describe('JwtAuthGuard', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [AuthModule],
+      imports: [AuthModule, ConfigModule],
       providers: [JwtAuthGuard, Reflector]
     }).compile();
 
