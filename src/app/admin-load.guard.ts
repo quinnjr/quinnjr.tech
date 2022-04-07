@@ -43,7 +43,7 @@ export class AdminLoadGuard implements CanActivate, CanLoad {
     | boolean
     | UrlTree {
     return this.$httpClient
-      .post<boolean>(`${process.env.API_ENTRYPOINT}/auth/can-access`, {
+      .post<boolean>('/api/auth/can-access', {
         role: 'Admin'
       })
       .pipe(

@@ -29,14 +29,12 @@ export class LoginComponent implements OnInit {
   public ngOnInit(): void {}
 
   public submit(): void {
-    this.$httpClient
-      .post(`${process.env.API_ENTRYPOINT}/auth/login`, this.loginForm.value)
-      .subscribe(
-        (res: any) => {
-          this.$storage.set('access_token', res.access_token).subscribe();
-          this.$router.navigate(['/admin']);
-        },
-        (err) => this.$flashMessageService.add(err)
-      );
+    this.$httpClient.post('/api/auth/login', this.loginForm.value).subscribe(
+      (res: any) => {
+        this.$storage.set('access_token', res.access_token).subscribe();
+        this.$router.navigate(['/admin']);
+      },
+      (err) => this.$flashMessageService.add(err)
+    );
   }
 }
