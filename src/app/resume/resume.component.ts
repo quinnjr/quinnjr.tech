@@ -65,7 +65,7 @@ export class ResumeComponent implements OnInit, OnDestroy {
           }
         `,
         variables: {
-          email: process.env.ADMIN_EMAIL
+          email: 'quinn.josephr@protonmail.com'
         }
       })
       .subscribe(
