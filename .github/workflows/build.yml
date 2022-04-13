@@ -18,7 +18,7 @@ jobs:
       REGISTRY: ghcr.io
       IMAGE_NAME: ${{ github.repository }}
     services:
-      postgres:
+      database:
         image: postgres
         env:
           POSTGRES_USER: ${{secrets.POSTGRES_USER}}
