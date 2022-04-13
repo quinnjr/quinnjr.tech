@@ -46,8 +46,6 @@ jobs:
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           build-args: |
-            API_ENTRYPOINT=${{secrets.API_ENTRYPOINT}}
-            GH_TOKEN=${{secrets.GH_TOKEN}}
             DATABASE_URL=postgresql://${{secrets.POSTGRES_USER}}:${{secrets.POSTGRES_PASSWORD}}@postgres:5432/${{secrets.POSTGRES_DB}}
 
       - name: Image digest
