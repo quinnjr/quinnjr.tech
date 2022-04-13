@@ -10,11 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: staging
     env:
-      API_ENTRYPOINT: ${{secrets.API_ENTRYPOINT}}
       SECRET_KEY: ${{secrets.SECRET_KEY}}
       JWT_SECRET: ${{secrets.JWT_SECRET}}
       GH_TOKEN: ${{secrets.GH_TOKEN}}
-      SETUP_PASSWORD: ${{secrets.SETUP_PASSWORD}}
       ENV: 'production'
       NODE_ENV: 'production'
       REGISTRY: ghcr.io
@@ -46,9 +44,7 @@ jobs:
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           build-args: |
-            API_ENTRYPOINT=${{secrets.API_ENTRYPOINT}}
-            GH_TOKEN=${{secrets.GH_TOKEN}}
-            DATABASE_URL=postgresql://${{secrets.POSTGRES_USER}}:${{secrets.POSTGRES_PASSWORD}}@postgres:5432/${{secrets.POSTGRES_DB}}
+            DATABASE_URL=postgresql://${{secrets.POSTGRES_USER}}:${{secrets.POSTGRES_PASSWORD}}@database:5432/${{secrets.POSTGRES_DB}}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

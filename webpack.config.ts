@@ -27,7 +27,7 @@ export default (
   config.plugins?.push(
     new DotenvPlugin({
       safe: true,
-      allowEmptyValues: false,
+      allowEmptyValues: true,
       systemvars: true
     }),
     new DefinePlugin({
