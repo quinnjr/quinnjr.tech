@@ -1,14 +1,9 @@
-import { CacheModule, Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { HttpModule } from '@nestjs/axios';
+import { Module } from '@nestjs/common';
 import { GithubResolver } from './github.resolver';
 
 @Module({
-  imports: [
-    ConfigModule,
-    CacheModule.register({
-      ttl: 5 * 60
-    })
-  ],
+  imports: [HttpModule],
   providers: [GithubResolver],
   exports: []
 })

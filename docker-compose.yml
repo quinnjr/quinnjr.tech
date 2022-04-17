@@ -6,12 +6,9 @@ services:
       context: ./
       dockerfile: Dockerfile
     environment:
-      API_ENTRYPOINT: ${API_ENTRYPOINT}
-      ADMIN_EMAIL: ${ADMIN_EMAIL}
       SECRET_KEY: ${SECRET_KEY}
       JWT_SECRET: ${JWT_SECRET}
       GH_TOKEN: ${GH_TOKEN}
-      SETUP_PASSWORD: ${SETUP_PASSWORD}
       REDIS_HOST: ${REDIS_HOST}
       REDIS_PORT: ${REDIS_PORT}
       DATABASE_URL: ${DATABASE_URL}

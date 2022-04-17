@@ -8,15 +8,16 @@ ENV NODE_OPTIONS="--max-old-space-size=8192"
 COPY . .
 
 RUN <<EOF
-  apk --no-cache add libc6-compat
-  npm i -g pnpm
+  apk --no-cache add libc6-compat pkgconfig autoconf automake build-base sudo gawk make musl-dev gcc libtool nasm
+  npm i -g npm pnpm
   chown -R node:node /app
+  echo 'node ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
 EOF
 
 USER node
 
 RUN <<EOF
-  pnpm set store-dir $HOME/.pnpm-store
+  sudo pnpm i -g @angular/cli
 EOF
 
 EXPOSE 4200

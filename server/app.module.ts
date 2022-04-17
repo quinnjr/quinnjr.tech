@@ -6,6 +6,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { AngularUniversalModule } from '@nestjs/ng-universal';
+import { HttpModule } from '@nestjs/axios';
 
 import { AppServerModule } from '../src/main.server';
 
@@ -16,6 +17,7 @@ import { EducationResolver } from './education/education.resolver';
 import { ExperiencesResolver } from './experiences/experiences.resolver';
 import { ProjectsResolver } from './projects/projects.resolver';
 import { UsersResolver } from './users/users.resolver';
+import { GithubModule } from './github/github.module';
 
 @Module({
   imports: [
@@ -47,7 +49,8 @@ import { UsersResolver } from './users/users.resolver';
     EducationResolver,
     ExperiencesResolver,
     ProjectsResolver,
-    UsersResolver
+    UsersResolver,
+    GithubModule
   ]
 })
 export class AppModule {}
