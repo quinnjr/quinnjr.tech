@@ -8,23 +8,27 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
 
 const bootstrap = async () => {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
-    logger: ['log', 'error', 'warn'],
-    cors: process.env['ENV'] === 'development'
-  });
+  try {
+    const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+      logger: ['log', 'error', 'warn'],
+      cors: process.env['ENV'] === 'development'
+    });
 
-  app.set('trust proxy', 1);
+    app.set('trust proxy', 1);
 
-  app.setGlobalPrefix('api');
+    app.setGlobalPrefix('api');
 
-  app.useGlobalPipes(
-    new ValidationPipe({
-      transform: false,
-      whitelist: true
-    })
-  );
+    app.useGlobalPipes(
+      new ValidationPipe({
+        transform: false,
+        whitelist: true
+      })
+    );
 
-  await app.listen(process.env['PORT'] || 4200);
+    await app.listen(process.env['PORT'] || 4200);
+  } catch (error) {
+    throw error;
+  }
 };
 
 // Webpack will replace 'require' with '__webpack_require__'

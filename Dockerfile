@@ -5,39 +5,12 @@ ENV ENV=development
 ENV NODE_ENV=development
 ENV NODE_OPTIONS="--max-old-space-size=8192"
 
-# ARG SECRET_KEY
-# ENV SECRET_KEY ${SECRET_KEY}
-# ARG JWT_SECRET
-# ENV JWT_SECRET ${JWT_SECRET}
-# ARG GH_TOKEN
-# ENV GH_TOKEN ${GH_TOKEN}
-
-# ARG POSTGRES_USER
-# ENV POSTGRES_USER ${POSTGRES_USER}
-# ARG POSTGRES_PASSWORD
-# ENV POSTGRES_PASSWORD ${POSTGRES_PASSWORD}
-# ARG POSTGRES_DB
-# ENV POSTGRES_DB ${POSTGRES_DB}
-
-# ARG DATABASE_URL
-# ENV DATABASE_URL ${DATABASE_URL}
-
-# ARG REDIS_HOST
-# ENV REDIS_HOST ${REDIS_HOST}
-# ARG REDIS_PORT
-# ENV REDIS_PORT ${REDIS_PORT}
-
-# ARG YUBIKEY_CLIENT_ID
-# ENV YUBIKEY_CLIENT_ID ${YUBIKEY_CLIENT_ID}
-# ARG YUBIKEY_CLIENT_SECRET
-# ENV YUBIKEY_CLIENT_SECRET ${YUBIKEY_CLIENT_SECRET}
-
 WORKDIR /app
 
 COPY . .
 
 RUN <<EOF
-  apk --no-cache add libc6-compat zlib zlib-dev optipng pkgconfig autoconf automake nasm build-base
+  apk --no-cache add libc6-compat zlib zlib-dev optipng pkgconfig autoconf automake nasm build-base libtool
   npm i -g pnpm
   pnpm install --no-optional --unsafe-perm
   pnpm run build:ssr

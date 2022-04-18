@@ -1,34 +1,29 @@
-import { Resolver, Query } from '@nestjs/graphql';
+/* eslint-disable prettier/prettier */
+import { Resolver, Query, Args, Int } from '@nestjs/graphql';
+import { ConfigService } from '@nestjs/config';
+import { default as axios } from 'axios'
+
 import { Public } from '../auth/public.decorator';
 import { GithubResponse } from './dto/github-response';
-import { gql } from 'apollo-server-core';
 
 @Resolver((of: any) => GithubResponse)
 export class GithubResolver {
-  constructor() {}
+  constructor(
+    private readonly $configService: ConfigService
+  ) {}
 
   @Public()
-  @Query((returns) => GithubResponse, { name: 'github' })
-  public async getGithubInformation(): Promise<GithubResponse> {
-    /* eslint prettier/prettier: off */
-    const query = gql`
-      {
+  @Query((returns) => GithubResponse)
+  public async getGithubInformation(
+    @Args('limit', { type: () => Int, nullable: true}) limit: number = 10
+  ): Promise<GithubResponse> {
+    const query = `
+      query {
         viewer {
           url
-          gists(first: 10, privacy: PUBLIC) {
-            egdges {
-              node {
-                id
-                description
-                name
-                url
-              }
-            }
-          }
           repositories(
-            first: 10,
-            orderBy: { field: CREATED_AT },
-            direction: DESC
+            first: ${limit},
+            orderBy: { field: CREATED_AT, direction: DESC }
           ) {
             edges {
               node {
@@ -42,10 +37,17 @@ export class GithubResolver {
       }
     `;
 
-    return {
-      url: '',
-      gists: [],
-      repositories: []
-    };
+    const response  = await axios.post('https://api.github.com/graphql', {
+      query,
+    }, {
+        headers: {
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        Authorization: `bearer ${this.$configService.get<string>('GH_TOKEN')}`
+      }
+    });
+
+    const ghResponse = new GithubResponse(response.data.data);
+
+    return ghResponse;
   }
 }

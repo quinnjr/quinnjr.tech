@@ -6,6 +6,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { AngularUniversalModule } from '@nestjs/ng-universal';
+import { HttpModule } from '@nestjs/axios';
 
 import { AppServerModule } from '../src/main.server';
 
@@ -16,12 +17,24 @@ import { EducationResolver } from './education/education.resolver';
 import { ExperiencesResolver } from './experiences/experiences.resolver';
 import { ProjectsResolver } from './projects/projects.resolver';
 import { UsersResolver } from './users/users.resolver';
+import { GithubResolver } from './github/github.resolver';
 
 @Module({
   imports: [
     AngularUniversalModule.forRoot({
       bootstrap: AppServerModule,
-      viewsPath: join(process.cwd(), 'dist/quinnjr.tech/browser')
+      viewsPath: join(process.cwd(), 'dist/quinnjr.tech/browser'),
+      errorHandler: ({
+        err,
+        html,
+        renderCallback
+      }: {
+        err?: Error | undefined;
+        html?: string | undefined;
+        renderCallback: (err: any, content: string) => void;
+      }) => {
+        console.error(err);
+      }
     }),
     ConfigModule.forRoot({
       isGlobal: true,
@@ -47,7 +60,8 @@ import { UsersResolver } from './users/users.resolver';
     EducationResolver,
     ExperiencesResolver,
     ProjectsResolver,
-    UsersResolver
+    UsersResolver,
+    GithubResolver
   ]
 })
 export class AppModule {}

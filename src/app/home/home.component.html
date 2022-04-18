@@ -43,19 +43,17 @@
         </div>
         <div class="column">
           <h2>Recent Work</h2>
-          <div *ngIf="projects.entries.length > 0; else elseProjectBlock">
-            <div class="card" *ngFor="let project of projects">
-              <header>
-                <div class="card-icon">
-                  <i class="fas fa-"></i>
-                </div>
-                <p class="card-header-title"></p>
-              </header>
-              <div class="card-content">
-                <div class="content">
-                  <p></p>
-                </div>
-              </div>
+          <div *ngIf="(githubResponse | async)?.length > 0; else elseProjectBlock">
+            <div class="media" *ngFor="let project of (githubResponse | async)">
+              <figure class="media-left">
+                <a [href]="project.url">
+                  <span class="icon is-medium">
+                    <i class="fab fa-brands fa-github fa-2x"></i>
+                  </span>
+                  <span>&nbsp;{{ project.name }}</span>
+                </a>
+              </figure>
+              <div class="media-content">{{ project.description }}</div>
             </div>
           </div>
           <ng-template #elseProjectBlock>
