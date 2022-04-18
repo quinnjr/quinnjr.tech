@@ -43,14 +43,14 @@
         </div>
         <div class="column">
           <h2>Recent Work</h2>
-          <div *ngIf="(githubResponse | async).length > 0; else elseProjectBlock">
+          <div *ngIf="(githubResponse | async)?.length > 0; else elseProjectBlock">
             <div class="media" *ngFor="let project of (githubResponse | async)">
               <figure class="media-left">
                 <a [href]="project.url">
                   <span class="icon is-medium">
-                    <i class="fa-brands fa-github fa-2x"></i>
+                    <i class="fab fa-brands fa-github fa-2x"></i>
                   </span>
-                  <span>{{ project.name }}</span>
+                  <span>&nbsp;{{ project.name }}</span>
                 </a>
               </figure>
               <div class="media-content">{{ project.description }}</div>

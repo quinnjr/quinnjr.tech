@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 import { FlashMessageService } from '../flash-message/flash-message.service';
 import { Article } from '../../../server/@generated/prisma-nestjs-graphql/article/article.model';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -16,34 +17,45 @@ export class HomeComponent implements OnInit {
     null
   );
 
+  private querySubscription?: Subscription;
+
   constructor(
     private readonly $apollo: Apollo,
-    private readonly $flashMessage: FlashMessageService
+    private readonly $flashMessage: FlashMessageService,
+    @Inject(PLATFORM_ID) private $platformId: any
   ) {
     this.articles = new Set();
   }
 
   public ngOnInit(): void {
-    this.$apollo
-      .query({
-        query: gql`
-          query {
-            getGithubInformation(limit: 10) {
-              repositories
+    if (isPlatformBrowser(this.$platformId)) {
+      const query = gql`
+        {
+          getGithubInformation(limit: 10) {
+            repositories {
+              name
+              description
+              url
             }
           }
-        `
-      })
-      .subscribe(({ loading, error, data }) => {
-        if (loading) {
-          // do something
         }
+      `;
 
-        if (error) {
-          this.$flashMessage.add(error.message);
-        } else {
-          this.githubResponse.next(data);
-        }
-      });
+      this.querySubscription = this.$apollo
+        .watchQuery<any>({
+          query
+        })
+        .valueChanges.subscribe(({ data, error, loading }) => {
+          if (loading) {
+            // do stuff
+          }
+
+          if (error) {
+            this.$flashMessage.add(error.message);
+          } else {
+            this.githubResponse.next(data.getGithubInformation.repositories);
+          }
+        });
+    }
   }
 }

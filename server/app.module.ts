@@ -24,7 +24,15 @@ import { GithubResolver } from './github/github.resolver';
     AngularUniversalModule.forRoot({
       bootstrap: AppServerModule,
       viewsPath: join(process.cwd(), 'dist/quinnjr.tech/browser'),
-      errorHandler: ({ err, html, renderCallback }) => {
+      errorHandler: ({
+        err,
+        html,
+        renderCallback
+      }: {
+        err?: Error | undefined;
+        html?: string | undefined;
+        renderCallback: (err: any, content: string) => void;
+      }) => {
         console.error(err);
       }
     }),
