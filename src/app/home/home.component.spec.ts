@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ApolloTestingModule } from 'apollo-angular/build/testing';
 import { FlashMessageService } from '../flash-message/flash-message.service';
 
 import { HomeComponent } from './home.component';
@@ -9,7 +10,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomeComponent],
+      declarations: [HomeComponent, ApolloTestingModule],
       providers: [FlashMessageService]
     }).compileComponents();
   });
