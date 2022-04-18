@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-// import { Apollo, gql } from 'apollo-angular';
-import { FlashMessageService } from '../flash-message/flash-message.service';
+import { Apollo, gql } from 'apollo-angular';
+import { BehaviorSubject } from 'rxjs';
 
+import { FlashMessageService } from '../flash-message/flash-message.service';
 import { Article } from '../../../server/@generated/prisma-nestjs-graphql/article/article.model';
-import { Project } from '../../../server/@generated/prisma-nestjs-graphql/project/project.model';
 
 @Component({
   selector: 'app-home',
@@ -12,42 +12,38 @@ import { Project } from '../../../server/@generated/prisma-nestjs-graphql/projec
 })
 export class HomeComponent implements OnInit {
   public articles: Set<Article>;
-  public projects: Set<Project>;
+  public githubResponse: BehaviorSubject<any | null> = new BehaviorSubject(
+    null
+  );
 
-  constructor(private readonly $flashMessage: FlashMessageService) {
+  constructor(
+    private readonly $apollo: Apollo,
+    private readonly $flashMessage: FlashMessageService
+  ) {
     this.articles = new Set();
-    this.projects = new Set();
   }
 
   public ngOnInit(): void {
-    // this.$apollo
-    //   .watchQuery({
-    //     query: gql`
-    //       {
-    //         articles(take: 5) {
-    //           id
-    //           title
-    //           description
-    //           createdAt
-    //         }
-    //         projects(take: 5) {
-    //           id
-    //           description
-    //         }
-    //       }
-    //     `
-    //   })
-    //   .valueChanges.subscribe(
-    //     (res: any) => {
-    //       if (res.error) {
-    //         this.$flashMessage.add(res.error);
-    //       }
-    //
-    //       for (const article of res?.data?.articles) {
-    //         this.articles = this.articles.add(article);
-    //       }
-    //     },
-    //     (err) => this.$flashMessage.add(err)
-    //   );
+    this.$apollo
+      .query({
+        query: gql`
+          query {
+            getGithubInformation(limit: 10) {
+              repositories
+            }
+          }
+        `
+      })
+      .subscribe(({ loading, error, data }) => {
+        if (loading) {
+          // do something
+        }
+
+        if (error) {
+          this.$flashMessage.add(error.message);
+        } else {
+          this.githubResponse.next(data);
+        }
+      });
   }
 }

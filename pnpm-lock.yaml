@@ -70,6 +70,7 @@ specifiers:
   apollo-server-core: ^3.6.7
   apollo-server-express: ^3.6.7
   argon2: ^0.28.5
+  axios: ^0.26.1
   babel-loader: ^8.2.4
   bufferutil: ^4.0.6
   bulma: ^0.9.3
@@ -199,6 +200,7 @@ devDependencies:
   apollo-angular: 3.0.0_6c86ce15a22079ece820e6febff3ca3d
   apollo-server-core: 3.6.7_graphql@16.3.0
   apollo-server-express: 3.6.7_express@4.17.3+graphql@16.3.0
+  axios: 0.26.1
   babel-loader: 8.2.4_bb1d6ba6264b4355cd74ff79826974dc
   bulma: 0.9.3
   bulmaswatch: 0.8.1

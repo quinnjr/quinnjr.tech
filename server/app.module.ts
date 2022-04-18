@@ -17,13 +17,16 @@ import { EducationResolver } from './education/education.resolver';
 import { ExperiencesResolver } from './experiences/experiences.resolver';
 import { ProjectsResolver } from './projects/projects.resolver';
 import { UsersResolver } from './users/users.resolver';
-import { GithubModule } from './github/github.module';
+import { GithubResolver } from './github/github.resolver';
 
 @Module({
   imports: [
     AngularUniversalModule.forRoot({
       bootstrap: AppServerModule,
-      viewsPath: join(process.cwd(), 'dist/quinnjr.tech/browser')
+      viewsPath: join(process.cwd(), 'dist/quinnjr.tech/browser'),
+      errorHandler: ({ err, html, renderCallback }) => {
+        console.error(err);
+      }
     }),
     ConfigModule.forRoot({
       isGlobal: true,
@@ -50,7 +53,7 @@ import { GithubModule } from './github/github.module';
     ExperiencesResolver,
     ProjectsResolver,
     UsersResolver,
-    GithubModule
+    GithubResolver
   ]
 })
 export class AppModule {}
