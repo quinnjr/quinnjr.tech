@@ -1,6 +1,11 @@
 import { join } from 'path';
 import glob from 'glob';
-import { default as webpack, Configuration, DefinePlugin, IgnorePlugin } from 'webpack';
+import {
+  default as webpack,
+  Configuration,
+  DefinePlugin,
+  IgnorePlugin
+} from 'webpack';
 import {
   CustomWebpackBrowserSchema,
   TargetOptions
@@ -12,7 +17,6 @@ import DotenvPlugin from 'dotenv-webpack';
 import nodeExternals from 'webpack-node-externals';
 import TerserPlugin from 'terser-webpack-plugin';
 import * as pkg from './package.json';
-import webpackNodeExternals from 'webpack-node-externals';
 
 const PurgeCSSPlugin = require('purgecss-webpack-plugin');
 
