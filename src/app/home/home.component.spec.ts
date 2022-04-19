@@ -10,7 +10,8 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomeComponent, ApolloTestingModule],
+      imports: [ApolloTestingModule],
+      declarations: [HomeComponent],
       providers: [FlashMessageService]
     }).compileComponents();
   });
