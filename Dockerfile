@@ -9,9 +9,10 @@ WORKDIR /app
 
 COPY . .
 
-RUN apk --no-cache add libc6-compat zlib zlib-dev optipng pkgconfig autoconf automake nasm build-base libtool \
-  npm i -g npm pnpm \
-  pnpm install --no-optional --unsafe-perm \
+RUN apk add --no-cache libc6-compat zlib zlib-dev optipng pkgconfig autoconf \
+    automake nasm build-base libtool && \
+  npm i -g npm pnpm && \
+  pnpm install --no-optional --unsafe-perm && \
   pnpm run build:ssr
 
 FROM node:lts-alpine
