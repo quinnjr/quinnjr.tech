@@ -9,17 +9,12 @@ COPY . .
 
 RUN <<EOF
   apk --no-cache add libc6-compat pkgconfig autoconf automake build-base sudo gawk make musl-dev gcc libtool nasm
-  npm i -g npm pnpm
+  npm i -g npm pnpm @angular/cli
   chown -R node:node /app
   echo 'node ALL=(ALL:ALL) NOPASSWD: ALL' >> /etc/sudoers
 EOF
 
 USER node
-
-RUN <<EOF
-  sudo pnpm i -g @angular/cli
-EOF
-
 EXPOSE 4200
 
 ENTRYPOINT ["./docker-entry.sh"]
