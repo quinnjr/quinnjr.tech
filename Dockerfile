@@ -41,4 +41,4 @@ RUN npm i -g npm pnpm && \
 USER node
 EXPOSE 4200
 
-ENTRYPOINT ["pnpm", "run serve:ssr"]
+ENTRYPOINT ["docker-entry.sh"]
