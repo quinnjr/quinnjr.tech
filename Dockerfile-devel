@@ -17,4 +17,4 @@ EOF
 USER node
 EXPOSE 4200
 
-ENTRYPOINT ["./docker-entry.sh"]
+ENTRYPOINT ["/app/docker-entry.sh"]
