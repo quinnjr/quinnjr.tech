@@ -29,11 +29,11 @@ export default (
   config.output!.crossOriginLoading = 'anonymous';
 
   config.plugins?.push(
-    new DotenvPlugin({
-      safe: true,
-      allowEmptyValues: true,
-      systemvars: true
-    }),
+    // new DotenvPlugin({
+    //   safe: true,
+    //   allowEmptyValues: true,
+    //   systemvars: true
+    // }),
     new DefinePlugin({
       /* eslint @typescript-eslint/naming-convention: off */
       APP_NAME: pkg.name,
