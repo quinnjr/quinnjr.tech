@@ -40,4 +40,4 @@ RUN npm i -g npm pnpm && \
 USER node
 EXPOSE 4200
 
-ENTRYPOINT ["docker-entry.sh"]
+ENTRYPOINT ["/app/docker-entry.sh"]
