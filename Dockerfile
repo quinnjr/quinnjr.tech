@@ -41,4 +41,4 @@ RUN npm i -g npm pnpm && \
 USER node
 EXPOSE 4200
 
-ENTRYPOINT ["node" "/app/dist/quinnjr.tech/server/main.js"]
+ENTRYPOINT ["pnpm", "run serve:ssr"]
