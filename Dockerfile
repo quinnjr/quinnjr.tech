@@ -11,7 +11,7 @@ COPY . .
 
 RUN <<EOF
   apk --no-cache add libc6-compat zlib zlib-dev optipng pkgconfig autoconf automake nasm build-base libtool
-  npm i -g pnpm
+  npm i -g npm pnpm
   pnpm install --no-optional --unsafe-perm
   pnpm run build:ssr
 EOF
@@ -31,7 +31,7 @@ COPY --from=builder --chown=node:node /app/angular.json /app/angular.json
 COPY --from=builder --chown=node:node /app/pnpm-lock.yaml /app/pnpm-lock.yaml
 COPY --from=builder --chown=node:node /app/docker-entry.sh /app/docker-entry.sh
 
-RUN npm i -g pnpm && \
+RUN npm i -g npm pnpm && \
   pnpm install --no-optional && \
   pnpm install -g prisma && \
   pnpx prisma generate && \
@@ -41,4 +41,4 @@ RUN npm i -g pnpm && \
 USER node
 EXPOSE 4200
 
-ENTRYPOINT ["/app/docker-entry.sh"]
+ENTRYPOINT ["node" "/app/dist/quinnjr.tech/server/main.js"]
