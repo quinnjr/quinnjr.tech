@@ -6,6 +6,7 @@ overrides:
   '@wessberg/ts-evaluator': npm:ts-evaluator
   debug: ^4.3.1
   uuid: ^7.0.0
+  async: ^3.2.2
 
 specifiers:
   '@angular-builders/custom-webpack': ^13.1.0
@@ -5618,28 +5619,8 @@ packages:
       retry: 0.13.1
     dev: true
 
-  /async/0.9.2:
-    resolution: {integrity: sha1-rqdNXmHB+JlhO/ZL2mbUx48v0X0=}
-    dev: true
-
-  /async/1.5.2:
-    resolution: {integrity: sha1-7GphrlZIDAw8skHJVhjiCJL5Zyo=}
-    dev: true
-
-  /async/2.6.4:
-    resolution: {integrity: sha512-mzo5dfJYwAn29PeiJ0zvwTo04zj8HDJj0Mn8TD7sno7q12prdbnasKJHhkm2c1LgrhlJ0teaea8860oxi51mGA==}
-    dependencies:
-      lodash: 4.17.21
-    dev: true
-
-  /async/3.2.0:
-    resolution: {integrity: sha512-TR2mEZFVOj2pLStYxLht7TyfuRzaydfpxr3k9RpHIzMgw7A64dzsdqCxH1WJyQdoe8T10nDXd9wnEigmiuHIZw==}
-    dev: false
-
   /async/3.2.3:
     resolution: {integrity: sha512-spZRyzKL5l5BZQrr/6m/SqFdBN0q3OCI0f9rjfBzCMBIP4p75P620rR3gTmaksNOhmzgdxcaxdNfMy6anrbM0g==}
-    dev: false
-    optional: true
 
   /asynckit/0.4.0:
     resolution: {integrity: sha1-x57Zf380y48robyXkLzDZkdLS3k=}
@@ -6317,7 +6298,7 @@ packages:
   /cache-manager/3.6.0:
     resolution: {integrity: sha512-D4GJZhyYgprYM30ZEPOn9kkdwdPUumX3ujbNbl7FYjcRViRvAgY53k6pO/82wNsm7c4aHVgXfR12/3huA47qnA==}
     dependencies:
-      async: 3.2.0
+      async: 3.2.3
       lodash: 4.17.21
       lru-cache: 6.0.0
     dev: false
@@ -10285,7 +10266,7 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      async: 0.9.2
+      async: 3.2.3
       chalk: 4.1.2
       filelist: 1.0.2
       minimatch: 3.1.2
@@ -12666,7 +12647,7 @@ packages:
     resolution: {integrity: sha512-Se+2isanIcEqf2XMHjyUKskczxbPH7dQnlMjXX6+dybayyHvAf/TCgyMRlzf/B6QDhAEFOGes0pzRo3by4AbMA==}
     engines: {node: '>= 0.12.0'}
     dependencies:
-      async: 2.6.4
+      async: 3.2.3
       debug: 4.3.4
       mkdirp: 0.5.6
     transitivePeerDependencies:
@@ -12677,7 +12658,7 @@ packages:
     resolution: {integrity: sha1-6rtAnk3iSVD1oqUW01rnaTQ/u5Y=}
     engines: {node: '>=0.4', npm: '>=1.0.0'}
     dependencies:
-      async: 1.5.2
+      async: 3.2.3
       is-number-like: 1.0.8
     dev: true
 
