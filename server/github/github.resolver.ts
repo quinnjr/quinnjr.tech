@@ -23,7 +23,7 @@ export class GithubResolver {
           url
           repositories(
             first: ${limit},
-            orderBy: { field: CREATED_AT, direction: DESC }
+            orderBy: { field: UPDATED_AT, direction: DESC }
           ) {
             edges {
               node {
