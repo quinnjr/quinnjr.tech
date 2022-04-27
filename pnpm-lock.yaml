@@ -73,6 +73,7 @@ specifiers:
   argon2: ^0.28.5
   axios: ^0.26.1
   babel-loader: ^8.2.4
+  bluebird: ^3.7.2
   bufferutil: ^4.0.6
   bulma: ^0.9.3
   bulmaswatch: ^0.8.1
@@ -205,6 +206,7 @@ devDependencies:
   apollo-server-express: 3.6.7_1a09d0bb3d100f042572e768ea1dcedd
   axios: 0.26.1
   babel-loader: 8.2.4_bb1d6ba6264b4355cd74ff79826974dc
+  bluebird: 3.7.2
   bulma: 0.9.3
   bulmaswatch: 0.8.1
   class-transformer: 0.4.0
@@ -5995,8 +5997,6 @@ packages:
 
   /bluebird/3.7.2:
     resolution: {integrity: sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==}
-    dev: false
-    optional: true
 
   /body-parser/1.19.2:
     resolution: {integrity: sha512-SAAwOxgoCKMGs9uUAUFHygfLAyaniaoun6I8mFY9pRAJL9+Kec34aU+oIjDhTycub1jozEfEwx1W1IuOYxVSFw==}
