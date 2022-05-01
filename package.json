@@ -21,6 +21,9 @@
     "lint:server": "eslint -c ./.eslintrc.json server/**/*.ts",
     "test:server": "jest -c jest.server-config.json"
   },
+  "engines": {
+    "pnpm": ">=6.21.0"
+  },
   "private": true,
   "dependencies": {
     "@prisma/client": "^3.11.1",
@@ -156,6 +159,11 @@
       "debug": "^4.3.1",
       "uuid": "^7.0.0",
       "async": "^3.2.2"
+    },
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "react"
+      ]
     }
   }
 }
