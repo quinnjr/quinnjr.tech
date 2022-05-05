@@ -15,7 +15,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   @ViewChild('footer')
-  public footer!: ElementRef;
+  public footer?: ElementRef;
 
   constructor(@Inject(PLATFORM_ID) private readonly $platformId: any) {}
 
@@ -28,15 +28,17 @@ export class AppComponent implements OnInit {
 
       document.body.appendChild(newScript);
 
-      const height = this.footer.nativeElement.height;
-      const top = this.footer.nativeElement.top;
+      const height = this.footer?.nativeElement.height;
+      const top = this.footer?.nativeElement.top;
       const body = document.querySelector('body');
       const bodyHeight = body?.offsetHeight || 0;
 
       if (bodyHeight > top + height) {
-        this.footer.nativeElement.style = `position: absolute; margin-top: 1rem; top: ${
+        if (this.footer) {
+          this.footer.nativeElement.style = `position: absolute; margin-top: 1rem; top: ${
           bodyHeight - height
-        }`;
+          }`;
+        }
       }
     }
   }
