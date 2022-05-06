@@ -51,10 +51,10 @@ const STATE_KEY = makeStateKey<any>('apollo.state');
   declarations: [
     AppComponent,
     FlashMessageComponent,
-    // HomeComponent,
+    HomeComponent,
     LoginComponent,
     NavigationComponent,
-    // NotFoundComponent
+    NotFoundComponent
   ],
   providers: [
     UserService,

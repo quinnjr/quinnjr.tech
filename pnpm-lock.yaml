@@ -138,7 +138,6 @@ dependencies:
   cache-manager: 3.6.0
   encoding: 0.1.13
   graphql-ws: 5.6.4_graphql@16.3.0
-  immutable: 4.0.0
   prisma-nestjs-graphql: 15.2.1_9e5dbfaab472274dec5c3bbbc0fd26ed
   utf-8-validate: 5.0.9
 
@@ -230,6 +229,7 @@ devDependencies:
   imagemin-mozjpeg: 10.0.0
   imagemin-optipng: 8.0.0
   imagemin-svgo: 10.0.1
+  immutable: 4.0.0
   jasmine-core: 4.0.1
   jest: 27.5.1_c6baf799c9a07dac1dfd2ca90d4f021e
   jest-preset-angular: 11.1.1_d13f9b5f8eca33b88790dec8bcffd4f2
@@ -9778,6 +9778,7 @@ packages:
 
   /immutable/4.0.0:
     resolution: {integrity: sha512-zIE9hX70qew5qTUjSS7wi1iwj/l7+m54KWU247nhM3v806UdGj1yDndXj+IOYxxtW9zyLI+xqFNZjTuDaLUqFw==}
+    dev: true
 
   /import-fresh/3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
