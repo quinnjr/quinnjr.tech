@@ -19,7 +19,7 @@ specifiers:
   '@angular-eslint/schematics': 13.2.1
   '@angular-eslint/template-parser': 13.2.1
   '@angular/animations': ^14.0.0
-  '@angular/cdk': ^13.3.2
+  '@angular/cdk': ^14.0.0
   '@angular/cli': ^14.0.0
   '@angular/common': ^14.0.0
   '@angular/compiler': ^14.0.0
@@ -155,7 +155,7 @@ devDependencies:
   '@angular-eslint/schematics': 13.2.1_7532410ce49b7549a5f9f53e5f263164
   '@angular-eslint/template-parser': 13.2.1_eslint@8.12.0+typescript@4.6.3
   '@angular/animations': 14.0.0_@angular+core@14.0.0
-  '@angular/cdk': 13.3.2_3e9d763899bb24aa15ea65767cffe152
+  '@angular/cdk': 14.0.0_3e9d763899bb24aa15ea65767cffe152
   '@angular/cli': 14.0.0_bluebird@3.7.2
   '@angular/common': 14.0.0_@angular+core@14.0.0+rxjs@7.5.5
   '@angular/compiler': 14.0.0_@angular+core@14.0.0
@@ -820,17 +820,17 @@ packages:
       tslib: 2.4.0
     dev: true
 
-  /@angular/cdk/13.3.2_3e9d763899bb24aa15ea65767cffe152:
-    resolution: {integrity: sha512-Rb+SvQpjXqa0kedk/6nG57f8dC4uG1q35SR6mt6jCz84ikyS2zhikVbzaxLdG15uDvq1+N5Vx3NTSgH19XUSug==}
+  /@angular/cdk/14.0.0_3e9d763899bb24aa15ea65767cffe152:
+    resolution: {integrity: sha512-9RnDlvskjXt1il9uWUidfHE98J9eYaVn+MCqhg0VLH1uHFcpt/dzoJ1nv71mC0anZHrClax29YMiEBnPFZaeFQ==}
     peerDependencies:
-      '@angular/common': ^13.0.0 || ^14.0.0-0
-      '@angular/core': ^13.0.0 || ^14.0.0-0
+      '@angular/common': ^14.0.0 || ^15.0.0
+      '@angular/core': ^14.0.0 || ^15.0.0
       rxjs: ^6.5.3 || ^7.4.0
     dependencies:
       '@angular/common': 14.0.0_@angular+core@14.0.0+rxjs@7.5.5
       '@angular/core': 14.0.0_rxjs@7.5.5+zone.js@0.11.5
       rxjs: 7.5.5
-      tslib: 2.3.1
+      tslib: 2.4.0
     optionalDependencies:
       parse5: 5.1.1
     dev: true
