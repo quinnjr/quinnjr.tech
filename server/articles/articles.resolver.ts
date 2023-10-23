@@ -24,7 +24,7 @@ import { User } from '../../graphql/user/user.model';
 
 @Resolver((of: any) => Article)
 export class ArticlesResolver {
-  constructor(/*/*private readonly $databaseService: DatabaseService*/*/) {}
+  constructor(/*/*private readonly $databaseService: DatabaseService*/) {}
 
   @ResolveField('author', (returns) => User)
   public async getAuthor(@Parent() article: Article): Promise<User | null> {
