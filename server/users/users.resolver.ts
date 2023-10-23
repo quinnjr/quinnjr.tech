@@ -12,7 +12,7 @@ import { Project } from '../../graphql/project/project.model';
 
 @Resolver((of: any) => User)
 export class UsersResolver {
-  constructor(private readonly $databaseService: DatabaseService) {}
+  constructor(/*private readonly $databaseService: DatabaseService*/) {}
 
   @Query((returns) => User, { name: 'user' })
   public async getUser(@Args('email') email: string): Promise<User> {

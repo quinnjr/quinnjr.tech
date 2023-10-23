@@ -17,7 +17,7 @@ import { User } from '../../graphql/user/user.model';
 
 @Resolver((of: any) => Certification)
 export class CertificationsResolver {
-  constructor(private readonly $databaseService: DatabaseService) {}
+  constructor(/*private readonly $databaseService: DatabaseService*/) {}
 
   @ResolveField('user', (returns) => User)
   public async getUser(

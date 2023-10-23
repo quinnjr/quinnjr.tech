@@ -7,7 +7,7 @@ import { Project } from '../../graphql/project/project.model';
 
 @Resolver((of: any) => Project)
 export class ProjectsResolver {
-  constructor(private readonly $databaseService: DatabaseService) {}
+  constructor(/*private readonly $databaseService: DatabaseService*/) {}
 
   @Public()
   @Query((returns) => [Project], { name: 'projects' })
