@@ -23,7 +23,7 @@ export class CertificationsResolver {
   public async getUser(
     @Parent() certification: Certification
   ): Promise<User | null> {
-    const { userId } = certification;
+    // const { userId } = certification;
     // return this.$databaseService.user.findUnique({
     //   where: {
     //     id: userId
